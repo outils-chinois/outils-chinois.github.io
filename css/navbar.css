@@ -10,8 +10,9 @@ html {
 }
 
 nav {
-	background-color: #2b2b2b;
+	background-color: #121212;
 	color: white;
+	position: relative;
 
 	display: flex;
 	flex-direction: row;
@@ -19,9 +20,13 @@ nav {
 }
 
 nav > a:not(#logo) {
-	color: #c8c8c8;
+	display: flex;
+	/*color: #c8c8c8;*/
+	color: #dcb2ff;
 	text-decoration: none;
 	margin: 0px 20px;
+	align-items: center;
+	justify-content: center;
 	transition: 0.2s;
 }
 

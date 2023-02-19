@@ -1,0 +1,25 @@
+body {
+	background-color: black;
+}
+
+.mainBox {
+	background-color: #7f39fb;
+	border: 1px solid black;
+	border-radius: 20px;
+	height: 500px;
+
+	display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#characterDisplay {
+	margin-top: 75px;
+	font-size: 60px;
+}
+
+@media (max-width: 600px) {
+	#characterDisplay {
+		font-size:40px;
+	}
+}

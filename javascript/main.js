@@ -4,6 +4,8 @@ const navbarHTML = `
 <a href="#">Cours</a>
 `;
 
+//<svg src="resources/icons/arrowTop.svg", height="25", width="25"></svg>
+
 function initializeNavbar() {
 	let navbarElement = document.createElement("nav");
 	navbarElement.innerHTML = navbarHTML;
