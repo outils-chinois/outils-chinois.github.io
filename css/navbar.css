@@ -49,6 +49,9 @@ nav img {
     display: block;
 }
 
-@media (max-width: 600px) {
-	
+@media (max-width: 750px) {
+	nav img {
+		width: 60px;
+		margin-right: 5px;
+	}
 }

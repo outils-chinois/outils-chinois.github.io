@@ -3,6 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="icon" href="resources/images/logo_black.png">
 	<title>Cartes Flash</title>
 
 	<base href="../">
@@ -13,8 +14,26 @@
 </head>
 <body>
 	<script>initializeNavbar();</script>
-	<div class="mainBox">
-		<p id="characterDisplay">开始</p>
+	
+	<div class=noNavBody>
+		<div class="sideBox">
+			<h1>Ensembles</h1>
+			<button id="randomSet_Element" onclick="replaceCharSet('randomSet');">Aléatoire</button>
+			<button id="activeLVBSet_Element" onclick="replaceCharSet('activeLVBSet');">LVB actif</button>
+			<button id="superstitionSet_Element" onclick="replaceCharSet('superstitionSet');">Superstitions</button>
+			<button id="legendsSet_Element" onclick="replaceCharSet('legendsSet');">Légendes</button>
+			<button id="citySet_Element" onclick="replaceCharSet('citySet');">Villes</button>
+		</div>
+		<div class="mainBox">
+			<p id="characterDisplay">开始</p>
+			<p id="pinyinDisplay">---</p>
+			<p id="definitionDisplay">Appuyez sur "Prochaine carte" pour continuer</p>
+			<div class="buttonGroup">
+				<button onclick="showDefinition();">Définition</button>
+				<button id="nextCardButton" onclick="generateCard();">Prochaine Carte</button>
+			</div>
+		</div>
 	</div>
+
 </body>
 </html>
