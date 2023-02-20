@@ -37,6 +37,9 @@ function replaceCharSet(set) {
 
 	document.getElementById(currentSet + "_Element").style.fontWeight = "normal"; //met le poid du texte en normal
 	document.getElementById(set + "_Element").style.fontWeight = "bold"; //met le poid du texte du nouvel ensemble à lourd
+	document.getElementById(currentSet + "_Element").style.textDecoration = "none";
+	if (outerWidth < 750) {document.getElementById(set + "_Element").style.textDecoration = "underline"};
+
 	currentSet = set;
 	console.log("Set charList to", set + ":", charList);
 	generateCard();

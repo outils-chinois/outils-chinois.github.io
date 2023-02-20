@@ -55,7 +55,7 @@ body {
 
 /*------------------------Sidebox-----------------------*/
 .sideBox {
-	background: linear-gradient(
+	/*background: linear-gradient(
     to right,
     hsl(282.06, 100%, 20.98%) 0%,
     hsl(282.06, 100%, 20.04%) 15.2%,
@@ -73,13 +73,16 @@ body {
     hsl(282.06, 100%, 3.56%) 95%,
     hsl(282.06, 100%, 1.8%) 97.5%,
     hsl(0, 0%, 0%) 100%
- 	);
+ 	);*/
 	
+	background-color: #3a0b4d;
+	border-radius: 20px;
+
 	color: #f2e8ff;
 	display: flex;
 	flex-direction: column;
     align-items: center;
-    width: 22.5%;
+    width: 25%;
     height: 500px;
 }
 
@@ -92,7 +95,7 @@ body {
 	background-color: inherit;
 	color: inherit;
 	border: none;
-	font-size: 14px;
+	font-size: 16px;
 	margin-top: 10px;
 
 }
@@ -121,6 +124,18 @@ body {
 	}
 	.sideBox > h1 {
 		display: none;
+	}
+
+	.sideBox > button {
+		font-size: 14px;
+	}
+
+	.sideBox > button:hover {
+		text-decoration: none;
+	}
+
+	#randomSet_Element {
+		text-decoration: underline;
 	}
 
 	.mainBox {
