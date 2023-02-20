@@ -39,6 +39,19 @@ nav img {
 	margin-right: 10px;
 }
 
+nav > button {
+	background-color: inherit;
+	border: none;
+	margin-left: 10px;
+}
+
+.navbar_SVG {
+	width: 2em;
+	height: 2em;
+	vertical-align: middle;
+	color: #dcb2ff;
+}
+
 .flashcardIcon {
 	background-image: url('../resources/icons/flashcards.png');
 	background-repeat: no-repeat;
