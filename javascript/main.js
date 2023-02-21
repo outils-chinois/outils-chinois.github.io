@@ -10,7 +10,7 @@ const navbarHTML = `
 
 //----------------------------------cookies------------------------------------
 function cookieDict() {
-	if (document.cookie != '') {document.cookie = `darkTheme=true; expires=${getExpiryDate()}`} //if there are no cookies, create darkTheme cookie
+	if (document.cookie != '') {document.cookie = `darkTheme=true; expires=${getExpiryDate()}; path=/`} //if there are no cookies, create darkTheme cookie
 
 	// let rawCookie = str;
 	let rawCookie = document.cookie;
@@ -43,10 +43,10 @@ function changeTheme() {
 	const darkTheme = eval(cookieDict()["darkTheme"])
 	if (darkTheme) {
 		button.innerHTML = bulb_on_SVG;
-		document.cookie = `darkTheme=false; expires=${getExpiryDate()}`
+		document.cookie = `darkTheme=false; expires=${getExpiryDate()}; path=/`
 	} else {
 		button.innerHTML = bulb_off_SVG;
-		document.cookie = `darkTheme=true; expires=${getExpiryDate()}`
+		document.cookie = `darkTheme=true; expires=${getExpiryDate()}; path=/`
 	};
 	
 
