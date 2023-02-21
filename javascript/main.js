@@ -8,21 +8,48 @@ const navbarHTML = `
 <button id="changeThemeButton" onclick="changeTheme();">${bulb_off_SVG}</button>
 `;
 
+//----------------------------------cookies------------------------------------
+function cookieDict() {
+	// let rawCookie = str;
+	if (document.cookie != '') {
+		let rawCookie = document.cookie; //if cookies exist
+	} else {
+		document.cookie = `darkTheme = true; expires=${getExpiryDate()}`; //if there are no cookies, create them
+		let rawCookie = document.cookie;
+	}
+	let cookieList = rawCookie.split("; ")
+
+	var cookieDictionary = {};
+	for (var i = 0; i <= cookieList.length - 1; i++) {
+		cookieDictionary[cookieList[i].split("=")[0]] = cookieList[i].split("=")[1];
+	}
+
+	return cookieDictionary
+}
+
+function getExpiryDate() {
+	const yearsSinceZero = new Date().getFullYear() - 1969; //the number of years will have passed since 1970 next year
+	const singleYear = 1000*60*60*24*(365+1/4); //1 year in ms
+	return new Date(singleYear*yearsSinceZero)
+}
+
+//-----------------------------------------------------------------------------
+
 function initializeNavbar() {
 	let navbarElement = document.createElement("nav");
 	navbarElement.innerHTML = navbarHTML;
 	document.body.appendChild(navbarElement);
 }
 
-var darkTheme = true;
 function changeTheme() {
 	let button = document.getElementById("changeThemeButton");
+	const darkTheme = eval(cookieDict()["darkTheme"])
 	if (darkTheme) {
 		button.innerHTML = bulb_on_SVG;
-		darkTheme = false;
+		document.cookie = `darkTheme = false; expires=${getExpiryDate()}`
 	} else {
 		button.innerHTML = bulb_off_SVG;
-		darkTheme = true;
+		document.cookie = `darkTheme = true; expires=${getExpiryDate()}`
 	};
 	
 
