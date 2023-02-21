@@ -40,7 +40,7 @@ function initializeNavbar() {
 
 function changeTheme() {
 	let button = document.getElementById("changeThemeButton");
-	const darkTheme = eval(cookieDict()["darkTheme"])
+	var darkTheme = eval(cookieDict()["darkTheme"])
 	if (darkTheme) {
 		button.innerHTML = bulb_on_SVG;
 		document.cookie = `darkTheme=false; expires=${getExpiryDate()}; path=/`
