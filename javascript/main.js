@@ -10,13 +10,10 @@ const navbarHTML = `
 
 //----------------------------------cookies------------------------------------
 function cookieDict() {
+	if (document.cookie != '') {document.cookie = `darkTheme = true; expires=${getExpiryDate()}`} //if there are no cookies, create darkTheme cookie
+
 	// let rawCookie = str;
-	if (document.cookie != '') {
-		let rawCookie = document.cookie; //if cookies exist
-	} else {
-		document.cookie = `darkTheme = true; expires=${getExpiryDate()}`; //if there are no cookies, create them
-		let rawCookie = document.cookie;
-	}
+	let rawCookie = document.cookie;
 	let cookieList = rawCookie.split("; ")
 
 	var cookieDictionary = {};
