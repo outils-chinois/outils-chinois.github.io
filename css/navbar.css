@@ -50,6 +50,11 @@ nav > button {
 	height: 2em;
 	vertical-align: middle;
 	color: #dcb2ff;
+	transition: 0.2s;
+}
+
+.navbar_SVG:hover {
+	color: #ffffff;
 }
 
 .flashcardIcon {
