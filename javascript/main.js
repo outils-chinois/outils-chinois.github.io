@@ -10,7 +10,7 @@ const navbarHTML = `
 
 //----------------------------------cookies------------------------------------
 function cookieDict() {
-	if (document.cookie != '') {document.cookie = `darkTheme=true; expires=${getExpiryDate()}; path=/`} //if there are no cookies, create darkTheme cookie
+	if (document.cookie != '') {document.cookie = `darkTheme=true; expires=${getExpiryDate()}; path=/`} //if there is none, create darkTheme cookie
 
 	// let rawCookie = str;
 	let rawCookie = document.cookie;
@@ -24,9 +24,9 @@ function cookieDict() {
 	return cookieDictionary
 }
 
-function getExpiryDate() {
-	const yearsSinceZero = new Date().getFullYear() - 1969; //the number of years will have passed since 1970 next year
-	const singleYear = 1000*60*60*24*(365+1/4); //1 year in ms
+function getExpiryDate(years=2) {
+	const yearsSinceZero = new Date().getFullYear() + years - 1970; //the number of years will have passed since 1970
+	const singleYear = 1000*60*60*24*(365+1/4); //1 year in milliseconds
 	return new Date(singleYear*yearsSinceZero)
 }
 
@@ -40,7 +40,7 @@ function initializeNavbar() {
 
 function changeTheme() {
 	let button = document.getElementById("changeThemeButton");
-	var darkTheme = eval(cookieDict()["darkTheme"])
+	var darkTheme = eval(cookieDict()["darkTheme"]);
 	if (darkTheme) {
 		button.innerHTML = bulb_on_SVG;
 		document.cookie = `darkTheme=false; expires=${getExpiryDate()}; path=/`
