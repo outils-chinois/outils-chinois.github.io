@@ -1,14 +1,52 @@
-//---------------------------------------------------Find Errors---------------------------------------------------:
-function changeBitValue(event) {
-	let currentValue = parseFloat(event.srcElement.innerHTML)
-	if (currentValue == 1) {event.srcElement.innerHTML = "0"} else {event.srcElement.innerHTML = "1"}
+//---------------------------------------------------Array Tools---------------------------------------------------:
+function arraySum(inputArray) {
+	partialSum = (value1, value2) => value1 + value2
+	return inputArray.reduce(partialSum, 0)
 }
 
-function findError() {
-	return
+function arrayXOR(inputArray) {
+	partialXOR = (value1, value2) => value1 ^ value2
+	return inputArray.reduce(partialXOR, 0)
+}
+
+//---------------------------------------------------Find Errors---------------------------------------------------:
+function changeBitValue(event) {
+	let currentValue = parseFloat(event.srcElement.innerHTML);
+	if (currentValue == 1) {event.srcElement.innerHTML = "0"} else {event.srcElement.innerHTML = "1"};
+	let elementList = document.getElementsByClassName("bitGridElement");
+	for (var i=0; i < elementList.length; i++) {
+		elementList[i].onclick = "";
+		elementList[i].style.cursor = "default";
+	}
+
 }
 
 getBackgroundColor = element => document.defaultView.getComputedStyle(element, null)['backgroundColor']
+
+function findError() {
+	var colorArray = [];
+	var valueArray = [];
+	for (var i = 0; i < 16; i++) {
+		let currentBitElement = document.getElementsByClassName("bitGridElement")[i];
+		colorArray.push(getBackgroundColor(currentBitElement));
+		currentBitElement.style.backgroundColor = "#363636";
+
+		valueArray.push(parseFloat(document.getElementsByClassName("bitGridElement")[i].innerHTML))
+	}
+
+	var indexArray = [];
+	valueArray.forEach((element, index) => element == 1 ? indexArray.push(index) : null);
+
+	var errorIndex = arrayXOR(indexArray);
+	let elementList = document.getElementsByClassName("bitGridElement");
+	if (errorIndex != 0) {elementList[errorIndex].style.backgroundColor = "#ff000080"};
+
+	for (var i=0; i < elementList.length; i++) {
+		elementList[i].onclick = function onclick(event) {changeBitValue(event);};
+		elementList[i].style.cursor = "pointer";
+	}
+
+}
 
 //-----------------------------------------------Generate random message--------------------------------------------------
 function randomMessage() {
@@ -33,14 +71,6 @@ function getBitArrayFromMessage() {
 	}
 	return bitArray
 }
-
-
-function arraySum(inputArray) {
-	function partialSum(value1, value2) {return value1 + value2}
-
-	return inputArray.reduce(partialSum, 0)
-}
-
 
 function getFullBytes(bitArray) {
 	fullBitArray = [2, 2, 2, bitArray[0], 2, bitArray[1], bitArray[2], bitArray[3], 2, bitArray[4], bitArray[5], bitArray[6], bitArray[7], bitArray[8], bitArray[9], bitArray[10]];
@@ -74,7 +104,7 @@ function resetGrid() {
 	document.getElementById("bitGrid").remove();
 	let newBitGrid = document.createElement("div");
 	newBitGrid.id = "bitGrid";
-	document.getElementsByClassName("mainBody")[0].appendChild(newBitGrid);
+	document.getElementsByClassName("hammingGroup")[0].appendChild(newBitGrid);
 }
 
 function newMessage() {

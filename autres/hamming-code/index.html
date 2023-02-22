@@ -15,13 +15,22 @@
 <body>
 	<script type="text/javascript">initializeNavbar();</script>
 	<div class="mainBody">
-		<div id="sentMessage"></div>
-		<div class="buttonGroup">
-			<button onclick="newMessage();">Envoyer nouveau message</button>
-			<button onclick="findError();">Trouver erreure</button>
+		<div class="hammingGroup">
+			<div id="sentMessage"></div>
+			<div class="buttonGroup">
+				<button onclick="newMessage();">Envoyer nouveau message</button>
+				<button onclick="findError();">Trouver erreure</button>
+			</div>
+			<div id="bitGrid"></div>
+			<script>newMessage();</script>
 		</div>
-		<div id="bitGrid"></div>
-		<script>newMessage();</script>
+
+		<div class="explanationGroup">
+			<h1>Le code Hamming - Qu'est-ce?</h1>
+			<p>Le code Hamming est, dans sa forme primaire, un algorithme qui permet l'autocorrection d'erreurs produits lors de l'envoi d'informations. Une forme avancée de ce code est utilisé dans les CD et DVD, qui ont besoin de ce genre d'algorithme, car chaque petite égratinure peut modifier les informations engravés dans l'appareil. <a href="#">Lire plus sur Wikipedia</a></p>
+			<h3>Vidéo explicant le sujet (anglais):</h3>
+			<iframe width="956" height="538" src="https://www.youtube.com/embed/X8jsijhllIA" title="How to send a self-correcting message (Hamming codes)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+		</div>
 	</div>
 </body>
 </html>
