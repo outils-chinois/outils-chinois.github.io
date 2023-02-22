@@ -93,6 +93,7 @@ body {
 
 .sideBox > button {
 	background-color: inherit;
+	cursor: pointer;
 	color: inherit;
 	border: none;
 	font-size: 16px;
@@ -132,10 +133,6 @@ body {
 
 	.sideBox > button:hover {
 		text-decoration: none;
-	}
-
-	#randomSet_Element {
-		text-decoration: underline;
 	}
 
 	.mainBox {

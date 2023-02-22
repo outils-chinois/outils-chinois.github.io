@@ -1,0 +1,118 @@
+.mainBody {
+	width: 100%;
+	height: 800px;
+	background-color: #363636;
+	color:white;
+
+	display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#sentMessage {
+	padding: 15px;
+	width: fit-content;
+}
+
+.messageBit {
+	padding: 9px;
+	border: solid 2px black;
+	margin-right: 5px;
+}
+
+.messageBit:nth-child(2n) {
+	background-color: #0000ff80;
+}
+
+.messageBit:nth-child(2n+1) {
+	background-color: #00a50080;
+}
+
+#bitGrid {
+	width: fit-content;
+	margin: 20px;
+	display: grid;
+    gap: 5px 60px;
+    grid-template-columns: 50px 50px 50px 50px;
+    grid-template-rows: 75px 75px 75px 75px;
+    justify-items: center;
+    align-items: stretch;
+}
+
+.bitGridElement {
+	width: 100%;
+    border: 3px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    color: inherit;
+    background-color: inherit;
+    cursor: pointer;
+}
+
+.bitGridElement:nth-child(1) {
+	background-color: #ee41ff80;
+}
+
+.bitGridElement:nth-child(2) {
+	background-color: #ffa50080;
+}
+
+.bitGridElement:nth-child(3) {
+	background-color: #ffa50080;
+}
+
+.bitGridElement:nth-child(4) {
+	background-color: #00a50080;
+}
+
+.bitGridElement:nth-child(5) {
+	background-color: #ffa50080;
+}
+
+.bitGridElement:nth-child(6) {
+	background-color: #0000ff80;
+}
+
+.bitGridElement:nth-child(7) {
+	background-color: #00a50080;
+}
+
+.bitGridElement:nth-child(8) {
+	background-color: #0000ff80;
+}
+
+.bitGridElement:nth-child(9) {
+	background-color: #ffa50080;
+}
+
+.bitGridElement:nth-child(10) {
+	background-color: #00a50080;
+}
+
+.bitGridElement:nth-child(11) {
+	background-color: #0000ff80;
+}
+
+.bitGridElement:nth-child(12) {
+	background-color: #00a50080;
+}
+
+.bitGridElement:nth-child(13) {
+	background-color: #0000ff80;
+}
+
+.bitGridElement:nth-child(14) {
+	background-color: #00a50080;
+}
+
+.bitGridElement:nth-child(15) {
+	background-color: #0000ff80;
+}
+
+.bitGridElement:nth-child(16) {
+	background-color: #00a50080;
+}
+
+/*#ff000080*/

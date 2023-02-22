@@ -22,6 +22,7 @@
 
 .quickAccessElement:hover {
 	width: 55%;
+	min-width: 570px;
 	height: 25%;
 }
 
@@ -61,4 +62,33 @@
 	position: absolute;
     right: 5%;
     bottom: 10%;
+}
+
+@media (max-width: 750px) {
+	.quickAccessElement {
+		min-width: 90%;
+	}
+
+	.quickAccessElement:hover {
+		min-width: 90%;
+		height: 20%;
+	}
+
+	.quickAccessContent > h1 {
+		font-size: 22px;
+		text-align: center;
+	}
+
+	.quickAccessContent > p {
+		font-size: 15px;
+		margin-top: 5px;
+	}
+
+	.arrow_SVG {
+		right: 35px;
+	}
+
+	.quickAccessElement:hover .arrow_SVG {
+		transform: translate(15px, 0px);
+	}
 }

@@ -5,6 +5,7 @@ const navbarHTML = `
 <a id="logo" title="Page d'accueil" href=""><img alt="Webpage Logo" src="resources/images/logo_white.png"></a>
 <a href="flashcards/">Cartes Flash</a>
 <a href="#">Cours</a>
+<a href="autres/hamming-code/">Autres</a>
 <button id="changeThemeButton" onclick="changeTheme();">${bulb_off_SVG}</button>
 `;
 

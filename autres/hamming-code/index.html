@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Code Hamming</title>
+
+	<base href="../../">
+	<link rel="icon" href="resources/images/logo_icon.png">
+	<link rel="stylesheet" type="text/css" href="css/navbar.css">
+	<link rel="stylesheet" type="text/css" href="css/autres/hamming-code.css">
+	<script type="text/javascript" src="javascript/main.js"></script>
+	<script type="text/javascript" src="javascript/hamming-code.js"></script>
+</head>
+<body>
+	<script type="text/javascript">initializeNavbar();</script>
+	<div class="mainBody">
+		<div id="sentMessage"></div>
+		<div class="buttonGroup">
+			<button onclick="newMessage();">Envoyer nouveau message</button>
+			<button onclick="findError();">Trouver erreure</button>
+		</div>
+		<div id="bitGrid"></div>
+		<script>newMessage();</script>
+	</div>
+</body>
+</html>
