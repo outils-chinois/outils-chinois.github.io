@@ -1,23 +1,23 @@
 .mainBody {
-	height: 1200px;
-    width: 100%;
-    background-color: #616161;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
+	height: calc(1500px + 45vh);
+	width: 100%;
+	background-color: #616161;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: center;
 }
 
 .quickAccessElement {
 	background-color: #454545;
-    border-radius: 15px;
-    width: 50%;
-    min-width: 520px;
-    height: 20%;
-    margin-top: 35px;
-    box-shadow: 0 0 32px rgb(0 0 0 / 15%);
-    position: relative;
-    transition: 0.2s;
+	border-radius: 15px;
+	width: 50%;
+	min-width: 520px;
+	height: 20%;
+	margin-top: 35px;
+	box-shadow: 0 0 32px rgb(0 0 0 / 15%);
+	position: relative;
+	transition: 0.2s;
 }
 
 .quickAccessElement:hover {
@@ -30,9 +30,27 @@
 	color: #fff;
 }
 
+.quickAccessElement > img {
+	display: block;
+	width: 500px;
+	padding-right: calc((100% - 500px)/2);
+	padding-left: calc((100% - 500px)/2);
+	padding-top: 25px;
+	padding-bottom: 25px;
+	background: white;
+	border-radius: 15px 15px 0px 0px;
+	transition: 0.2s;
+}
+
+.quickAccessElement:hover > img {
+	width: calc(500px + 5%);
+	padding-right: calc((95% - 500px)/2);
+	padding-left: calc((95% - 500px)/2);
+}
+
 .quickAccessContent {
-    margin: 5%;
-    color: #DCB2FF;
+	margin: 5%;
+	color: #DCB2FF;
 }
 
 .quickAccessContent > h1 {
@@ -60,8 +78,8 @@
 	height: 25px;
 	width: 25px;
 	position: absolute;
-    right: 5%;
-    bottom: 10%;
+	right: 5%;
+	bottom: 10%;
 }
 
 @media (max-width: 750px) {
@@ -72,6 +90,10 @@
 	.quickAccessElement:hover {
 		min-width: 90%;
 		height: 20%;
+	}
+
+	.quickAccessElement > img {
+		
 	}
 
 	.quickAccessContent > h1 {
