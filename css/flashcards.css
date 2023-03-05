@@ -56,24 +56,24 @@ body {
 /*------------------------Sidebox-----------------------*/
 .sideBox {
 	/*background: linear-gradient(
-    to right,
-    hsl(282.06, 100%, 20.98%) 0%,
-    hsl(282.06, 100%, 20.04%) 15.2%,
-    hsl(282.06, 100%, 19.02%) 28.6%,
-    hsl(282.06, 100%, 17.94%) 40.3%,
-    hsl(282.06, 100%, 16.78%) 50.4%,
-    hsl(282.06, 100%, 15.55%) 59%,
-    hsl(282.06, 100%, 14.26%) 66.4%,
-    hsl(282.06, 100%, 12.91%) 72.7%,
-    hsl(282.06, 100%, 11.5%) 78%,
-    hsl(282.06, 100%, 10.02%) 82.5%,
-    hsl(282.06, 100%, 8.49%) 86.3%,
-    hsl(282.06, 100%, 6.9%) 89.5%,
-    hsl(282.06, 100%, 5.25%) 92.4%,
-    hsl(282.06, 100%, 3.56%) 95%,
-    hsl(282.06, 100%, 1.8%) 97.5%,
-    hsl(0, 0%, 0%) 100%
- 	);*/
+	to right,
+	hsl(282.06, 100%, 20.98%) 0%,
+	hsl(282.06, 100%, 20.04%) 15.2%,
+	hsl(282.06, 100%, 19.02%) 28.6%,
+	hsl(282.06, 100%, 17.94%) 40.3%,
+	hsl(282.06, 100%, 16.78%) 50.4%,
+	hsl(282.06, 100%, 15.55%) 59%,
+	hsl(282.06, 100%, 14.26%) 66.4%,
+	hsl(282.06, 100%, 12.91%) 72.7%,
+	hsl(282.06, 100%, 11.5%) 78%,
+	hsl(282.06, 100%, 10.02%) 82.5%,
+	hsl(282.06, 100%, 8.49%) 86.3%,
+	hsl(282.06, 100%, 6.9%) 89.5%,
+	hsl(282.06, 100%, 5.25%) 92.4%,
+	hsl(282.06, 100%, 3.56%) 95%,
+	hsl(282.06, 100%, 1.8%) 97.5%,
+	hsl(0, 0%, 0%) 100%
+	);*/
 	
 	background-color: #3a0b4d;
 	border-radius: 20px;
@@ -81,9 +81,9 @@ body {
 	color: #f2e8ff;
 	display: flex;
 	flex-direction: column;
-    align-items: center;
-    width: 25%;
-    height: 500px;
+	align-items: center;
+	width: 25%;
+	height: 500px;
 }
 
 .sideBox > h1 {
@@ -113,7 +113,7 @@ body {
 @media (max-width: 750px) {
 	.noNavBody {
 		flex-direction: column;
-    	align-items: stretch;
+		align-items: stretch;
 	}
 
 	.sideBox {
@@ -121,7 +121,7 @@ body {
 		height: 100px;
 
 		flex-direction: column;
-    	flex-wrap: wrap;
+		flex-wrap: wrap;
 	}
 	.sideBox > h1 {
 		display: none;
