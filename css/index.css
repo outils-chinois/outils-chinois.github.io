@@ -85,6 +85,9 @@
 @media (max-width: 750px) {
 	.quickAccessElement {
 		min-width: 90%;
+		background-repeat: no-repeat;
+		background-size: contain;
+		background-position: center;
 	}
 
 	.quickAccessElement:hover {
@@ -93,7 +96,7 @@
 	}
 
 	.quickAccessElement > img {
-		
+		display: none;
 	}
 
 	.quickAccessContent > h1 {
