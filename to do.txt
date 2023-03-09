@@ -1,0 +1,3 @@
+-add "cours" page
+	-implement custom cursor
+	-add imgs and vids
