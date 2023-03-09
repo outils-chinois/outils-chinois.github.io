@@ -9,3 +9,16 @@ window.onmousemove = e => {
 
 	cursorFollower.style.transform = `translate(${mouseX}px, ${mouseY}px)`
 }
+
+const scaleAnimation = [
+	{
+		transform: "scale(1.5)"
+	},
+	{
+		duration: 8000
+	}
+];
+
+cursorFollower.addEventListener("click", () => {
+  cursorFollower.animate(scaleAnimation[0], scaleAnimation[1]);
+});
