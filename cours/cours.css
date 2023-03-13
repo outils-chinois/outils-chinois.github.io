@@ -10,37 +10,39 @@ nav {
 }
 
 .pdfPreviewWrapper {
-	position: absolute;
+	position: relative;
 	width: 450px;
-    height: 636px;
+	height: 636px;
 	overflow: hidden;
 }
 
-.pdfPreviewWrapper > img {
-	filter: blur(6px);
+.pdfPreviewWrapper img {
+	filter: blur(7px);
 	width: 100%;
 	transition: filter ease 300ms;
 }
 
+.pdfPreviewWrapper:hover img {
+	filter: blur(0px);
+}
+
 .pdfPreviewWrapper > p {
-	position: relative;
-    top: 38%;
-    font-size: 23px;
-    justify-items: center;
-    text-align: center;
-    z-index: 1;
-    opacity: 1;
-    pointer-events: none;
-    transition: opacity ease 300ms;
+	position: absolute;
+	left: 24%;
+	top: 39%;
+	font-size: 23px;
+	justify-items: center;
+	text-align: center;
+	z-index: 1;
+	opacity: 1;
+	pointer-events: none;
+	transition: opacity ease 300ms;
 }
 
 .pdfPreviewWrapper:hover > p {
 	opacity: 0;
 }
 
-.pdfPreviewWrapper > img:hover {
-	filter: blur(0px);
-}
 
 /*----------------Cursor----------------*/
 #cursorFollower {
@@ -54,9 +56,20 @@ nav {
 	pointer-events: none;
 	display: flex;
 	justify-content: center;
+	flex-direction: column;
+	align-items: center;
 
 	opacity: 0;
 	transition: opacity ease 500ms;
+}
+
+#cursorFollower > p {
+	position: absolute;
+	font-size: 10px;
+	bottom: 5%;
+	color: #dcb2ff;
+	opacity: 0;
+	transition: opacity ease 300ms;
 }
 
 .mainBody:hover #cursorFollower {
