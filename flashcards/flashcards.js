@@ -1,75 +1,50 @@
 //-----------------------------------------------Constantes-------------------------------------------------------------:
-//Character Lists:
-const randomSet = ["无聊", "尴尬", "告诉", "打算", "参观", "胃口好", "感冒", "反过来说", "春夏秋冬", "虽然", "桌子", "开始"];
-const activeLVBSet = ["爱", "八", "把", "爸", "吧", "白", "百", "班", "半", "办", "包", "报", "杯", "北", "本", "比"];
-const superstitionSet = ["迷信", "避免", "否则", "运气", "随时", "降临", "许多", "使用", "甚至", "直接", "具有", "意义", "肯定", "不幸", "无论", "厄运", "证据", "证明", "忌讳", "在意", "忽视"];
-const legendsSet = ["有害", "既然", "打破", "讲解", "保准", "回答", "创作", "胜", "传说"];
-const citySet = ["新词", "香港", "澳门", "人口", "地理", "由…组成", "公里", "面积", "语信", "气候", "经济", "历史", "政治", "其他", "外国", "简体字", "简单", "离", "土地", "平方公里"];
-
-//Pinyin Lists (+ "_Pinyin"):
-const randomSet_Pinyin = ["wu liao", "gan ga", "gao su", "da suan", "can guan", "wei kou hao", "gan mao", "fan guo lai shuo", "chun xia qiu dong", "sui ran", "zhuo zi", "kai shi"];
-const activeLVBSet_Pinyin = ["ai", "ba", "ba", "ba", "ba", "bai", "bai", "ban", "ban", "ban", "bao", "bao", "bei", "bei", "ben", "bi"];
-const superstitionSet_Pinyin = ["mi xin", "bi mian", "fou ze", "yun qi", "sui shi", "jiang lin", "xu duo", "shi yong", "shen zhi", "zhi jie", "ju you", "yi yi", "ken ding", "bu xing", "wu lun", "e yun", "zheng ju", "zheng ming", "ji hui", "zai yi", "hu shi"];
-const legendsSet_Pinyin = ["you hai", "ji ran", "da po", "jiang jie", "bao zhun", "hui da", "chuang zuo", "sheng", "chuan shuo"];
-const citySet_Pinyin = ["xin ci", "xiang gang", "ao men", "ren kou", "di li", "you...zu cheng", "gong li", "mian ji", "yü xin", "qi hou", "jiang ji", "li shi", "zheng zhi", "qi ta", "wai guo", "jian ti zi", "jian dan", "li", "tu di", "ping fang gong li"];
-
-//Definition Lists (+ "_Definition"):
-const randomSet_Definition = ["ennuyeux", "génant", "avertir/prévenir/informer", "planifier", "visiter", "bon appétit!", "rhume", "d'autre part (connecteur logique)", "printemps, été, automne, hiver", "cependant (connecteur logique)", "table", 'Commencer (appuyez sur "Prochaine Carte")'];
-const activeLVBSet_Definition = ["amour/affection", "huit", "tenir/gérer (avec la main)", "père (爸爸)", "bar/élément phonétique", "blanc", "cent (100)", "classe/travail", "moitié (一半)", "faire/gérer", "sac/paquet", "déclarer/annoncer/répondre", "classificateur de verre (一杯水)", "nord", "racine/classificateur de livres", "comparer"];
-const superstitionSet_Definition = ["superstition", "éviter", "sinon", "chance", "à tout moment", "la chance tombe/arrive", "très beaucoup", "utiliser", "voir même jusqu'à/même", "directement", "posséder", "sens", "sans aucun doute", "malheureux", "peu importe", "malheur/malchance", "preuve", "prouver", "taboo", "s'en foutre", "négliger"];
-const legendsSet_Definition = ["endommager", "étant donné que... (connecteur logique)", "casser/briser", "expliquer", "assurer que/être sûre que", "répondre", "inventer/créer [concepte/idée (pas concret)]", "gagner/battre qqn", "légende"];
-const citySet_Definition = ["nouveau mot", "Hong Kong (Ville)", "Macao (Ville)", "Population", "géographie", "à partir de ... se former", "kilomètre (km)", "surface (aire)", "langage/langue", "climat", "économie", "histoire", "la politique", "d'autre", "pays étranger", "caractère simplifié", "simple", "distant (struct: A distant de B [distance entre A et B])", "la terre (pas la planète)", "kilomètre carré (km²)"];
+const randomSet = [{char: '无聊', pinyin: 'wu liao', definition: 'ennuyeux'}, {char: '尴尬', pinyin: 'gan ga', definition: 'génant'}, {char: '告诉', pinyin: 'gao su', definition: 'avertir/prévenir/informer'}, {char: '打算', pinyin: 'da suan', definition: 'planifier'}, {char: '参观', pinyin: 'can guan', definition: 'visiter'}, {char: '胃口好', pinyin: 'wei kou hao', definition: 'bon appétit!'}, {char: '感冒', pinyin: 'gan mao', definition: 'rhume'}, {char: '反过来说', pinyin: 'fan guo lai shuo', definition: "d'autre part (connecteur logique)"}, {char: '春夏秋冬', pinyin: 'chun xia qiu dong', definition: 'printemps, été, automne, hiver'}, {char: '虽然', pinyin: 'sui ran', definition: 'cependant (connecteur logique)'}, {char: '桌子', pinyin: 'zhuo zi', definition: 'table'}, {char: '开始', pinyin: 'kai shi', definition: 'Commencer (appuyez sur "Prochaine Carte")'}]
+const activeLVBSet = [{char: '爱', pinyin: 'ai', definition: 'amour/affection'}, {char: '八', pinyin: 'ba', definition: 'huit'}, {char: '把', pinyin: 'ba', definition: 'tenir/gérer (avec la main)'}, {char: '爸', pinyin: 'ba', definition: 'père (爸爸)'}, {char: '吧', pinyin: 'ba', definition: 'bar/élément phonétique'}, {char: '白', pinyin: 'bai', definition: 'blanc'}, {char: '百', pinyin: 'bai', definition: 'cent (100)'}, {char: '班', pinyin: 'ban', definition: 'classe/travail'}, {char: '半', pinyin: 'ban', definition: 'moitié (一半)'}, {char: '办', pinyin: 'ban', definition: 'faire/gérer'}, {char: '包', pinyin: 'bao', definition: 'sac/paquet'}, {char: '报', pinyin: 'bao', definition: 'déclarer/annoncer/répondre'}, {char: '杯', pinyin: 'bei', definition: 'classificateur de verre (一杯水)'}, {char: '北', pinyin: 'bei', definition: 'nord'}, {char: '本', pinyin: 'ben', definition: 'racine/classificateur de livres'}, {char: '比', pinyin: 'bi', definition: 'comparer'}]
+const superstitionSet = [{char: '迷信', pinyin: 'mi xin', definition: 'superstition'}, {char: '避免', pinyin: 'bi mian', definition: 'éviter'}, {char: '否则', pinyin: 'fou ze', definition: 'sinon'}, {char: '运气', pinyin: 'yun qi', definition: 'chance'}, {char: '随时', pinyin: 'sui shi', definition: 'à tout moment'}, {char: '降临', pinyin: 'jiang lin', definition: 'la chance tombe/arrive'}, {char: '许多', pinyin: 'xu duo', definition: 'très beaucoup'}, {char: '使用', pinyin: 'shi yong', definition: 'utiliser'}, {char: '甚至', pinyin: 'shen zhi', definition: "voir même jusqu'à/même"}, {char: '直接', pinyin: 'zhi jie', definition: 'directement'}, {char: '具有', pinyin: 'ju you', definition: 'posséder'}, {char: '意义', pinyin: 'yi yi', definition: 'sens'}, {char: '肯定', pinyin: 'ken ding', definition: 'sans aucun doute'}, {char: '不幸', pinyin: 'bu xing', definition: 'malheureux'}, {char: '无论', pinyin: 'wu lun', definition: 'peu importe'}, {char: '厄运', pinyin: 'e yun', definition: 'malheur/malchance'}, {char: '证据', pinyin: 'zheng ju', definition: 'preuve'}, {char: '证明', pinyin: 'zheng ming', definition: 'prouver'}, {char: '忌讳', pinyin: 'ji hui', definition: 'taboo'}, {char: '在意', pinyin: 'zai yi', definition: "s'en foutre"}, {char: '忽视', pinyin: 'hu shi', definition: 'négliger'}]
+const legendsSet = [{char: '有害', pinyin: 'you hai', definition: 'endommager'}, {char: '既然', pinyin: 'ji ran', definition: 'étant donné que... (connecteur logique)'}, {char: '打破', pinyin: 'da po', definition: 'casser/briser'}, {char: '讲解', pinyin: 'jiang jie', definition: 'expliquer'}, {char: '保准', pinyin: 'bao zhun', definition: 'assurer que/être sûre que'}, {char: '回答', pinyin: 'hui da', definition: 'répondre'}, {char: '创作', pinyin: 'chuang zuo', definition: 'inventer/créer [concepte/idée (pas concret)]'}, {char: '胜', pinyin: 'sheng', definition: 'gagner/battre qqn'}, {char: '传说', pinyin: 'chuan shuo', definition: 'légende'}]
+const citySet = [{char: '新词', pinyin: 'xin ci', definition: 'nouveau mot'}, {char: '香港', pinyin: 'xiang gang', definition: 'Hong Kong (Ville)'}, {char: '澳门', pinyin: 'ao men', definition: 'Macao (Ville)'}, {char: '人口', pinyin: 'ren kou', definition: 'Population'}, {char: '地理', pinyin: 'di li', definition: 'géographie'}, {char: '由…组成', pinyin: 'you...zu cheng', definition: 'à partir de ... se former'}, {char: '公里', pinyin: 'gong li', definition: 'kilomètre (km)'}, {char: '面积', pinyin: 'mian ji', definition: 'surface (aire)'}, {char: '语信', pinyin: 'yü xin', definition: 'langage/langue'}, {char: '气候', pinyin: 'qi hou', definition: 'climat'}, {char: '经济', pinyin: 'jiang ji', definition: 'économie'}, {char: '历史', pinyin: 'li shi', definition: 'histoire'}, {char: '政治', pinyin: 'zheng zhi', definition: 'la politique'}, {char: '其他', pinyin: 'qi ta', definition: "d'autre"}, {char: '外国', pinyin: 'wai guo', definition: 'pays étranger'}, {char: '简体字', pinyin: 'jian ti zi', definition: 'caractère simplifié'}, {char: '简单', pinyin: 'jian dan', definition: 'simple'}, {char: '离', pinyin: 'li', definition: 'distant (struct: A distant de B [distance entre A et B])'}, {char: '土地', pinyin: 'tu di', definition: 'la terre (pas la planète)'}, {char: '平方公里', pinyin: 'ping fang gong li', definition: 'kilomètre carré (km²)'}]
 
 //-------------------------------------------------------------------------------------------------------------------------
 
-var charList = randomSet.filter(function(f){return f;}); //ensemble principal, change lorsqu'on choisit un autre ensemble.
-var pinyinList = randomSet_Pinyin.filter(function(f){return f;}); //ensemble de pinyin actuel
-var definitionList =  randomSet_Definition.filter(function(f){return f;}); //ensemble de définitions actuelles
-// le filtre est pour transformer la liste en objet de fonction, car si la liste est égal à une autre liste, changer une des deux listes change les deux listes.
-var currentSet = "randomSet"; //met l'ensemble actuel à "randomSet"
+var currentDictIndex = 11;
+var currentSet = randomSet.filter(function(f){return f;});// filtre qui renvoie la même liste pour éviter de modifier la liste originale
+var currentSetName = "randomSet"; //met l'ensemble actuel à "randomSet"
 
 //-------------------------------------------------------------------------------------------------------------------------
 
 function replaceCharSet(set) {
-	charList = eval(set).filter(function(f){return f;});
-	pinyinList = eval(set + "_Pinyin").filter(function(f){return f;});
-	definitionList = eval(set + "_Definition").filter(function(f){return f;});
+	currentSet = eval(set).filter(function(f){return f;});
 
-	document.getElementById(currentSet + "_Element").style.fontWeight = "normal"; //met le poid du texte en normal
-	document.getElementById(set + "_Element").style.fontWeight = "bold"; //met le poid du texte du nouvel ensemble à lourd
-	document.getElementById(currentSet + "_Element").style.textDecoration = "";
-	if (outerWidth < 750) {document.getElementById(set + "_Element").style.textDecoration = "underline"};
+	document.getElementById(`${currentSetName}_Element`).style.fontWeight = "normal"; //make former set have normal weight
+	document.getElementById(`${set}_Element`).style.fontWeight = "bold"; //make current set bold
+	document.getElementById(`${currentSetName}_Element`).style.textDecoration = ""; //remove underline from former set
+	if (outerWidth < 750) {document.getElementById(`${set}_Element`).style.textDecoration = "underline"}; //add underline to current set (if not mobile)
 
-	currentSet = set;
-	console.log("Set charList to", set + ":", charList);
+	currentSetName = set; //update current set
 	generateCard();
 }
 
 //-------------------------------------------------------------------------------------------------------------------------
 
 function generateCard() {
-	var currentDisplayChar = document.getElementById("characterDisplay").innerHTML; //trouver le caractère actuel
-	let currentIndex = charList.indexOf(currentDisplayChar);
-	charList.splice(currentIndex, 1); //enlève le charactère actuel de la liste
-	pinyinList.splice(currentIndex, 1); //enlève le pinyin du caractère actuel de sa liste
-	definitionList.splice(currentIndex, 1); //enlève la définition du caractère actuel de sa liste
+	currentSet.splice(currentDictIndex, 1); //removes whole dict from the list (copy)
 
-	let randomInteger = Math.floor(Math.random() * charList.length); // randint(0, len(charList))
-	console.log("Generated random number:", randomInteger); //affiche la valeur générée dans la console
-	let generatedChar = charList[randomInteger]; //prend le numéro aléatoire comme index de la liste
+	currentDictIndex = Math.floor(Math.random() * currentSet.length); // randint(0, len(currentSet)); generate random index val
+	let generatedDict = currentSet[currentDictIndex]; //currentSet[currentDictIndex] = {char: "x", pinyin: "y", definition:"z"}
 
-	if (charList.length == 0) {
-		endCurrentSet();
+	if (currentSet.length == 0) {
+		endCurrentSetName();
 
 	} else {
 		document.getElementById("pinyinDisplay").innerHTML = "---"; //enlève le pinyin du caractère
 		document.getElementById("definitionDisplay").innerHTML = "---"; //enlève la définition du caractère 
-		document.getElementById("characterDisplay").innerHTML = generatedChar; //met à jour le caractère actuel
+		document.getElementById("characterDisplay").innerHTML = generatedDict.char; //met à jour le caractère actuel
 	}
 }
 
-function endCurrentSet() {
-	console.log("charList empty."); //affiche que la variable est vide.
+function endCurrentSetName() {
+	console.log("currentSet empty."); //affiche que la variable est vide.
 	document.getElementById("characterDisplay").innerHTML = "Fin d'ensemble."; //message de fin
 	document.getElementById("pinyinDisplay").style.display = "none"; //cache l'élément texte qui affiche le pinyin
 	document.getElementById("definitionDisplay").style.display = "none"; //cache l'élément texte qui affiche la définition
@@ -79,7 +54,7 @@ function endCurrentSet() {
 
 function restartSet() {
 	console.log("restart attempt");
-	replaceCharSet(currentSet); //Remet tous les mots dans la liste
+	replaceCharSet(currentSetName); //Remet tous les mots dans la liste
 	document.getElementById("nextCardButton").innerHTML = "Prochaine Carte"; //remet le texte du bouton à "Prochaine Carte"
 	document.getElementById("nextCardButton").onclick = generateCard; //remet la function du bouton à generateCard()
 	generateCard(); //génère une carte débutante
@@ -90,9 +65,7 @@ function restartSet() {
 //-------------------------------------------------------------------------------------------------------------------------
 
 function showDefinition() {
-	let currentCharacter = document.getElementById("characterDisplay").innerHTML; //trouve le caractère actuel
-	let indexValue = charList.indexOf(currentCharacter); //trouve l'index du caractère actuel
-	document.getElementById("pinyinDisplay").innerHTML = pinyinList[indexValue]; //met à jour le pinyin
-	document.getElementById("definitionDisplay").innerHTML = definitionList[indexValue]; //met à jour la définition
+	document.getElementById("pinyinDisplay").innerHTML = currentSet[currentDictIndex].pinyin; //met à jour le pinyin
+	document.getElementById("definitionDisplay").innerHTML = currentSet[currentDictIndex].definition; //met à jour la définition
 
 }
