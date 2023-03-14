@@ -17,7 +17,7 @@ nav {
 }
 
 .pdfPreviewWrapper img {
-	filter: blur(7px);
+	filter: blur(9px);
 	width: 100%;
 	transition: filter ease 300ms;
 }
@@ -76,10 +76,10 @@ nav {
 	opacity: 1;
 }
 
-#cursorFollower > svg {
+#cursorFollower > i {
 	color: #dcb2ff;
-	width: 20px;
-	transform: rotate(45deg);
+	font-size: 20px;
+	transform: rotate(315deg);
 }
 
 /*html:not(head):not(nav) {cursor: none;}

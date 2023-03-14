@@ -4,6 +4,12 @@
 function cursorInit() {
 	const cursorFollower = document.getElementById("cursorFollower")
 
+	pdf_cursor = (cursor) => {
+		cursor.childNodes[3].innerHTML = 'PDF';
+		cursor.childNodes[1].className = 'fa fa-folder-open';
+		cursor.childNodes[1].style.transform = "rotate(0deg)"
+	}
+
 	animate_cursor = (e, interacting) => {
 		const	mouseX = e.clientX - cursorFollower.offsetWidth/2,
 				mouseY = e.clientY - cursorFollower.offsetHeight/2 - document.getElementsByTagName("nav")[0].offsetHeight; //nav height somehow affects it??
@@ -13,9 +19,14 @@ function cursorInit() {
 		}
 
 		if (interacting) {
-			document.getElementById("cursorFollower").childNodes[3].innerHTML = 'PDF';
-			document.getElementById("cursorFollower").childNodes[3].style.opacity = 1;
-		} else {document.getElementById("cursorFollower").childNodes[3].style.opacity = '';};
+			if (e.target.closest(".pdfPreviewWrapper") !== null) {pdf_cursor(cursorFollower);};
+			cursorFollower.childNodes[3].style.opacity = 1;
+
+		} else {
+			cursorFollower.childNodes[3].style.opacity = '';
+			cursorFollower.childNodes[1].className = 'fa fa-arrow-right';
+			cursorFollower.childNodes[1].style.transform = '';
+		};
 
 		cursorFollower.animate(keyframes, {
 			duration: 800,
