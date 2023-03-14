@@ -5,6 +5,8 @@
 	background-color: #585757;
 }
 
+/*--------------PDF Previews:--------------*/
+
 .pdfPreviewWrapper {
 	position: relative;
 	width: 450px;
@@ -39,8 +41,46 @@
 	opacity: 0;
 }
 
+/*--------------Video Previews:--------------*/
 
-/*----------------Cursor----------------*/
+.videoPreviewWrapper {
+	position: relative;
+	width: 500px;
+	height: 300px;
+	overflow: hidden;
+}
+
+.videoPreviewWrapper > p {
+	position: absolute;
+	z-index: 2;
+	pointer-events: none;
+	background-color: #ffffff80;
+	border-radius: 7px;
+	padding: 3px;
+	text-align: center;
+	top: 43%;
+    left: 32%;
+    font-size: 25px;
+    opacity: 1;
+    transition: opacity ease 300ms
+}
+
+.videoPreviewWrapper img {
+	position: absolute;
+	width: 100%;
+	filter: blur(9px);
+	transition: filter ease 300ms;
+}
+
+.videoPreviewWrapper:hover img {
+	filter: blur(0px);
+}
+
+.videoPreviewWrapper:hover > p {
+	opacity: 0;
+}
+
+/*------------------------------Cursor------------------------------*/
 #cursorFollower {
 	position: fixed;
 	background-color: #424242;

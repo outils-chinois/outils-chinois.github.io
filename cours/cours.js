@@ -10,6 +10,18 @@ function cursorInit() {
 		cursor.childNodes[1].style.transform = "rotate(0deg)"
 	}
 
+	video_cursor = (cursor) => {
+		cursor.childNodes[3].innerHTML = 'Vidéo';
+		cursor.childNodes[1].className = 'fa fa-play';
+		cursor.childNodes[1].style.transform = "rotate(0deg)"
+	}
+
+	link_cursor = (cursor) => {
+		cursor.childNodes[3].innerHTML = 'Liens';
+		cursor.childNodes[1].className = 'fa fa-link';
+		cursor.childNodes[1].style.transform = "rotate(0deg)"
+	}
+
 	animate_cursor = (e, interacting) => {
 		const	mouseX = e.clientX - cursorFollower.offsetWidth/2,
 				mouseY = e.clientY - cursorFollower.offsetHeight/2 - document.getElementsByTagName("nav")[0].offsetHeight; //nav height somehow affects it??
@@ -20,6 +32,8 @@ function cursorInit() {
 
 		if (interacting) {
 			if (e.target.closest(".pdfPreviewWrapper") !== null) {pdf_cursor(cursorFollower);};
+			if (e.target.closest(".videoPreviewWrapper") !== null) {video_cursor(cursorFollower)};
+			if (e.target.closest(".linkPreviewWrapper") !== null) {link_cursor(cursorFollower)};
 			cursorFollower.childNodes[3].style.opacity = 1;
 
 		} else {
