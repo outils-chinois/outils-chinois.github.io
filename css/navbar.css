@@ -10,9 +10,11 @@ html {
 }
 
 nav {
+	z-index: 1001;
 	background-color: #121212;
 	color: white;
-	position: relative;
+	position: sticky;
+	top: 0px;
 
 	display: flex;
 	flex-direction: row;
@@ -62,9 +64,9 @@ nav > button {
 	background-repeat: no-repeat;
 	background-size: 100%;
 	aspect-ratio: 1 / 1;
-    height: 75px;
-    width: 75px;
-    display: block;
+	height: 75px;
+	width: 75px;
+	display: block;
 }
 
 @media (max-width: 750px) {
