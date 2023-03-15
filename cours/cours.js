@@ -2,7 +2,9 @@
 //------------------------------------CURSOR------------------------------------
 //------------------------------------------------------------------------------
 function cursorInit() {
-	const cursorFollower = document.getElementById("cursorFollower")
+	const cursorFollower = document.getElementById("cursorFollower");
+	cursorFollower.style.top = '0';
+	cursorFollower.style.left = '0';
 
 	//--------cursor animations--------:
 
@@ -32,14 +34,14 @@ function cursorInit() {
 
 	animate_cursor = (e, interacting) => {
 		const	mouseX = e.clientX - cursorFollower.offsetWidth/2,
-				mouseY = e.clientY - cursorFollower.offsetHeight/2 - document.getElementsByTagName("nav")[0].offsetHeight; //nav height somehow affects it??
+				mouseY = e.clientY - cursorFollower.offsetHeight/2
 
 		const keyframes = {
 			transform: `translate(${mouseX}px, ${mouseY}px) scale(${interacting ? 4 : 1}) rotate(${interacting ? 360 : 0}deg)` //interacting? Yes: 4, else: 1
 		}
 
 		if (interacting) {
-			if (e.target.closest(".previewWrapper") !== null) {cursor_preview_hover(e.target.closest(".previewWrapper"));};
+			if (e.target.closest(".cursorInteractable") !== null) {cursor_preview_hover(e.target.closest(".cursorInteractable"));};
 			cursorFollower.childNodes[3].style.opacity = 1;
 
 		} else {

@@ -2,6 +2,12 @@
 	width: 100%;
 	height: 1500px;
 
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	align-items: center;
+	justify-content: flex-start;
+
 	background-color: #585757;
 }
 
@@ -21,7 +27,7 @@
 .previewWrapper img {
 	filter: blur(9px);
 	width: 100%;
-	transition: filter ease 300ms;
+	transition: all ease 300ms;
 }
 
 .previewWrapper:hover img {
@@ -33,10 +39,10 @@
 	font-size: 23px;
 	
 	width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 
 	z-index: 1;
 	opacity: 1;
@@ -82,9 +88,68 @@
 
 /*
 ------------------------------------------------------------------
+---------------------------Index page-----------------------------
+------------------------------------------------------------------
+*/
+
+.chapterElement {
+	cursor: pointer;
+	background-color: #483570;
+	border-radius: 15px;
+	width: 80%;
+	height: 300px;
+	margin-top: 30px;
+	margin-bottom: 15px;
+
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	justify-content: flex-start;
+}
+
+.imgWrapper {
+	display: inline-block;
+	overflow: hidden;
+	border-radius: 15px 0px 0px 15px;
+	height: 100%;
+}
+
+.chapterElement img {
+	filter: blur(1px);
+}
+
+.chapterElement:hover img {
+	filter: blur(0px);
+	transform: scale(1.5);
+}
+
+.chapterText {
+	position: relative;
+	flex-grow: 1;
+}
+
+.chapterText > i {
+	bottom: 10%;
+	right: 15%;
+	position: absolute;
+	font-size: 35px;
+	transition: right ease 200ms;
+}
+
+.chapterElement:hover .chapterText > i {
+	right: 10%;
+}
+
+.chapterText > h1 {
+	text-decoration: underline;
+}
+
+/*
+------------------------------------------------------------------
 ------------------------------Cursor------------------------------
 ------------------------------------------------------------------
 */
+
 #cursorFollower {
 	position: fixed;
 	background-color: #424242;
