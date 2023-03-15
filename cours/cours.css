@@ -5,82 +5,86 @@
 	background-color: #585757;
 }
 
-/*--------------PDF Previews:--------------*/
+/*
+--------------------------------------------------------------------
+------------------------------Previews------------------------------
+--------------------------------------------------------------------
+*/
 
-.pdfPreviewWrapper {
+/*--------------Preview Wrapper:--------------*/
+
+.previewWrapper {
 	position: relative;
-	width: 450px;
-	height: 636px;
 	overflow: hidden;
 }
 
-.pdfPreviewWrapper img {
+.previewWrapper img {
 	filter: blur(9px);
 	width: 100%;
 	transition: filter ease 300ms;
 }
 
-.pdfPreviewWrapper:hover img {
+.previewWrapper:hover img {
 	filter: blur(0px);
 }
 
-.pdfPreviewWrapper > p {
+.previewWrapper > p {
 	position: absolute;
-	left: 24%;
-	top: 39%;
 	font-size: 23px;
-	justify-items: center;
-	text-align: center;
+	
+	width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
 	z-index: 1;
 	opacity: 1;
 	pointer-events: none;
 	transition: opacity ease 300ms;
 }
 
-.pdfPreviewWrapper:hover > p {
+.previewWrapper:hover > p {
 	opacity: 0;
 }
 
-/*--------------Video Previews:--------------*/
+/*--------------PDF Wrapper:--------------*/
 
-.videoPreviewWrapper {
-	position: relative;
-	width: 500px;
-	height: 300px;
-	overflow: hidden;
+.previewWrapper.pdfType {
+	width: 450px;
+	height: 636px;
 }
 
-.videoPreviewWrapper > p {
-	position: absolute;
-	z-index: 2;
-	pointer-events: none;
-	background-color: #ffffff80;
-	border-radius: 7px;
-	padding: 3px;
-	text-align: center;
-	top: 43%;
-    left: 32%;
-    font-size: 25px;
-    opacity: 1;
-    transition: opacity ease 300ms
+.previewWrapper.pdfType img {
+	filter: blur(11px);
 }
 
-.videoPreviewWrapper img {
-	position: absolute;
-	width: 100%;
-	filter: blur(9px);
-	transition: filter ease 300ms;
-}
-
-.videoPreviewWrapper:hover img {
+.previewWrapper:hover.pdfType img {
 	filter: blur(0px);
 }
 
-.videoPreviewWrapper:hover > p {
-	opacity: 0;
+/*--------------Video/Link Previews:--------------*/
+
+.previewWrapper.videoType, .previewWrapper.linkType {
+	width: 500px;
+	height: 300px;
 }
 
-/*------------------------------Cursor------------------------------*/
+.previewWrapper.videoType > p, .previewWrapper.linkType > p {
+	
+}
+
+.previewWrapper.videoType > p > mark, .previewWrapper.linkType > p > mark {
+	background-color: #ffffff6b;
+	border-radius: 7px;
+	padding: 5px;
+}
+
+/*
+------------------------------------------------------------------
+------------------------------Cursor------------------------------
+------------------------------------------------------------------
+*/
 #cursorFollower {
 	position: fixed;
 	background-color: #424242;
@@ -118,12 +122,8 @@
 	transform: rotate(315deg);
 }
 
-/*html:not(head):not(nav) {cursor: none;}
-nav {cursor: default;}*/
-
-
 @media (max-width: 750px) {
 	.mainBody:hover #cursorFollower {
-	opacity: 0;
-}
+		opacity: 0;
+	}
 }

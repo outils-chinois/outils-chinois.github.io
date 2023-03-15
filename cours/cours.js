@@ -4,22 +4,30 @@
 function cursorInit() {
 	const cursorFollower = document.getElementById("cursorFollower")
 
-	pdf_cursor = (cursor) => {
+	//--------cursor animations--------:
+
+	pdfType_cursor = (cursor) => {
 		cursor.childNodes[3].innerHTML = 'PDF';
 		cursor.childNodes[1].className = 'fa fa-folder-open';
 		cursor.childNodes[1].style.transform = "rotate(0deg)"
 	}
 
-	video_cursor = (cursor) => {
+	videoType_cursor = (cursor) => {
 		cursor.childNodes[3].innerHTML = 'Vidéo';
 		cursor.childNodes[1].className = 'fa fa-play';
 		cursor.childNodes[1].style.transform = "rotate(0deg)"
 	}
 
-	link_cursor = (cursor) => {
+	linkType_cursor = (cursor) => {
 		cursor.childNodes[3].innerHTML = 'Liens';
 		cursor.childNodes[1].className = 'fa fa-link';
 		cursor.childNodes[1].style.transform = "rotate(0deg)"
+	}
+
+	//--------logic--------:
+
+	cursor_preview_hover = (targetElement) => {
+		eval(`${targetElement.classList[1]}_cursor(cursorFollower)`)
 	}
 
 	animate_cursor = (e, interacting) => {
@@ -31,9 +39,7 @@ function cursorInit() {
 		}
 
 		if (interacting) {
-			if (e.target.closest(".pdfPreviewWrapper") !== null) {pdf_cursor(cursorFollower);};
-			if (e.target.closest(".videoPreviewWrapper") !== null) {video_cursor(cursorFollower)};
-			if (e.target.closest(".linkPreviewWrapper") !== null) {link_cursor(cursorFollower)};
+			if (e.target.closest(".previewWrapper") !== null) {cursor_preview_hover(e.target.closest(".previewWrapper"));};
 			cursorFollower.childNodes[3].style.opacity = 1;
 
 		} else {
