@@ -140,9 +140,8 @@
 	right: 10%;
 }
 
-.chapterText > h1 {
-	text-decoration: underline;
-}
+.chapterText > h1 {text-decoration: underline;}
+.chapterText > ul {margin-left: 20%}
 
 /*
 ------------------------------------------------------------------

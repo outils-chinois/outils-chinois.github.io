@@ -37,7 +37,7 @@ function cursorInit() {
 				mouseY = e.clientY - cursorFollower.offsetHeight/2
 
 		const keyframes = {
-			transform: `translate(${mouseX}px, ${mouseY}px) scale(${interacting ? 4 : 1}) rotate(${interacting ? 360 : 0}deg)` //interacting? Yes: 4, else: 1
+			transform: `translate(${mouseX}px, ${mouseY}px) scale(${interacting ? 3 : 1}) rotate(${interacting ? 360 : 0}deg)` //interacting? Yes: 4, else: 1
 		}
 
 		if (interacting) {

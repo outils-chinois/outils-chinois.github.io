@@ -47,6 +47,21 @@ nav > button {
 	margin-left: 10px;
 }
 
+#githubLink {
+	right: 3%;
+	position: absolute;
+}
+
+#githubLink > i {
+	font-size: 40px;
+	color: #dcb2ff;
+	transition: color ease 300ms;
+}
+
+#githubLink:hover > i {
+	color: #ffffff;
+}
+
 .navbar_SVG {
 	width: 2em;
 	height: 2em;

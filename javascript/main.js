@@ -7,6 +7,7 @@ const navbarHTML = `
 <a href="cours/">Cours</a>
 <a href="autres/hamming-code/">Autres</a>
 <button id="changeThemeButton" onclick="changeTheme();">${bulb_off_icon}</button>
+<a id="githubLink" title="Github" href="https://github.com/outils-chinois/outils-chinois.github.io"><i class="fa-brands fa-github"></i></a>
 `;
 
 //----------------------------------cookies------------------------------------
