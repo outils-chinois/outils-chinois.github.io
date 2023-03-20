@@ -124,8 +124,14 @@
 }
 
 .chapterText {
+	width: calc(100% - 500px);
 	position: relative;
 	flex-grow: 1;
+
+	display: flex;
+	flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
 }
 
 .chapterText > i {
@@ -140,8 +146,12 @@
 	right: 10%;
 }
 
-.chapterText > h1 {text-decoration: underline;}
-.chapterText > ul {margin-left: 20%}
+.chapterText > h1 {
+	text-decoration: underline;
+	font-size: 38px;
+}
+
+.chapterText > ul {font-size: 21px;}
 
 /*
 ------------------------------------------------------------------

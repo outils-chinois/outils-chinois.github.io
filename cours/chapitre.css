@@ -6,6 +6,16 @@
 	font-size: 48px;
 }
 
+.mainBody > h2 {
+	color: #aff0ff;
+	font-size: 28px;
+}
+
+.mainBody > ul {
+	font-size: 22px;
+	color: #ddeefde3;
+}
+
 .chapterTitle::before {
 	content: "Chapitre: ";
 }
@@ -22,6 +32,7 @@
 }
 
 .descriptionInteractable {
+	margin: 20px 0px 20px 0px;
 	display: flex;
 	flex-direction: row;
 	justify-content: flex-start;
@@ -35,4 +46,16 @@
 	color: #c2c2c2;
 	font-size: 19px;
 	height: fit-content;
+}
+
+.descriptionInteractable > p > mark {
+    background-color: inherit;
+    color: azure;
+    border-bottom: 2px solid;
+    border-color: #f0ffff00;
+    transition: border-color 200ms ease;
+}
+
+.descriptionInteractable > p > mark:hover {
+    border-color: #f0ffff;
 }

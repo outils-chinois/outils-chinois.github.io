@@ -12,4 +12,4 @@ function updateVisuals() {
 };
 
 //---------------------------init----------------------:
-updateVisuals();
+onresize = updateVisuals;

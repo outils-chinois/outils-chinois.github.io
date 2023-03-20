@@ -56,8 +56,13 @@ function cursorInit() {
 		});
 	};
 
+
+	var eventSkipCounter = 0;
 	window.onmousemove = e => {
-		const interacting = e.target.closest(".cursorInteractable") !== null; //currently hovering element with class ".cursorInteractable" (bool)
-		animate_cursor(e, interacting);
+		if (eventSkipCounter == 0) {
+			const interacting = e.target.closest(".cursorInteractable") !== null; //currently hovering element with class ".cursorInteractable" (bool)
+			animate_cursor(e, interacting);
+		} else if (eventSkipCounter == 5) {eventSkipCounter = -1};
+		eventSkipCounter++
 	};
 }
