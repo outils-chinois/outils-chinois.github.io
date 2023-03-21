@@ -41,14 +41,14 @@ nav img {
 	margin-right: 10px;
 }
 
-nav > button {
+nav > button:not(#navSettingsButton) {
 	background-color: inherit;
 	border: none;
 	margin-left: 10px;
 }
 
 #githubLink {
-	right: 3%;
+	right: 12%;
 	position: absolute;
 }
 
@@ -62,17 +62,56 @@ nav > button {
 	color: #ffffff;
 }
 
-.navbar_SVG {
-	width: 2em;
-	height: 2em;
-	vertical-align: middle;
+/*--------------------Settings--------------------:*/
+
+#navSettingsButton {
+	background: none;
+	cursor: pointer;
+	border: none;
 	color: #dcb2ff;
-	transition: 0.2s;
+	font-size: 35px;
+	transform: rotate(0deg);
+	transition: color 300ms ease, transform 300ms ease;
 }
 
-.navbar_SVG:hover {
-	color: #ffffff;
+#navSettingsButton:hover, #settingsContainer[data-settings_open="true"] > #navSettingsButton:not(#navSettingsButton:active) {
+	color: #fff;
+	transform: rotate(360deg);
 }
+
+#navSettingsButton:active {
+	color: #888888
+}
+
+#settingsContainer {
+	display: flex;
+	align-items: center;
+	position: absolute;
+	right: 5%;
+	height: 100%;
+}
+
+#settingsContainer > ul {
+	visibility: hidden;
+
+	position: absolute;
+	top: 120%;
+	right: 0%;
+
+	border-radius: 15px 0 15px 15px;
+
+	list-style: none;
+	background-color: black;
+	width: 300px;
+	height: 200px;
+	box-shadow: -15px 15px 25px #00000080;
+}
+
+#settingsContainer[data-settings_open="true"] > ul {
+	visibility: visible;
+}
+
+/*-------------------------------------------------:*/
 
 .flashcardIcon {
 	background-image: url('../resources/icons/flashcards.png');

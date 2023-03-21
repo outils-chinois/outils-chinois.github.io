@@ -1,13 +1,18 @@
-const bulb_on_icon = `<i class="fa fa-lightbulb"></i>`
-const bulb_off_icon = `<i class="fa fa-lightbulb-on"></i>`
-
 const navbarHTML = `
 <a id="logo" title="Page d'accueil" href=""><img alt="Webpage Logo" src="resources/images/logo_white.png"></a>
 <a href="flashcards/">Cartes Flash</a>
 <a href="cours/">Cours</a>
 <a href="autres/hamming-code/">Autres</a>
-<button id="changeThemeButton" onclick="changeTheme();">${bulb_off_icon}</button>
 <a id="githubLink" title="Github" href="https://github.com/outils-chinois/outils-chinois.github.io"><i class="fa-brands fa-github"></i></a>
+
+<div data-settings_open="false" id="settingsContainer">
+	<button id="navSettingsButton" onclick="openSettings();"><i class="fa-solid fa-gear"></i></button>
+	<ul>
+		<li>Theme</li>
+		<li>Cursor</li>
+	</ul>
+</div>
+
 `;
 
 //----------------------------------cookies------------------------------------
@@ -40,16 +45,11 @@ function initializeNavbar() {
 	document.body.appendChild(navbarElement);
 }
 
-function changeTheme() {
-	let button = document.getElementById("changeThemeButton");
-	var darkTheme = eval(cookieDict()["darkTheme"]);
-	if (darkTheme) {
-		button.innerHTML = bulb_on_icon;
-		document.cookie = `darkTheme=false; expires=${getExpiryDate()}; path=/`
-	} else {
-		button.innerHTML = bulb_off_icon;
-		document.cookie = `darkTheme=true; expires=${getExpiryDate()}; path=/`
-	};
-	
+//-----------------------------------Settings------------------------------------
 
+function openSettings() {
+	let container = document.getElementById("settingsContainer");
+	var settingsOpen = eval(container.getAttribute("data-settings_open"));
+	container.setAttribute("data-settings_open", (!settingsOpen).toString())
+	console.log(settingsOpen)
 }
