@@ -51,5 +51,4 @@ function openSettings() {
 	let container = document.getElementById("settingsContainer");
 	var settingsOpen = eval(container.getAttribute("data-settings_open"));
 	container.setAttribute("data-settings_open", (!settingsOpen).toString())
-	console.log(settingsOpen)
 }

@@ -48,7 +48,7 @@ nav > button:not(#navSettingsButton) {
 }
 
 #githubLink {
-	right: 12%;
+	right: 9%;
 	position: absolute;
 }
 
@@ -76,6 +76,9 @@ nav > button:not(#navSettingsButton) {
 
 #navSettingsButton:hover, #settingsContainer[data-settings_open="true"] > #navSettingsButton:not(#navSettingsButton:active) {
 	color: #fff;
+}
+
+#settingsContainer[data-settings_open="true"] > #navSettingsButton:not(#navSettingsButton:active) {
 	transform: rotate(360deg);
 }
 
@@ -87,7 +90,7 @@ nav > button:not(#navSettingsButton) {
 	display: flex;
 	align-items: center;
 	position: absolute;
-	right: 5%;
+	right: 3%;
 	height: 100%;
 }
 
