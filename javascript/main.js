@@ -8,8 +8,19 @@ const navbarHTML = `
 <div data-settings_open="false" id="settingsContainer">
 	<button id="navSettingsButton" onclick="openSettings();"><i class="fa-solid fa-gear"></i></button>
 	<ul>
-		<li>Theme</li>
-		<li>Cursor</li>
+		<li data-setting_active="true">
+			<p>Theme</p>
+			<button class="activeSettingsButton" onclick="">
+				<i class="fa-solid fa-toggle-on"></i>
+			</button>
+		</li>
+		
+		<li data-setting_active="false">
+			<p>Cursor</p>
+			<button class="activeSettingsButton" onclick="changeSettingsValue(this);" data-setting_active="true">
+				<i class="fa-solid fa-toggle-off"></i>
+			</button>
+		</li>
 	</ul>
 </div>
 
@@ -51,4 +62,8 @@ function openSettings() {
 	let container = document.getElementById("settingsContainer");
 	var settingsOpen = eval(container.getAttribute("data-settings_open"));
 	container.setAttribute("data-settings_open", (!settingsOpen).toString())
+}
+
+function changeSettingsValue(activeButton) {
+	console.log(activeButton);
 }

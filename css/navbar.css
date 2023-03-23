@@ -96,6 +96,7 @@ nav > button:not(#navSettingsButton) {
 
 #settingsContainer > ul {
 	visibility: hidden;
+	padding: 15px;
 
 	position: absolute;
 	top: 120%;
@@ -110,10 +111,34 @@ nav > button:not(#navSettingsButton) {
 	box-shadow: -15px 15px 25px #00000080;
 }
 
+#settingsContainer > ul > li {
+	display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    align-items: center;
+    font-size: 25px;
+    margin-bottom: 15px;
+}
+
+#settingsContainer > ul > li > p {
+	margin-right: 15px;
+}
+
+#settingsContainer > ul > li i {
+	font-size: 30px;
+}
+
 #settingsContainer[data-settings_open="true"] > ul {
 	visibility: visible;
 }
 
+.activeSettingsButton {
+	background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
 /*-------------------------------------------------:*/
 
 .flashcardIcon {
