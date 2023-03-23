@@ -1,0 +1,31 @@
+.mainBody {
+	width: 100%;
+	height: 1200px;
+	background-color: #616161;
+
+	display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#textInput {
+	resize: none;
+	border: 2px #a3a3a3 solid;
+    font-size: 22px;
+    margin: 30px 0 30px 0;
+}
+
+#textInput:focus-visible {outline: none;} /*remove default outline*/
+
+#textOutput {
+    width: 77%;
+    height: 500px;
+
+    background-color: #a7a7a7;
+    padding: 3%;
+    overflow: overlay;
+}
+
+#textOutput > span {
+	font-size: 24px;
+}

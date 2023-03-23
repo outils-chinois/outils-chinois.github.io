@@ -51,8 +51,8 @@ function cursorInit() {
 		};
 
 		cursorFollower.animate(keyframes, {
-			duration: 800,
-			fill: "forwards" //retains position after completing animation (= 800ms after mouse doesn't move)
+			duration: 400,
+			fill: "forwards" //retains position after completing animation (= 400ms after mouse doesn't move)
 		});
 	};
 
