@@ -15,6 +15,13 @@ Checklist:
 	- [ ] Finish adding the LVB vocab (currently only up to C (exclusive))
 	- [ ] Renew the design (looks old/boring compared to rest)
 
+- [ ] Finish text editor page
+	- [ ] Add buttons (currently only through console)
+	- [ ] Add labels and whatnot
+	- [ ] Add a way to generate pdf file with content (red text instead of red background)
+	- [ ] Seperate active (default) and passive (blue)
+	- [ ] *maybe* try to find a way to translate characters that aren't in the list
+
 Bugs:
 - [x] Flashcard set inconsistencies
 - [x] Frontpage weird background on elements after window resize
