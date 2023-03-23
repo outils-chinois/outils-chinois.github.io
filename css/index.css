@@ -2,6 +2,8 @@
 	height: calc(1500px + 45vh);
 	width: 100%;
 	background-color: #616161;
+	position: relative;
+
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-start;
@@ -80,6 +82,20 @@
 	position: absolute;
 	right: 5%;
 	bottom: 10%;
+}
+
+#creditLabel {
+	color: white;
+    position: absolute;
+    text-align: right;
+    right: 0;
+    bottom: 0;
+}
+
+#creditLabel > b {
+    font-weight: normal;
+    color: #ffffff80;
+    font-style: italic;
 }
 
 @media (max-width: 750px) {
