@@ -21,6 +21,9 @@ fillHTMLElement = (htmlElement, textChar, bgColor) => {
 //literally just a function to ease writing
 appendToOutput = (char, color) => document.getElementById('textOutput').appendChild(fillHTMLElement(document.createElement('span'), char, color))
 
+//remove every child of target element
+removeChildren = parent => {while (parent.firstChild) {parent.removeChild(parent.firstChild)}}
+
 //---------------------actual functions---------------------:
 
 function elementInList(element, listObj=LVBList) {
@@ -29,10 +32,7 @@ function elementInList(element, listObj=LVBList) {
 
 function pushToOutput() {
 	let outputField = document.getElementById('textOutput');
-	
-	for (var i = 0; i < outputField.childNodes.length; i++) {
-		outputField.removeChild(outputField.childNodes[0])
-	};
+	removeChildren(outputField);
 
 	stringToDictArray(document.getElementById('textInput').value).forEach(element => appendToOutput(element.char, element.color));
 }

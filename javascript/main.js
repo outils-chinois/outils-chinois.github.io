@@ -10,14 +10,14 @@ const navbarHTML = `
 	<button id="navSettingsButton" onclick="openSettings();"><i class="fa-solid fa-gear"></i></button>
 	<ul>
 		<li>
-			<p>Theme</p>
+			<p>Dark Theme</p>
 			<button class="activeSettingsButton" onclick="changeSettingsValue(this);" data-setting_active="true">
 				<i class="fa-solid fa-toggle-on"></i>
 			</button>
 		</li>
 		
 		<li>
-			<p>Cursor</p>
+			<p>Cursor Trailer</p>
 			<button class="activeSettingsButton" onclick="changeSettingsValue(this);" data-setting_active="true">
 				<i class="fa-solid fa-toggle-on"></i>
 			</button>
