@@ -1,4 +1,5 @@
 .mainBody {
+	position: absolute;
 	width: 100%;
 	height: 1200px;
 	background-color: #616161;
@@ -18,6 +19,7 @@
 #textInput:focus-visible {outline: none;} /*remove default outline*/
 
 #textOutput {
+	margin-top: 30px;
     width: 77%;
     height: 500px;
 
@@ -28,4 +30,28 @@
 
 #textOutput > span {
 	font-size: 24px;
+}
+
+
+#outputButton:hover {
+    background-color: #e65d5d;
+}
+
+
+#outputButton:active {
+    left: 5px;
+    top: 5px;
+    box-shadow: none;
+}
+
+#outputButton {
+	position: relative;
+	border: 3px solid #2c3a6a;;
+    border-radius: 8px;
+    width: 150px;
+    height: 56px;
+    font-size: 23px;
+    background-color: #FF6B6B;
+    color: #2c3a6a;;
+    box-shadow: 5px 5px;
 }
