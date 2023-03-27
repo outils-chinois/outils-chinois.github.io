@@ -18,13 +18,39 @@
 	<script type="text/javascript">initializeNavbar();</script>
 	
 	<div class="mainBody">
-		<textarea id="textInput" name="textInput" cols="60" rows="10"></textarea>
+
+		<div id="textInputContainer">
+			<p>Entrée de texte:</p>
+			<textarea id="textInput" name="textInput" cols="60" rows="10"></textarea>
+		</div>
 		
 		<form>
+			<p>Afficher niveau de langue:</p>
+			<div>
+				<label for="LVAButton">LVA (805 Charactères)</label>
+				<input type="radio" id="LVAButton" name="languageLevel" value="LVAList">
+			</div>
+				
+			<div>
+				<label for="LVBButton">LVB (505 Charactères)</label>
+				<input type="radio" id="LVBButton" name="languageLevel" value="LVBList">
+			</div>
+
+			<div>
+				<label for="LVCButton">LVC (405 Charactères)</label>
+				<input type="radio" id="LVCButton" name="languageLevel" value="LVCList">
+			</div>
+
+			
+			
 			
 		</form>
-		<button id="outputButton" onclick="pushToOutput();">Sortie</button>
 
+		<div class="importantButtonContainer">
+			<button class="importantButton" id="outputButton" onclick="pushToOutput();">Aperçu</button>
+			<button class="importantButton" id="pdfButton" onclick="console.log('Feature not added yet.');">Fichier PDF</button>
+		</div>
+		
 		<div id="textOutput"></div>
 	</div>
 
