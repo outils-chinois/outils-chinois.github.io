@@ -1,5 +1,5 @@
 .mainBody {
-	height: calc(1500px + 45vh);
+	height: calc(2000px + 45vh);
 	width: 100%;
 	background-color: #616161;
 	position: relative;
@@ -15,7 +15,7 @@
 	border-radius: 15px;
 	width: 50%;
 	min-width: 520px;
-	height: 20%;
+	height: 17.5%;
 	margin-top: 35px;
 	box-shadow: 0 0 32px rgb(0 0 0 / 15%);
 	position: relative;
@@ -25,7 +25,7 @@
 .quickAccessElement:hover {
 	width: 55%;
 	min-width: 570px;
-	height: 25%;
+	height: 21%;
 }
 
 .quickAccessElement:hover > .arrow_SVG {
