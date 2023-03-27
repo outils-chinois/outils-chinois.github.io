@@ -16,7 +16,7 @@ Checklist:
 	- [ ] Renew the design (looks old/boring compared to rest)
 
 - [ ] Finish text editor page
-	- [ ] Add buttons (currently only through console)
+	- [x] Add buttons (currently only through console)
 	- [ ] Add labels and whatnot
 	- [ ] Add a way to generate pdf file with content (red text instead of red background)
 	- [ ] Seperate active (default) and passive (blue)
