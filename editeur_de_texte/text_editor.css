@@ -90,9 +90,12 @@ form {
     margin-bottom: 25px;
 }
 
+form > div {width: fit-content;}
+form > div:hover > label {text-decoration: underline;}
+
 form > p {
-    font-size: 18px;
-    text-decoration: underline;
+    font-size: 20px;
+    border-bottom: solid 2px #2c3a6a;
     right: 20px;
     margin-bottom: 8px;
     position: relative;
