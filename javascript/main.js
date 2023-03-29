@@ -7,18 +7,18 @@ const navbarHTML = `
 <a id="githubLink" title="Github" href="https://github.com/outils-chinois/outils-chinois.github.io"><i class="fa-brands fa-github"></i></a>
 
 <div data-settings_open="false" id="settingsContainer">
-	<button id="navSettingsButton" onclick="openSettings();"><i class="fa-solid fa-gear"></i></button>
+	<button id="navSettingsButton" onclick="openSettings();"><i class="fa-solid fa-gear updateSettings"></i></button>
 	<ul>
 		<li>
 			<p>Dark Theme</p>
-			<button class="activeSettingsButton" onclick="changeSettingsValue(this);" data-setting_active="true">
+			<button class="activeSettingsButton" id="themeSetting" onclick="changeSettingsValue(this);" data-setting_active="true">
 				<i class="fa-solid fa-toggle-on"></i>
 			</button>
 		</li>
 		
 		<li>
 			<p>Cursor Trailer</p>
-			<button class="activeSettingsButton" onclick="changeSettingsValue(this);" data-setting_active="true">
+			<button class="activeSettingsButton" id="trailerSetting" onclick="changeSettingsValue(this);" data-setting_active="true">
 				<i class="fa-solid fa-toggle-on"></i>
 			</button>
 		</li>
@@ -27,24 +27,56 @@ const navbarHTML = `
 
 `;
 
-//----------------------------------cookies------------------------------------
-function cookieDict() {
-	if (document.cookie != '') {document.cookie = `darkTheme=true; expires=${getExpiryDate()}; path=/`} //if there is none, create darkTheme cookie
+//------------------------------------Cookies------------------------------------:
+const singleYear = 1000*60*60*24*(365+1/4); //1 year in milliseconds
 
+getExpiryDate = (years=2) => new Date(singleYear * (new Date().getFullYear() + years - 1970)) //single year * the number of years will have passed since 1970
+
+function cookieDict() {
 	// let rawCookie = str;
 	let rawCookie = document.cookie;
 	let cookieList = rawCookie.split("; ")
 
 	var cookieDictionary = {};
 	for (var i = 0; i <= cookieList.length - 1; i++) {
-		cookieDictionary[cookieList[i].split("=")[0]] = cookieList[i].split("=")[1];
+		try {cookieDictionary[cookieList[i].split("=")[0]] = eval(cookieList[i].split("=")[1]);}
+		catch (err) {cookieDictionary[cookieList[i].split("=")[0]] = cookieList[i].split("=")[1];}
 	}
 
 	return cookieDictionary
 }
 
-const singleYear = 1000*60*60*24*(365+1/4); //1 year in milliseconds
-getExpiryDate = (years=2) => new Date(singleYear * (new Date().getFullYear() + years - 1970)) //single year * the number of years will have passed since 1970
+function createCookie(cookieName, cookieValue=true) {
+	document.cookie = `${cookieName}=${cookieValue}; expires=${getExpiryDate()}; path=/;`;
+}
+
+function deleteCookie(cookieName) {
+	document.cookie = `${cookieName}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`
+}
+
+//------------Cookies & Settings------------:
+
+function saveSettingsToCookies() {
+	console.log('saving settings');
+	let settingsElements = document.getElementsByClassName('activeSettingsButton');
+
+	for (var i = settingsElements.length - 1; i >= 0; i--) {
+		createCookie(settingsElements[i].id, settingsElements[i].getAttribute('data-setting_active')); //createCookie(id, true/false)
+	}
+}
+
+function importSettings() {
+	console.log('importing settings');
+	let settingsElements = document.getElementsByClassName('activeSettingsButton');
+	const currentSettings = cookieDict();
+
+	for (var i = settingsElements.length - 1; i >= 0; i--) {
+		settingsElements[i].setAttribute('data-setting_active', currentSettings[settingsElements[i].id]) //set data attribute to its value in dictionary
+	}
+
+	updateSettings()
+
+}
 
 //-----------------------------------------------------------------------------
 
@@ -54,7 +86,7 @@ function initializeNavbar() {
 	document.body.appendChild(navbarElement);
 }
 
-//-----------------------------------Settings------------------------------------
+//-----------------------------------Settings------------------------------------:
 
 function openSettings() {
 	let container = document.getElementById("settingsContainer");
@@ -65,4 +97,23 @@ function openSettings() {
 function changeSettingsValue(activeButton) {
 	activeButton.childNodes[1].className = eval(activeButton.getAttribute('data-setting_active')) ? 'fa-solid fa-toggle-off' : 'fa-solid fa-toggle-on';
 	activeButton.setAttribute('data-setting_active', !eval(activeButton.getAttribute('data-setting_active')));
+}
+
+function updateSettings() {
+	console.log('updating Settings');
+	let settingsButtons = document.getElementsByClassName('activeSettingsButton');
+
+	for (var i = settingsButtons.length - 1; i >= 0; i--) {
+		settingsButtons[i].childNodes[1].className = eval(settingsButtons[i].getAttribute('data-setting_active')) ? 'fa-solid fa-toggle-on' : 'fa-solid fa-toggle-off';
+	}
+}
+
+function onSettingsClick() {
+	eval(document.getElementById('settingsContainer').getAttribute('data-settings_open')) ? importSettings() : saveSettingsToCookies();
+}
+
+
+//update settings:
+window.onclick = (e) => {
+	if (e.target.className.split(" ").indexOf('updateSettings') !== -1) {onSettingsClick()};
 }

@@ -139,6 +139,14 @@ nav > button:not(#navSettingsButton) {
     color: white;
     cursor: pointer;
 }
+
+.activeSettingsButton > i {
+	background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
 /*-------------------------------------------------:*/
 
 .flashcardIcon {
