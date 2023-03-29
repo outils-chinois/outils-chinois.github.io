@@ -24,7 +24,6 @@ const navbarHTML = `
 		</li>
 	</ul>
 </div>
-
 `;
 
 //------------------------------------Cookies------------------------------------:
@@ -84,6 +83,8 @@ function initializeNavbar() {
 	let navbarElement = document.createElement("nav");
 	navbarElement.innerHTML = navbarHTML;
 	document.body.appendChild(navbarElement);
+
+	importSettings();
 }
 
 //-----------------------------------Settings------------------------------------:
@@ -116,4 +117,18 @@ function onSettingsClick() {
 //update settings:
 window.onclick = (e) => {
 	if (e.target.className.split(" ").indexOf('updateSettings') !== -1) {onSettingsClick()};
+}
+
+//------------------------Dark Theme/Light Theme--------------------------:
+String.prototype.trim = function() { // "    hello".trim() => "hello"
+        return String(this).replace(/^\s+|\s+$/g, '');
+    };
+
+function lightTheme() {
+	let cssFile = document.styleSheets[5];
+	cssFile.insertRule('.mainBody {background-color: #efefef}', 20)
+	cssFile.insertRule('.chapterElement {background-color: #af88ff}', 21)
+	cssFile.insertRule('nav {background-color: white; color: #de8dff;}', 22)
+	cssFile.insertRule('nav > a:hover {color: black;}', 23)
+
 }

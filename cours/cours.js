@@ -58,11 +58,28 @@ function cursorInit() {
 
 
 	var eventSkipCounter = 0;
-	window.onmousemove = e => {
+
+	onmousemoveFunction = e => {
 		if (eventSkipCounter == 0) {
 			const interacting = e.target.closest(".cursorInteractable") !== null; //currently hovering element with class ".cursorInteractable" (bool)
 			animate_cursor(e, interacting);
 		} else if (eventSkipCounter == 5) {eventSkipCounter = -1};
 		eventSkipCounter++
 	};
+
+	cursorSettingCheck = e => {
+		if (eval(document.getElementById('trailerSetting').getAttribute('data-setting_active'))) {
+			window.onmousemove = onmousemoveFunction;
+			cursorFollower.style.opacity = "";
+		} else {
+			window.onmousemove = undefined;
+			cursorFollower.style.opacity = "0";
+		}
+	}
+
+	cursorSettingCheck(undefined);
+
+	window.onmouseup = e => {
+		setTimeout(() => cursorSettingCheck(e), 5);
+	}
 }
