@@ -13,7 +13,7 @@ const LVAList = ['啊' ,'爱' ,'按' ,'安' ,'爸' ,'把' ,'八' ,'白' ,'拜' ,
 //---------------------Tool functions---------------------:
 
 //turns string into list of dicts containing every char + its associated color
-noChangeToValues = inputString => [...inputString].map(element => ({char: element.replace("\n", "<br>"), color: ""}))
+noChangeToValues = inputString => [...inputString].map(element => ({char: element.replace("\n", "<br>"), color: ''}))
 
 stringToDictArray = inputString => {
 	var endList = [];
