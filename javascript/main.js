@@ -22,6 +22,7 @@ const navbarHTML = `
 				<i class="fa-solid fa-toggle-on"></i>
 			</button>
 		</li>
+		<i id="settingsCaret" class="fa-solid fa-caret-up"></i>
 	</ul>
 </div>
 `;

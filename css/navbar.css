@@ -64,6 +64,15 @@ nav > button:not(#navSettingsButton) {
 
 /*--------------------Settings--------------------:*/
 
+#settingsCaret {
+	font-weight: 900;
+	color: black;
+	position: relative;
+	top: -71.5%;
+    left: 90.25%;
+	font-size: 70px;
+}
+
 #navSettingsButton {
 	background: none;
 	cursor: pointer;
