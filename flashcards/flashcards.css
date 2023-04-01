@@ -40,9 +40,18 @@ body {
 	padding: 10px;
 	transition: 0.1s;
 }
+
 .buttonGroup > button:hover {background-color: #5600e8;}
 .buttonGroup > button:active {background-color: #370094;}
 
+button#customSet_Element {
+    border-bottom: 2px solid;
+    text-decoration: none;
+    margin-top: 30px;
+    transition: color ease 200ms;
+}
+
+button#customSet_Element:hover {color: white;}
 
 #characterDisplay {
 	margin-top: 75px;
