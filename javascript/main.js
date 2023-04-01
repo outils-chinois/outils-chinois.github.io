@@ -121,15 +121,52 @@ window.onclick = (e) => {
 }
 
 //------------------------Dark Theme/Light Theme--------------------------:
-String.prototype.trim = function() { // "    hello".trim() => "hello"
-        return String(this).replace(/^\s+|\s+$/g, '');
-    };
+var ruleStartIndex = 0;
 
 function lightTheme() {
-	let cssFile = document.styleSheets[5];
-	cssFile.insertRule('.mainBody {background-color: #efefef}', 20)
-	cssFile.insertRule('.chapterElement {background-color: #af88ff}', 21)
-	cssFile.insertRule('nav {background-color: white; color: #de8dff;}', 22)
-	cssFile.insertRule('nav > a:hover {color: black;}', 23)
+	let cssFile = document.styleSheets[5]; //navbar.css
+	ruleStartIndex = cssFile.cssRules.length
+
+	appendRule = (inputRule) => cssFile.insertRule(inputRule, cssFile.cssRules.length) //cssFile.cssRules.length = last index
+
+	document.querySelector("#logo").firstChild.src = 'https://outils-chinois.github.io/resources/images/logo_black.png' //set logo to black char
+
+	const ruleList = [
+		//general
+		'.mainBody {background-color: #efefef}',
+
+		//Navbar & settings
+		'nav {background-color: white; color: #9546ff;}',
+		'nav > a:not(#logo) {color: #9546ff;}',
+		'nav > a:not(#logo):hover {color: black;}',
+		'#githubLink:hover > i {color: #000;}',
+		'#navSettingsButton {color: #9546ff;}',
+		'#navSettingsButton:hover {color: #000;}',
+		'#settingsContainer[data-settings_open="true"] > #navSettingsButton:not(#navSettingsButton:active) {color: #000;}',
+		'#settingsContainer > ul {background-color: #fff;}',
+		'#settingsCaret {color: #fff;}',
+		'#settingsContainer > ul > li i {color: #000;}',
+
+		//Cours
+		'.chapterElement {background-color: #af88ff}',
+		'.chapterText {color: #000;}',
+
+		//Frontpage:
+		'.quickAccessElement {background-color: #cdcdcd;}',
+		'.quickAccessContent {color: #7c34b9;}',
+		'.quickAccessElement:hover .quickAccessContent > h1 {border-color: #7c34b9ff;}',
+		'.quickAccessContent > p {color: #9546ff;}'
+		];
+
+	ruleList.forEach(element => appendRule(element));
+}
+
+function darkTheme() {
+	document.querySelector("#logo").firstChild.src = 'https://outils-chinois.github.io/resources/images/logo_white.png' //set logo to white char (black bg)
+
+	let cssFile = document.styleSheets[5]; //navbar.css
+	for (var i = cssFile.cssRules.length - 1; i >= ruleStartIndex; i--) {
+		cssFile.deleteRule(i);
+	}
 
 }

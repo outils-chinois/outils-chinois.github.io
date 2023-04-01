@@ -105,6 +105,8 @@
 	flex-direction: column;
 	flex-wrap: wrap;
 	justify-content: flex-start;
+
+	box-shadow: 15px 17px 40px #00000050;
 }
 
 .imgWrapper {
@@ -124,6 +126,7 @@
 }
 
 .chapterText {
+	color: #ffffff;
 	width: calc(100% - 500px);
 	position: relative;
 	flex-grow: 1;

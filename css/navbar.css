@@ -54,7 +54,6 @@ nav > button:not(#navSettingsButton) {
 
 #githubLink > i {
 	font-size: 40px;
-	color: #dcb2ff;
 	transition: color ease 300ms;
 }
 
