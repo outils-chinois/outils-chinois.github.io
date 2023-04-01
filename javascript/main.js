@@ -133,8 +133,7 @@ function lightTheme() {
 
 	const ruleList = [
 		//general
-		'.mainBody {background-color: #efefef}',
-
+		'.mainBody {background-color: #d5d5d5}',
 		//Navbar & settings
 		'nav {background-color: white; color: #9546ff;}',
 		'nav > a:not(#logo) {color: #9546ff;}',
@@ -152,7 +151,7 @@ function lightTheme() {
 		'.chapterText {color: #000;}',
 
 		//Frontpage:
-		'.quickAccessElement {background-color: #cdcdcd;}',
+		'.quickAccessElement {background-color: #f0f0f0;}',
 		'.quickAccessContent {color: #7c34b9;}',
 		'.quickAccessElement:hover .quickAccessContent > h1 {border-color: #7c34b9ff;}',
 		'.quickAccessContent > p {color: #9546ff;}'
