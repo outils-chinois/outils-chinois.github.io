@@ -175,7 +175,8 @@ function lightTheme() {
 		'.quickAccessElement {background-color: #f0f0f0;}',
 		'.quickAccessContent {color: #7c34b9;}',
 		'.quickAccessElement:hover .quickAccessContent > h1 {border-color: #7c34b9ff;}',
-		'.quickAccessContent > p {color: #9546ff;}'
+		'.quickAccessContent > p {color: #9546ff;}',
+		'.arrow_SVG {color: #914acc;}'
 		];
 
 	ruleList.forEach(element => appendRule(element));
