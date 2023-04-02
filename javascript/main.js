@@ -123,8 +123,20 @@ window.onclick = (e) => {
 //------------------------Dark Theme/Light Theme--------------------------:
 var ruleStartIndex = 0;
 
+function getCSSFile(fileName='navbar.css') {
+	const fileList = document.styleSheets;
+	var cssFile, currentHREFString;
+
+	for (var i = fileList.length - 1; i >= 0; i--) {
+		currentHREFString = ('' + fileList[i].href)
+		currentHREFString.substring(currentHREFString.length - fileName.length) == fileName ? cssFile = fileList[i] : undefined
+	}
+
+	return cssFile
+}
+
 function lightTheme() {
-	let cssFile = document.styleSheets[5]; //navbar.css
+	const cssFile = getCSSFile(); //navbar.css
 	ruleStartIndex = cssFile.cssRules.length
 
 	appendRule = (inputRule) => cssFile.insertRule(inputRule, cssFile.cssRules.length) //cssFile.cssRules.length = last index
@@ -163,7 +175,7 @@ function lightTheme() {
 function darkTheme() {
 	document.querySelector("#logo").firstChild.src = 'https://outils-chinois.github.io/resources/images/logo_white.png' //set logo to white char (black bg)
 
-	let cssFile = document.styleSheets[5]; //navbar.css
+	const cssFile = getCSSFile(); //navbar.css
 	for (var i = cssFile.cssRules.length - 1; i >= ruleStartIndex; i--) {
 		cssFile.deleteRule(i);
 	}
