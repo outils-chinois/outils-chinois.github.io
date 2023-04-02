@@ -99,6 +99,7 @@ function openSettings() {
 function changeSettingsValue(activeButton) {
 	activeButton.childNodes[1].className = eval(activeButton.getAttribute('data-setting_active')) ? 'fa-solid fa-toggle-off' : 'fa-solid fa-toggle-on';
 	activeButton.setAttribute('data-setting_active', !eval(activeButton.getAttribute('data-setting_active')));
+	if (eval(document.getElementById('themeSetting').getAttribute('data-setting_active')) !== darkThemeActive) {changeTheme();} //change theme if currentTheme is not selected theme in settings
 }
 
 function updateSettings() {
@@ -108,20 +109,23 @@ function updateSettings() {
 	for (var i = settingsButtons.length - 1; i >= 0; i--) {
 		settingsButtons[i].childNodes[1].className = eval(settingsButtons[i].getAttribute('data-setting_active')) ? 'fa-solid fa-toggle-on' : 'fa-solid fa-toggle-off';
 	}
+	if (eval(document.getElementById('themeSetting').getAttribute('data-setting_active')) !== darkThemeActive) {changeTheme();} //change theme if currentTheme is not selected theme in settings
 }
 
 function onSettingsClick() {
 	eval(document.getElementById('settingsContainer').getAttribute('data-settings_open')) ? importSettings() : saveSettingsToCookies();
-}
 
+}
 
 //update settings:
 window.onclick = (e) => {
-	if (e.target.className.split(" ").indexOf('updateSettings') !== -1) {onSettingsClick()};
+	if (e.target.className.split(" ").indexOf('updateSettings') !== -1) {onSettingsClick()}; //if clicked element has class updateSettings, run onSettingsClick()
 }
 
 //------------------------Dark Theme/Light Theme--------------------------:
-var ruleStartIndex = 0;
+var ruleStartIndex;
+var darkThemeActive = true; //default value pre settings update
+// eval(document.getElementById('themeSetting').getAttribute('data-setting_active'))
 
 function getCSSFile(fileName='navbar.css') {
 	const fileList = document.styleSheets;
@@ -133,6 +137,11 @@ function getCSSFile(fileName='navbar.css') {
 	}
 
 	return cssFile
+}
+
+function changeTheme() {
+	darkThemeActive ? lightTheme() : darkTheme()
+	darkThemeActive = !darkThemeActive
 }
 
 function lightTheme() {
