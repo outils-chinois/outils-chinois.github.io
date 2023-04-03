@@ -73,3 +73,18 @@ function showDefinition() {
 	document.getElementById("definitionDisplay").innerHTML = currentSet[currentDictIndex].definition; //met à jour la définition
 
 }
+
+//custom set:
+getCharFromCode = numberString => String.fromCharCode(parseInt(numberString, 36) + 20000) //base 36 string to char
+
+getCharFromCodeString = codeString => {
+	var endString = '';
+	codeString.split('').forEach(element => endString += element);
+	return endString;
+}
+
+function customSetClick() {
+	let htmlInput = document.create('input');
+	htmlInput.id = '';
+	document.getElementsByClassName('sideBox')[0].appendChild(htmlInput)
+}
