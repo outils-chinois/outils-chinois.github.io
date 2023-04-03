@@ -83,8 +83,26 @@ getCharFromCodeString = codeString => {
 	return endString;
 }
 
+function importCustomSet() {
+	console.log('test');
+}
+
 function customSetClick() {
-	let htmlInput = document.create('input');
-	htmlInput.id = '';
-	document.getElementsByClassName('sideBox')[0].appendChild(htmlInput)
+	let inputContainer = document.createElement('div');
+	let currentLabel = document.createElement('label');
+	let currentInput = document.createElement('input');
+	let currentButton = document.createElement('button');
+
+	inputContainer.id = 'customSetContainer';
+	currentInput.id = 'customSetInput';
+	currentLabel.htmlFor = 'customSetInput'
+	currentLabel.innerHTML = 'Code: '
+	currentButton.innerHTML = 'Importer';
+	currentButton.onclick = () => importCustomSet();
+
+	inputContainer.appendChild(currentLabel);
+	inputContainer.appendChild(currentInput);
+	inputContainer.appendChild(currentButton);
+
+	document.getElementsByClassName('sideBox')[0].appendChild(inputContainer);
 }
