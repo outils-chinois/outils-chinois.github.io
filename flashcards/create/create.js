@@ -77,7 +77,7 @@ function modifyWord() {
 function getCurrentData() {
 	var dataString = '';
 	for (var i = setList.length - 1; i >= 0; i--) {
-		dataString += `|${getCodeFromString(setList[i].char)};${getCodeFromString(setList[i].char)}`
+		dataString += `|${getCodeFromString(setList[i].char)};${getCodeFromString(setList[i].definition)}`
 	}
 	return dataString.substring(1)
 }

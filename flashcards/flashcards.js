@@ -97,6 +97,12 @@ function importCustomSet() {
 	 return customSet;
 }
 
+function runCharSet(set) {
+	currentSet = eval(set).filter(function(f){return f;});
+	currentSetName = set; //update current set
+	generateCard(true);
+}
+
 function customSetClick() {
 	let inputContainer = document.createElement('div');
 	let currentLabel = document.createElement('label');
@@ -108,7 +114,7 @@ function customSetClick() {
 	currentLabel.htmlFor = 'customSetInput'
 	currentLabel.innerHTML = 'Code: '
 	currentButton.innerHTML = 'Importer';
-	currentButton.onclick = () => importCustomSet();
+	currentButton.onclick = () => runCharSet(importCustomSet());
 
 	inputContainer.appendChild(currentLabel);
 	inputContainer.appendChild(currentInput);
