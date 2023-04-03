@@ -77,14 +77,24 @@ function showDefinition() {
 //custom set:
 getCharFromCode = numberString => String.fromCharCode(parseInt(numberString, 36) + 20000) //base 36 string to char
 
-getCharFromCodeString = codeString => {
+getCharsFromCodeList = codeList => {
 	var endString = '';
-	codeString.split('').forEach(element => endString += element);
+	codeList.forEach(element => endString += getCharFromCode(element));
 	return endString;
 }
 
 function importCustomSet() {
-	console.log('test');
+	//-fcd,-fcq,-fcp,-fcd,-fcq,-fcp;-fce,-fce,-fce,-fcd,-fcq,-fcp|-fce,-fc9,-fcp,-fc8,-fcd,-fcs,-fcq,-fcp;-fce,-fc9,-fcp,-fc8,-fcd,-fcs,-fcq,-fcp|-fc9,-fce,-fcp,-fc9,-fce;-fc9,-fce,-fcp,-fc9,-fce|-fc9,-fce,-fcp;-fc9,-fce,-fcp
+	const fullCodeString = document.getElementById('customSetInput').value;
+	const customSet = [];
+
+	for (var i = fullCodeString.split('|').length - 1; i >= 0; i--) {
+	 	var charValue = getCharsFromCodeList(fullCodeString.split('|')[i].split(';')[0].split(','));
+	 	var definitionValue = getCharsFromCodeList(fullCodeString.split('|')[i].split(';')[1].split(','));
+	 	customSet.push({char: charValue, pinyin: charValue, definition: definitionValue})
+	 }
+
+	 return customSet;
 }
 
 function customSetClick() {
