@@ -22,10 +22,11 @@
     font-size: 18px;
 }
 
+/*---------------textInput---------------:*/
 #textInput {
     white-space: pre;
     overflow-wrap: normal;
-    overflow-x: overlay;
+    overflow: scroll;
 
 	resize: none;
 	border: 2px #a3a3a3 solid;
@@ -35,6 +36,22 @@
 
 #textInput:focus-visible {outline: none;} /*remove default outline*/
 
+#textInput::-webkit-scrollbar {
+    width: 18px;
+}
+
+#textInput::-webkit-scrollbar-thumb {
+    background-color: #00000040;
+    border-radius: 10px;
+    border: 4px solid transparent;
+    background-clip: padding-box;
+}
+
+#textInput::-webkit-scrollbar-thumb:hover {
+    background-color: #00000060;
+}
+
+/*---------------textOutput--------------:*/
 #textOutput {
 	margin-top: 30px;
     width: 77%;

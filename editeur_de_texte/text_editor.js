@@ -25,9 +25,9 @@ stringToDictArray = inputString => {
 }
 
 //sets html element text & color to corresponding values (used to simplify other func)
-fillHTMLElement = (htmlElement, textChar, bgColor) => {
+fillHTMLElement = (htmlElement, textChar, color) => {
 	htmlElement.innerHTML = textChar;
-	htmlElement.style.backgroundColor = bgColor;
+	htmlElement.style.color = color;
 	return htmlElement
 }
 
