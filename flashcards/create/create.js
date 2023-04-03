@@ -1,6 +1,12 @@
 getCodeFromChar = char => (char.charCodeAt(0) - 20000).toString(36) //char to base 36 string
 getCharFromCode = numberString => String.fromCharCode(parseInt(numberString, 36) + 20000) //base 36 string to char
 
+getCodeFromString = string => {
+	var endString = '';
+	string.split('').forEach(element => endString += `,${getCodeFromChar(element)}`);
+	return endString.substring(1)
+}
+
 // let copyToClipboard = navigator.clipboard.writeText;
 
 
@@ -30,6 +36,7 @@ function addWordToDiv(word=setList[setList.length-1].char) {
 	element.onclick = e => selectWord(e);
 
 	container.appendChild(element);
+	document.getElementById('codeDisplay').innerHTML = getCurrentData();
 
 }
 
@@ -65,4 +72,12 @@ function modifyWord() {
 	addButton.innerHTML = 'Ajouter';
 	addButton.onclick = () => addToList();
 
+}
+
+function getCurrentData() {
+	var dataString = '';
+	for (var i = setList.length - 1; i >= 0; i--) {
+		dataString += `|${getCodeFromString(setList[i].char)};${getCodeFromString(setList[i].char)}`
+	}
+	return dataString.substring(1)
 }
