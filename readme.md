@@ -36,6 +36,7 @@ Checklist:
 	- [ ] Mobile version
 
 - [ ] Miscellaneous
+	- [ ] Make settings save when clicking on button
 	- [x] Finish implementing Settings
 		- [x] change theme
 		- [x] disable cursor trailer

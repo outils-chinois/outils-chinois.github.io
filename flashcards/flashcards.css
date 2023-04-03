@@ -118,6 +118,31 @@ button#customSet_Element:hover {color: white;}
 	font-weight: bold;
 }
 
+#customSetContainer {
+	display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+}
+
+#customSetContainer > button {
+	font-size: 15px;
+    margin-top: 5px;
+    background-color: green;
+    color: white;
+    border: 1px solid black;
+    padding: 5px;
+    border-radius: 9px;
+}
+
+#customSetContainer > button:hover {
+	background-color: #015a01;
+}
+
+#customSetInput:focus-visible {
+	outline: none;
+}
+
 /*------------------------------------Media-----------------------------------*/
 @media (max-width: 750px) {
 	.noNavBody {

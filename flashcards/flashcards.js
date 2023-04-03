@@ -84,7 +84,6 @@ getCharsFromCodeList = codeList => {
 }
 
 function importCustomSet() {
-	//-fcd,-fcq,-fcp,-fcd,-fcq,-fcp;-fce,-fce,-fce,-fcd,-fcq,-fcp|-fce,-fc9,-fcp,-fc8,-fcd,-fcs,-fcq,-fcp;-fce,-fc9,-fcp,-fc8,-fcd,-fcs,-fcq,-fcp|-fc9,-fce,-fcp,-fc9,-fce;-fc9,-fce,-fcp,-fc9,-fce|-fc9,-fce,-fcp;-fc9,-fce,-fcp
 	const fullCodeString = document.getElementById('customSetInput').value;
 	const customSet = [];
 
@@ -103,7 +102,14 @@ function runCharSet(set) {
 	generateCard(true);
 }
 
-function customSetClick() {
+function customSetClick(element) {
+	const currentlyActive = eval(element.getAttribute('data-active'));
+	element.setAttribute('data-active', !currentlyActive);
+
+	currentlyActive ? document.getElementById('customSetContainer').remove() : createCustomSetElements()
+}
+
+function createCustomSetElements() {
 	let inputContainer = document.createElement('div');
 	let currentLabel = document.createElement('label');
 	let currentInput = document.createElement('input');

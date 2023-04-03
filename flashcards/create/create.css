@@ -99,6 +99,10 @@ background-color: #0DAB76; Jade
 	background-clip: padding-box;
 }
 
+#wordDisplay::-webkit-scrollbar-thumb:hover {
+	background-color: #4c4c4c88;
+}
+
 #wordDisplay > button {
 	background-color: #23F0C7;
 	border: 1px solid #00000040;
