@@ -32,6 +32,14 @@ const singleYear = 1000*60*60*24*(365+1/4); //1 year in milliseconds
 
 getExpiryDate = (years=2) => new Date(singleYear * (new Date().getFullYear() + years - 1970)) //single year * the number of years will have passed since 1970
 
+//default cookies:
+defaultCookies = () => {
+	createCookie('themeSetting');
+	createCookie('trailerSetting');
+}
+
+document.cookie ? console.log('Cookies found.') : defaultCookies();
+
 function cookieDict() {
 	// let rawCookie = str;
 	let rawCookie = document.cookie;
