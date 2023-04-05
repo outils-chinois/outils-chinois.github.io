@@ -113,18 +113,26 @@ function createCustomSetElements() {
 	let inputContainer = document.createElement('div');
 	let currentLabel = document.createElement('label');
 	let currentInput = document.createElement('input');
-	let currentButton = document.createElement('button');
+	let importButton = document.createElement('button');
+	let createButton = document.createElement('button');
 
 	inputContainer.id = 'customSetContainer';
 	currentInput.id = 'customSetInput';
 	currentLabel.htmlFor = 'customSetInput'
 	currentLabel.innerHTML = 'Code: '
-	currentButton.innerHTML = 'Importer';
-	currentButton.onclick = () => runCharSet(importCustomSet());
+	importButton.innerHTML = 'Importer';
+	importButton.onclick = () => runCharSet(importCustomSet());
+	importButton.style.cursor = 'pointer';
+
+	createButton.innerHTML = 'Crée ensemble';
+	createButton.onclick = () => {window.open('flashcards/create/')};
+	createButton.style.cursor = 'pointer';
+	createButton.style.backgroundColor = 'cornflowerblue';
 
 	inputContainer.appendChild(currentLabel);
 	inputContainer.appendChild(currentInput);
-	inputContainer.appendChild(currentButton);
+	inputContainer.appendChild(createButton);
+	inputContainer.appendChild(importButton);
 
 	document.getElementsByClassName('sideBox')[0].appendChild(inputContainer);
 }
