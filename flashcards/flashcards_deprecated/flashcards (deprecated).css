@@ -1,0 +1,191 @@
+body {
+	background-color: black;
+}
+
+.noNavBody {
+	display: flex;
+	justify-content: space-between;
+	flex-direction: row;
+	align-items: flex-start;
+
+}
+
+/*------------------------Mainbox-----------------------*/
+.mainBox {
+	background-color: #7f39fb;
+	border: 1px solid black;
+	border-radius: 20px;
+	height: 500px;
+	width: 75%;
+
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.buttonGroup {
+	margin-top: 15px;
+
+	display: flex;
+	flex-direction: column;
+}
+
+.buttonGroup > button {
+	margin-top: 5px;
+	background-color: #24036b;
+	color: #f2e8ff;
+	border: none;
+	font-size: 17px;
+	border-radius: 7px;
+	padding: 10px;
+	transition: 0.1s;
+}
+
+.buttonGroup > button:hover {background-color: #5600e8;}
+.buttonGroup > button:active {background-color: #370094;}
+
+button#customSet_Element {
+    border-bottom: 2px solid;
+    text-decoration: none;
+    margin-top: 30px;
+    transition: color ease 200ms;
+}
+
+button#customSet_Element:hover {color: white;}
+
+#characterDisplay {
+	margin-top: 75px;
+	font-size: 70px;
+}
+
+#definitionDisplay, #pinyinDisplay {
+	font-size: 20px;
+}
+
+/*------------------------Sidebox-----------------------*/
+.sideBox {
+	/*background: linear-gradient(
+	to right,
+	hsl(282.06, 100%, 20.98%) 0%,
+	hsl(282.06, 100%, 20.04%) 15.2%,
+	hsl(282.06, 100%, 19.02%) 28.6%,
+	hsl(282.06, 100%, 17.94%) 40.3%,
+	hsl(282.06, 100%, 16.78%) 50.4%,
+	hsl(282.06, 100%, 15.55%) 59%,
+	hsl(282.06, 100%, 14.26%) 66.4%,
+	hsl(282.06, 100%, 12.91%) 72.7%,
+	hsl(282.06, 100%, 11.5%) 78%,
+	hsl(282.06, 100%, 10.02%) 82.5%,
+	hsl(282.06, 100%, 8.49%) 86.3%,
+	hsl(282.06, 100%, 6.9%) 89.5%,
+	hsl(282.06, 100%, 5.25%) 92.4%,
+	hsl(282.06, 100%, 3.56%) 95%,
+	hsl(282.06, 100%, 1.8%) 97.5%,
+	hsl(0, 0%, 0%) 100%
+	);*/
+	
+	background-color: #3a0b4d;
+	border-radius: 20px;
+
+	color: #f2e8ff;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 25%;
+	height: 500px;
+}
+
+.sideBox > h1 {
+	margin-bottom: 10px;
+	text-decoration: underline;
+}
+
+.sideBox > button {
+	background-color: inherit;
+	cursor: pointer;
+	color: inherit;
+	border: none;
+	font-size: 16px;
+	margin-top: 10px;
+
+}
+
+.sideBox > button:hover {
+	text-decoration: underline;
+}
+
+#randomSet_Element {
+	font-weight: bold;
+}
+
+#customSetContainer {
+	display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+}
+
+#customSetContainer > button {
+	font-size: 15px;
+    margin-top: 5px;
+    background-color: green;
+    color: white;
+    border: 1px solid black;
+    padding: 5px;
+    border-radius: 9px;
+}
+
+#customSetContainer > button:hover {
+	background-color: #015a01;
+}
+
+#customSetInput:focus-visible {
+	outline: none;
+}
+
+/*------------------------------------Media-----------------------------------*/
+@media (max-width: 750px) {
+	.noNavBody {
+		flex-direction: column;
+		align-items: stretch;
+	}
+
+	.sideBox {
+		width: auto;
+		height: 100px;
+
+		flex-direction: column;
+		flex-wrap: wrap;
+	}
+	.sideBox > h1 {
+		display: none;
+	}
+
+	.sideBox > button {
+		font-size: 14px;
+	}
+
+	.sideBox > button:hover {
+		text-decoration: none;
+	}
+
+	.mainBox {
+		height: 300px;
+		width: auto;
+	}
+
+	.buttonGroup > button {
+		font-size: 13px;
+		transition: 0.05s;
+	}
+	.buttonGroup > button:hover {background-color: #24036b;}
+	.buttonGroup > button:active:hover {background-color: #5600e8;;}
+
+	#characterDisplay {
+		font-size:45px;
+	}
+
+	#definitionDisplay, #pinyinDisplay {
+		font-size: 15px;
+	}
+}

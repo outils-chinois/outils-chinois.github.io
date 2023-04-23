@@ -17,27 +17,37 @@
 <body>
 	<script>initializeNavbar();</script>
 	
-	<div class=noNavBody>
-		<div class="sideBox">
-			<h1>Ensembles</h1>
-			<button id="randomSet_Element" onclick="buttonReplaceCharSet('randomSet');">Aléatoire</button>
-			<script>if (outerWidth < 750) {document.getElementById("randomSet_Element").style.textDecoration = "underline";}</script>
-			<button id="activeLVBSet_Element" onclick="buttonReplaceCharSet('activeLVBSet');">LVB actif</button>
-			<button id="expressionSet_Element" onclick="buttonReplaceCharSet('expressionSet');">Expressions (Orales)</button>
-			<button id="superstitionSet_Element" onclick="buttonReplaceCharSet('superstitionSet');">Superstitions</button>
-			<button id="legendsSet_Element" onclick="buttonReplaceCharSet('legendsSet');">Légendes</button>
-			<button id="citySet_Element" onclick="buttonReplaceCharSet('citySet');">Villes</button>
+	<div class="mainBody">
+		<div id="cardContainer">
 
-			<button id="customSet_Element" data-active="false" onclick="customSetClick(this);">Personnalisé</button>
-		</div>
-		<div class="mainBox">
-			<p id="characterDisplay">开始</p>
-			<p id="pinyinDisplay">---</p>
-			<p id="definitionDisplay">Appuyez sur "Définition" pour donner la réponse</p>
-			<div class="buttonGroup">
-				<button onclick="showDefinition();">Définition</button>
-				<button id="nextCardButton" onclick="generateCard();">Prochaine Carte</button>
+			<div class="decoratorCard"></div>
+			<div class="decoratorCard"></div>
+			<button class="cardNavigButton" id="rightCard"><i class="fa-solid fa-arrow-right"></i></button>
+			<button class="cardNavigButton" id="leftCard"><i class="fa-solid fa-arrow-left"></i></button>
+
+			<div id="mainCard">
+				<p id="mainDisplay">你好</p>
+				<div id="secondaryDisplayGroup">
+					<p id="primaryDisplay">ni hao</p>
+					<p id="secondaryDisplay">bonjour</p>
+				</div>
+
+				<div id="cardButtonGroup">
+					<button>Vérifier</button>
+					<button>Prochaine Carte</button>
+				</div>
 			</div>
+		</div>
+
+
+		<div id="setContainer">
+			<button id="randomSet" onclick="selectSet(this);">Aléatoire</button>
+			<button id="activeLVBSet" onclick="selectSet(this);">LVB actif</button>
+			<button id="expressionSet" onclick="selectSet(this);">Expressions (Orales)</button>
+			<button id="superstitionSet" onclick="selectSet(this);">Superstitions</button>
+			<button id="legendsSet" onclick="selectSet(this);">Légendes</button>
+			<button id="citySet" onclick="selectSet(this);">Villes</button>
+			<!-- <button id="customSet" data-active="false" onclick="customSetClick(this);">Personnalisé</button> -->
 		</div>
 	</div>
 
