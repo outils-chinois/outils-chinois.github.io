@@ -95,35 +95,40 @@ function customSetClick(htmlObject) {
 //--------------------------------------------Display Configs--------------------------------------------
 //-------------------------------------------------------------------------------------------------------
 
-//not optimized yet !!
+// not optimized yet !!
+
+// HTML Elements:
+function declareVariables() {
+    window.mainDisplay = document.getElementById('mainDisplay');
+    window.primaryDisplay = document.getElementById('primaryDisplay');
+    window.secondaryDisplay = document.getElementById('secondaryDisplay');
+    window.verifyButton = document.getElementById('cardButtonGroup').childNodes[1];
+    window.nextButton = document.getElementById('cardButtonGroup').childNodes[3];
+    window.leftCardButton = document.getElementById('leftCard');
+    window.rightCardButton = document.getElementById('rightCard');
+}
+
+
+// Functions:
 
 function showTitleCard() {
     
     { // Configure Main display
-        const mainDisplay = document.getElementById('mainDisplay');
         mainDisplay.innerHTML = document.querySelector(`#${current_set} > div > p`).innerHTML;
         mainDisplay.style.fontFamily = 'Harlow Solid';
         mainDisplay.style.textDecoration = 'underline';
     }
 
     { // Configure Secondary displays
-        const primaryDisplay = document.getElementById('primaryDisplay');
         primaryDisplay.setAttribute('data-label', '') //set label (::before) to nothing
         primaryDisplay.innerHTML = document.querySelector(`#${current_set} > div > i`).outerHTML;
         primaryDisplay.style.fontSize = '80px'
-
-        const secondaryDisplay = document.getElementById('secondaryDisplay');
+        
         secondaryDisplay.setAttribute('data-label', '');
         secondaryDisplay.innerHTML = '';
     }
 
     { // Configure Buttons
-        //Weird unresolved 'text' nodes in element, so:
-        const verifyButton = document.getElementById('cardButtonGroup').childNodes[1];
-        const nextButton = document.getElementById('cardButtonGroup').childNodes[3];
-        const leftCardButton = document.getElementById('leftCard');
-        const rightCardButton = document.getElementById('rightCard');
-
         verifyButton.style.display = 'none';
         leftCardButton.style.display = 'none';
         rightCardButton.style.display = '';
@@ -138,30 +143,21 @@ function showTitleCard() {
 
 function showNormalCard(index) {
     { // Configure Main display
-        const mainDisplay = document.getElementById('mainDisplay');
         mainDisplay.innerHTML = pinyin_mode ? current_set_list[index].pinyin : current_set_list[index].char;
         mainDisplay.style.fontFamily = '';
         mainDisplay.style.textDecoration = '';
     }
 
     { // Configure Secondary displays
-        const primaryDisplay = document.getElementById('primaryDisplay');
         pinyin_mode ? primaryDisplay.setAttribute('data-label', 'Caractère: ') : primaryDisplay.setAttribute('data-label', 'Pinyin: ') //set label (::before) to nothing
         primaryDisplay.innerHTML = '---';
         primaryDisplay.style.fontSize = ''
 
-        const secondaryDisplay = document.getElementById('secondaryDisplay');
         secondaryDisplay.setAttribute('data-label', 'Définition: ');
         secondaryDisplay.innerHTML = '---';
     }
 
     { // Configure Buttons
-        //Weird unresolved 'text' nodes in element, so:
-        const verifyButton = document.getElementById('cardButtonGroup').childNodes[1];
-        const nextButton = document.getElementById('cardButtonGroup').childNodes[3];
-        const leftCardButton = document.getElementById('leftCard');
-        const rightCardButton = document.getElementById('rightCard');
-
         verifyButton.style.display = '';
         leftCardButton.style.display = '';
         rightCardButton.style.display = '';
@@ -177,30 +173,21 @@ function showLastCard() {
     index = current_set_list.length - 1
 
     { // Configure Main display
-        const mainDisplay = document.getElementById('mainDisplay');
         mainDisplay.innerHTML = pinyin_mode ? current_set_list[index].pinyin : current_set_list[index].char;
         mainDisplay.style.fontFamily = '';
         mainDisplay.style.textDecoration = '';
     }
 
     { // Configure Secondary displays
-        const primaryDisplay = document.getElementById('primaryDisplay');
         pinyin_mode ? primaryDisplay.setAttribute('data-label', 'Caractère: ') : primaryDisplay.setAttribute('data-label', 'Pinyin: ') //set label (::before) to nothing
         primaryDisplay.innerHTML = '---';
         primaryDisplay.style.fontSize = ''
 
-        const secondaryDisplay = document.getElementById('secondaryDisplay');
         secondaryDisplay.setAttribute('data-label', 'Définition: ');
         secondaryDisplay.innerHTML = '---';
     }
 
     { // Configure Buttons
-        //Weird unresolved 'text' nodes in element, so:
-        const verifyButton = document.getElementById('cardButtonGroup').childNodes[1];
-        const nextButton = document.getElementById('cardButtonGroup').childNodes[3];
-        const leftCardButton = document.getElementById('leftCard');
-        const rightCardButton = document.getElementById('rightCard');
-
         verifyButton.style.display = '';
         leftCardButton.style.display = '';
         rightCardButton.style.display = 'none'; //hide right (nothing left)
@@ -214,30 +201,21 @@ function showLastCard() {
 // Only for custom sets:
 function showCustomizeCard() {
     { // Configure Main display
-        const mainDisplay = document.getElementById('mainDisplay');
         mainDisplay.innerHTML = document.querySelector(`#${current_set} > div > p`).innerHTML;
         mainDisplay.style.fontFamily = 'Harlow Solid';
         mainDisplay.style.textDecoration = 'underline';
     }
 
     { // Configure Secondary displays
-        const primaryDisplay = document.getElementById('primaryDisplay');
         primaryDisplay.setAttribute('data-label', '') //set label (::before) to nothing
         primaryDisplay.innerHTML = document.querySelector(`#${current_set} > div > i`).outerHTML;
         primaryDisplay.style.fontSize = '80px'
 
-        const secondaryDisplay = document.getElementById('secondaryDisplay');
         secondaryDisplay.setAttribute('data-label', '');
         secondaryDisplay.innerHTML = '';
     }
 
     { // Configure Buttons
-        //Weird unresolved 'text' nodes in element, so:
-        const verifyButton = document.getElementById('cardButtonGroup').childNodes[1];
-        const nextButton = document.getElementById('cardButtonGroup').childNodes[3];
-        const leftCardButton = document.getElementById('leftCard');
-        const rightCardButton = document.getElementById('rightCard');
-
         verifyButton.style.display = '';
         leftCardButton.style.display = 'none';
         rightCardButton.style.display = '';
