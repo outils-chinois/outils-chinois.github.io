@@ -125,7 +125,7 @@ function createCustomSetElements() {
 	importButton.style.cursor = 'pointer';
 
 	createButton.innerHTML = 'Crée ensemble';
-	createButton.onclick = () => {window.open('flashcards/create/')};
+	createButton.onclick = () => {window.open('flashcards/flashcards_deprecated/create_deprecated/')};
 	createButton.style.cursor = 'pointer';
 	createButton.style.backgroundColor = 'cornflowerblue';
 

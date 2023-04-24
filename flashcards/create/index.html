@@ -16,30 +16,79 @@
 </head>
 <body>
 	<script>initializeNavbar();</script>
+	
 	<div class="mainBody">
-		<div class="creatorContainer">
-			<h1>Créateur d'ensemble</h1>
+		<div id="cardContainer">
 
-			<div class="setInputs">
-				<div class="inputElement">
-					<label for="charWord">Mot (1 ou plusieurs caractères):</label>
-					<input type="text" name="charWord" id="charWord">
+			<div class="decoratorCard"></div>
+			<div class="decoratorCard"></div>
+			<button class="cardNavigButton" id="rightCard"><i class="fa-solid fa-arrow-right"></i></button>
+			<button class="cardNavigButton" id="leftCard"><i class="fa-solid fa-arrow-left"></i></button>
+
+			<div id="mainCard">
+				<p id="mainDisplay">你好</p>
+				<div id="secondaryDisplayGroup">
+					<p data-label="Pinyin: " id="primaryDisplay">ni hao</p>
+					<p data-label="Définition: " id="secondaryDisplay">bonjour</p>
 				</div>
 
-				<div class="inputElement">
-					<label for="wordDef">Définition:</label>
-					<input type="text" name="wordDef" id="wordDef">
+				<div id="cardButtonGroup">
+					<button>Vérifier</button>
+					<button>Prochaine Carte</button>
 				</div>
-
-				<div id="wordDisplay"></div>
-
-				<button id="addButton" onclick="addToList();">Ajouter</button>
-
-				<div id="codeDisplay"></div>
-				<button id="saveButton" onclick="console.log('code');">Copier Ensemble</button>
 			</div>
+		</div>
 
+
+		<div id="setContainer">
+			<button data-current_set="true" id="randomSet" onclick="selectSet(this);">
+				<div class="setInfo">
+					<p>Aléatoire</p>
+					<i class="fa-solid fa-dice"></i>
+				</div>
+			</button>
+			
+			<button id="activeLVBSet" onclick="selectSet(this);">
+				<div class="setInfo">
+					<p>LVB actif</p>
+					<i class="fa-solid fa-school"></i>
+				</div>
+			</button>
+			
+			<button id="expressionSet" onclick="selectSet(this);">
+				<div class="setInfo">
+					<p>Expressions</p>
+					<i class="fa-solid fa-comment"></i>
+				</div>
+			</button>
+			
+			<button id="superstitionSet" onclick="selectSet(this);">
+				<div class="setInfo">
+					<p>Superstitions</p>
+					<i class="fa-solid fa-ban"></i>
+				</div>
+			</button>
+			
+			<button id="legendsSet" onclick="selectSet(this);">
+				<div class="setInfo">
+					<p>Légendes</p>
+					<i class="fa-solid fa-scroll"></i>
+				</div>
+			</button>
+			
+			<button id="citySet" onclick="selectSet(this);">
+				<div class="setInfo">
+					<p>Villes</p>
+					<i class="fa-solid fa-building"></i>
+				</div>
+			</button>
+			<!-- <button id="customSet" data-active="false" onclick="customSetClick(this);">Personnalisé</button> -->
 		</div>
 	</div>
+
 </body>
 </html>
+
+<script type="text/javascript">
+	current_set_list = generateSet()
+</script>

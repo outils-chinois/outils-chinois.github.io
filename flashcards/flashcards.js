@@ -6,13 +6,247 @@ const legendsSet = [{char: '有害', pinyin: 'yǒu hài', definition: 'endommage
 const citySet = [{char: '新词', pinyin: 'xīn cí', definition: 'nouveau mot'}, {char: '香港', pinyin: 'xiāng gǎng', definition: 'Hong Kong (Ville)'}, {char: '澳门', pinyin: 'ào mén', definition: 'Macao (Ville)'}, {char: '人口', pinyin: 'rén kǒu', definition: 'Population'}, {char: '地理', pinyin: 'dì lǐ', definition: 'géographie'}, {char: '由…组成', pinyin: 'yóu … zǔ chéng', definition: 'à partir de ... se former'}, {char: '公里', pinyin: 'gōng lǐ', definition: 'kilomètre (km)'}, {char: '面积', pinyin: 'miàn jī', definition: 'surface (aire)'}, {char: '语信', pinyin: 'yǔ xìn', definition: 'langage/langue'}, {char: '气候', pinyin: 'qì hòu', definition: 'climat'}, {char: '经济', pinyin: 'jīng jì', definition: 'économie'}, {char: '历史', pinyin: 'lì shǐ', definition: 'histoire'}, {char: '政治', pinyin: 'zhèng zhì', definition: 'la politique'}, {char: '其他', pinyin: 'qí tā', definition: "d'autre"}, {char: '外国', pinyin: 'wài guó', definition: 'pays étranger'}, {char: '简体字', pinyin: 'jiǎn tǐ zì', definition: 'caractère simplifié'}, {char: '简单', pinyin: 'jiǎn dān', definition: 'simple'}, {char: '离', pinyin: 'lí', definition: 'distant ("struct": A distant de B [distance entre A et B])'}, {char: '土地', pinyin: 'tǔ dì', definition: 'la terre (pas la planète)'}, {char: '平方公里', pinyin: 'píng fāng gōng lǐ', definition: 'kilomètre carré (km²)'}];
 const expressionSet = [{char: '胃口好', pinyin: 'wèi kǒu hǎo', definition: 'bon appétit!'}, {char: '原来是这样', pinyin: 'yuán lái shì zhè yáng', definition: ' Je vois... (I see...)'}, {char: '对不起', pinyin: 'dùi bù qǐ', definition: ' pardon/désolé'}];
 
-var current_set = 'randomSet' //Default set
+var current_set = 'randomSet'; //Default set
+var current_set_list = '';
+var current_index = 0;
+var pinyin_mode = false;
 
 //------------------------Functions------------------------:
 
-function selectSet(htmlObject) {
-    const current_id = htmlObject.id
-    current_set = current_id
+function updateMode(htmlObject) {
+    pinyin_mode = eval(htmlObject.value);
+    goToIndex(current_index)
+}
 
-    console.log(eval(current_id))
+
+function selectSet(htmlObject, generate=true) {
+    current_set = htmlObject.id
+
+    document.querySelector('#setContainer > button[data-current_set="true"]').setAttribute('data-current_set', false)
+    document.getElementById(current_set).setAttribute('data-current_set', true)
+
+    if (generate) {
+        current_set_list = generateSet()
+        goToIndex(0)
+    }
+}
+
+
+function generateSet() {
+    const generatedSet = [showTitleCard];
+    const set_list = eval(current_set).filter(element => element); //filter to prevent it from modifying the original
+
+    for (var i = set_list.length - 1; i >= 0; i--) {
+        random_index = Math.round(Math.random() * (set_list.length - 1)); //generate random index
+        generatedSet.push(set_list[random_index]); //add element to list
+
+        set_list.splice(random_index, 1); //remove element from list to prevent it from getting picked twice
+    }
+
+    return generatedSet
+}
+
+
+function goToIndex(index) {
+    current_index = index //update index
+    document.getElementById('indexIndicator').setAttribute('data-current_index', index)
+    document.getElementById('indexIndicator').setAttribute('data-list_length', current_set_list.length - 1)
+
+    if (typeof(current_set_list[index]) == 'function') {
+        current_set_list[index]() //run the function
+    } 
+
+    else if (index == (current_set_list.length - 1)) {
+        showLastCard()
+    }
+
+    else {
+        showNormalCard(index) //set to index normally
+    }
+}
+
+function revealAnswers() {
+    const primaryDisplay = document.getElementById('primaryDisplay');
+    const secondaryDisplay = document.getElementById('secondaryDisplay');
+
+    primaryDisplay.innerHTML = pinyin_mode ? current_set_list[current_index].char : current_set_list[current_index].pinyin
+    secondaryDisplay.innerHTML = current_set_list[current_index].definition
+}
+
+//ease of access (for buttons)
+next_card = () => goToIndex(current_index + 1)
+previous_card = () => goToIndex(current_index - 1)
+
+
+//-------------------------------------------------------------------------------------------------------
+//------------------------------------------------Custom Set---------------------------------------------
+//-------------------------------------------------------------------------------------------------------
+
+
+function customSetClick(htmlObject) {
+    const currentlyActive = eval(htmlObject.getAttribute('data-active'));
+    htmlObject.setAttribute('data-active', !currentlyActive);
+
+    selectSet(htmlObject, false);
+    showCustomizeCard()
+}
+
+//-------------------------------------------------------------------------------------------------------
+//--------------------------------------------Display Configs--------------------------------------------
+//-------------------------------------------------------------------------------------------------------
+
+//not optimized yet !!
+
+function showTitleCard() {
+    
+    { // Configure Main display
+        const mainDisplay = document.getElementById('mainDisplay');
+        mainDisplay.innerHTML = document.querySelector(`#${current_set} > div > p`).innerHTML;
+        mainDisplay.style.fontFamily = 'Harlow Solid';
+        mainDisplay.style.textDecoration = 'underline';
+    }
+
+    { // Configure Secondary displays
+        const primaryDisplay = document.getElementById('primaryDisplay');
+        primaryDisplay.setAttribute('data-label', '') //set label (::before) to nothing
+        primaryDisplay.innerHTML = document.querySelector(`#${current_set} > div > i`).outerHTML;
+        primaryDisplay.style.fontSize = '80px'
+
+        const secondaryDisplay = document.getElementById('secondaryDisplay');
+        secondaryDisplay.setAttribute('data-label', '');
+        secondaryDisplay.innerHTML = '';
+    }
+
+    { // Configure Buttons
+        //Weird unresolved 'text' nodes in element, so:
+        const verifyButton = document.getElementById('cardButtonGroup').childNodes[1];
+        const nextButton = document.getElementById('cardButtonGroup').childNodes[3];
+        const leftCardButton = document.getElementById('leftCard');
+        const rightCardButton = document.getElementById('rightCard');
+
+        verifyButton.style.display = 'none';
+        leftCardButton.style.display = 'none';
+        rightCardButton.style.display = '';
+        document.getElementsByClassName('decoratorCard')[1].style.display = 'none'; //left card on hover
+        document.getElementsByClassName('decoratorCard')[0].style.display = '';
+        nextButton.innerHTML = 'Commencer';
+        nextButton.onclick = () => next_card();
+    }
+
+}
+
+
+function showNormalCard(index) {
+    { // Configure Main display
+        const mainDisplay = document.getElementById('mainDisplay');
+        mainDisplay.innerHTML = pinyin_mode ? current_set_list[index].pinyin : current_set_list[index].char;
+        mainDisplay.style.fontFamily = '';
+        mainDisplay.style.textDecoration = '';
+    }
+
+    { // Configure Secondary displays
+        const primaryDisplay = document.getElementById('primaryDisplay');
+        pinyin_mode ? primaryDisplay.setAttribute('data-label', 'Caractère: ') : primaryDisplay.setAttribute('data-label', 'Pinyin: ') //set label (::before) to nothing
+        primaryDisplay.innerHTML = '---';
+        primaryDisplay.style.fontSize = ''
+
+        const secondaryDisplay = document.getElementById('secondaryDisplay');
+        secondaryDisplay.setAttribute('data-label', 'Définition: ');
+        secondaryDisplay.innerHTML = '---';
+    }
+
+    { // Configure Buttons
+        //Weird unresolved 'text' nodes in element, so:
+        const verifyButton = document.getElementById('cardButtonGroup').childNodes[1];
+        const nextButton = document.getElementById('cardButtonGroup').childNodes[3];
+        const leftCardButton = document.getElementById('leftCard');
+        const rightCardButton = document.getElementById('rightCard');
+
+        verifyButton.style.display = '';
+        leftCardButton.style.display = '';
+        rightCardButton.style.display = '';
+        document.getElementsByClassName('decoratorCard')[1].style.display = ''; //left card on hover
+        document.getElementsByClassName('decoratorCard')[0].style.display = ''; //right card on hover
+        nextButton.innerHTML = 'Prochaine Carte';
+        nextButton.onclick = () => next_card();
+    }
+}
+
+
+function showLastCard() {
+    index = current_set_list.length - 1
+
+    { // Configure Main display
+        const mainDisplay = document.getElementById('mainDisplay');
+        mainDisplay.innerHTML = pinyin_mode ? current_set_list[index].pinyin : current_set_list[index].char;
+        mainDisplay.style.fontFamily = '';
+        mainDisplay.style.textDecoration = '';
+    }
+
+    { // Configure Secondary displays
+        const primaryDisplay = document.getElementById('primaryDisplay');
+        pinyin_mode ? primaryDisplay.setAttribute('data-label', 'Caractère: ') : primaryDisplay.setAttribute('data-label', 'Pinyin: ') //set label (::before) to nothing
+        primaryDisplay.innerHTML = '---';
+        primaryDisplay.style.fontSize = ''
+
+        const secondaryDisplay = document.getElementById('secondaryDisplay');
+        secondaryDisplay.setAttribute('data-label', 'Définition: ');
+        secondaryDisplay.innerHTML = '---';
+    }
+
+    { // Configure Buttons
+        //Weird unresolved 'text' nodes in element, so:
+        const verifyButton = document.getElementById('cardButtonGroup').childNodes[1];
+        const nextButton = document.getElementById('cardButtonGroup').childNodes[3];
+        const leftCardButton = document.getElementById('leftCard');
+        const rightCardButton = document.getElementById('rightCard');
+
+        verifyButton.style.display = '';
+        leftCardButton.style.display = '';
+        rightCardButton.style.display = 'none'; //hide right (nothing left)
+        document.getElementsByClassName('decoratorCard')[1].style.display = ''; //left card on hover
+        document.getElementsByClassName('decoratorCard')[0].style.display = 'none'; //right card on hover
+        nextButton.innerHTML = 'Recommencer';
+        nextButton.onclick = () => goToIndex(0);
+    }
+}
+
+// Only for custom sets:
+function showCustomizeCard() {
+    { // Configure Main display
+        const mainDisplay = document.getElementById('mainDisplay');
+        mainDisplay.innerHTML = document.querySelector(`#${current_set} > div > p`).innerHTML;
+        mainDisplay.style.fontFamily = 'Harlow Solid';
+        mainDisplay.style.textDecoration = 'underline';
+    }
+
+    { // Configure Secondary displays
+        const primaryDisplay = document.getElementById('primaryDisplay');
+        primaryDisplay.setAttribute('data-label', '') //set label (::before) to nothing
+        primaryDisplay.innerHTML = document.querySelector(`#${current_set} > div > i`).outerHTML;
+        primaryDisplay.style.fontSize = '80px'
+
+        const secondaryDisplay = document.getElementById('secondaryDisplay');
+        secondaryDisplay.setAttribute('data-label', '');
+        secondaryDisplay.innerHTML = '';
+    }
+
+    { // Configure Buttons
+        //Weird unresolved 'text' nodes in element, so:
+        const verifyButton = document.getElementById('cardButtonGroup').childNodes[1];
+        const nextButton = document.getElementById('cardButtonGroup').childNodes[3];
+        const leftCardButton = document.getElementById('leftCard');
+        const rightCardButton = document.getElementById('rightCard');
+
+        verifyButton.style.display = '';
+        leftCardButton.style.display = 'none';
+        rightCardButton.style.display = '';
+        document.getElementsByClassName('decoratorCard')[1].style.display = 'none'; //left card on hover
+        document.getElementsByClassName('decoratorCard')[0].style.display = ''; //right card on hover
+        
+        verifyButton.innerHTML = 'Créer'
+        verifyButton.onclick = () => window.open('flashcards/create/');
+        nextButton.innerHTML = 'Commencer';
+        nextButton.onclick = () => next_card();
+    }
 }

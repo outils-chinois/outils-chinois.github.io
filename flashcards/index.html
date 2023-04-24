@@ -22,34 +22,84 @@
 
 			<div class="decoratorCard"></div>
 			<div class="decoratorCard"></div>
-			<button class="cardNavigButton" id="rightCard"><i class="fa-solid fa-arrow-right"></i></button>
-			<button class="cardNavigButton" id="leftCard"><i class="fa-solid fa-arrow-left"></i></button>
+			<button class="cardNavigButton" id="rightCard" onclick="next_card()"><i class="fa-solid fa-arrow-right"></i></button>
+			<button class="cardNavigButton" id="leftCard" onclick="previous_card()"><i class="fa-solid fa-arrow-left"></i></button>
 
 			<div id="mainCard">
+				<select onclick="updateMode(this)" id="modeSelector">
+					<option value="false">Caractères</option>
+					<option value="true">Pinyin</option>
+				</select>
 				<p id="mainDisplay">你好</p>
 				<div id="secondaryDisplayGroup">
-					<p id="primaryDisplay">ni hao</p>
-					<p id="secondaryDisplay">bonjour</p>
+					<p data-label="Pinyin: " id="primaryDisplay">ni hao</p>
+					<p data-label="Définition: " id="secondaryDisplay">bonjour</p>
 				</div>
+				<p data-current_index="0" data-list_length="12" id="indexIndicator">/</p>
 
 				<div id="cardButtonGroup">
-					<button>Vérifier</button>
-					<button>Prochaine Carte</button>
+					<button onclick="revealAnswers()">Vérifier</button>
+					<button onclick="next_card()">Prochaine Carte</button>
 				</div>
 			</div>
 		</div>
 
 
 		<div id="setContainer">
-			<button id="randomSet" onclick="selectSet(this);">Aléatoire</button>
-			<button id="activeLVBSet" onclick="selectSet(this);">LVB actif</button>
-			<button id="expressionSet" onclick="selectSet(this);">Expressions (Orales)</button>
-			<button id="superstitionSet" onclick="selectSet(this);">Superstitions</button>
-			<button id="legendsSet" onclick="selectSet(this);">Légendes</button>
-			<button id="citySet" onclick="selectSet(this);">Villes</button>
-			<!-- <button id="customSet" data-active="false" onclick="customSetClick(this);">Personnalisé</button> -->
+			<button data-current_set="true" id="randomSet" onclick="selectSet(this);">
+				<div class="setInfo">
+					<p>Aléatoire</p>
+					<i class="fa-solid fa-dice"></i>
+				</div>
+			</button>
+			
+			<button id="activeLVBSet" onclick="selectSet(this);">
+				<div class="setInfo">
+					<p>LVB actif</p>
+					<i class="fa-solid fa-school"></i>
+				</div>
+			</button>
+			
+			<button id="expressionSet" onclick="selectSet(this);">
+				<div class="setInfo">
+					<p>Expressions</p>
+					<i class="fa-solid fa-comment"></i>
+				</div>
+			</button>
+			
+			<button id="superstitionSet" onclick="selectSet(this);">
+				<div class="setInfo">
+					<p>Superstitions</p>
+					<i class="fa-solid fa-ban"></i>
+				</div>
+			</button>
+			
+			<button id="legendsSet" onclick="selectSet(this);">
+				<div class="setInfo">
+					<p>Légendes</p>
+					<i class="fa-solid fa-scroll"></i>
+				</div>
+			</button>
+			
+			<button id="citySet" onclick="selectSet(this);">
+				<div class="setInfo">
+					<p>Villes</p>
+					<i class="fa-solid fa-building"></i>
+				</div>
+			</button>
+			
+			<button id="customSet" data-active="false" onclick="customSetClick(this);">
+				<div class="setInfo">
+					<p>Personnaliser</p>
+					<i class="fa-solid fa-pen"></i>
+				</div>
+			</button>
 		</div>
 	</div>
 
 </body>
 </html>
+
+<script>
+	selectSet(document.getElementById('randomSet'));
+</script>
