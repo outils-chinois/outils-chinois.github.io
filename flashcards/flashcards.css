@@ -22,7 +22,9 @@
 	align-items: center;
 }
 
-/*---------------Main Card---------------*/
+/*-----------------------------------------------------------*/
+/*-------------------------Main Card-------------------------*/
+/*-----------------------------------------------------------*/
 
 #mainCard {
 	background-color: #AE76FD; /*#7f39fb*/
@@ -50,7 +52,9 @@
 	text-align: center
 }
 
-/*Text displays:*/
+
+/*-------Text displays-------*/
+
 #secondaryDisplayGroup {
 	font-size: 24px;
 	text-align: center;
@@ -79,6 +83,7 @@
 	padding: 12px 8px;
 
 	font-size: 16px;
+	cursor: pointer;
 	color: white;
    	transition: background-color 200ms ease;
 }
@@ -162,6 +167,38 @@
 .cardNavigButton:active {
 	background-color: #101010;
 }
+
+/*-------------------------------------------------*/
+/*------------------Maincard modes-----------------*/
+/*-------------------------------------------------*/
+
+
+/*-----Title Card-----*/
+#mainCard.titleCard > #mainDisplay {
+	font-family: "Harlow Solid";
+	text-decoration: underline;
+}
+
+#mainCard.titleCard #primaryDisplay {font-size: 80px}
+#mainCard.titleCard #cardButtonGroup > button:nth-child(1) {display: none} /*Verify Button*/
+#cardContainer:has(#mainCard.titleCard) > #leftCard {display: none} /*left decorator card button*/
+#cardContainer:has(#mainCard.titleCard) > .decoratorCard:nth-child(2) {display: none} /*Left decorator card*/
+
+
+/*-----Last Card-----*/
+#cardContainer:has(#mainCard.lastCard) > #rightCard {display: none}
+#cardContainer:has(#mainCard.lastCard) > .decoratorCard:nth-child(1) {display: none}
+
+
+/*-----Custom Card-----*/
+#mainCard.customCard > #mainDisplay {
+	font-family: "Harlow Solid";
+	text-decoration: underline;
+}
+
+#mainCard.customCard #primaryDisplay {font-size: 80px}
+#cardContainer:has(#mainCard.customCard) > #leftCard {display: none} /*left decorator card button*/
+#cardContainer:has(#mainCard.customCard) > .decoratorCard:nth-child(2) {display: none} /*Left decorator card*/
 
 /*------------------------------------------------*/
 /*----------------------Sets----------------------*/

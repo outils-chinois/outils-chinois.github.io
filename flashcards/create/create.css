@@ -34,7 +34,7 @@
     aspect-ratio: 3/4.5;
     width: 450px;
 
-    display: flex;
+    /*display: flex;*/ /*none by default*/
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -44,22 +44,39 @@
 }
 
 #mainDisplay {
-	font-size: 70px;
+    font-size: 70px;
     position: absolute;
     top: 25%;
+    background-color: #ae76fd;
+    border: none;
+    width: 80%;
+    text-align: center;
 }
 
-/*Text displays:*/
-#secondaryDisplayGroup {
-    font-size: 24px;
-    text-align: center;
+/*-----------Pinyin & Definition displays-----------*/
+#inputGroup {
 	position: absolute;
     top: 50%;
+    display: flex;
+    flex-direction: column;
 }
-#primaryDisplay {margin-bottom: 8px}
-/*Default values:*/
-#primaryDisplay::before {content: attr(data-label)}
-#secondaryDisplay::before {content: attr(data-label)}
+
+#inputGroup > div {
+    font-size: 24px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+#inputGroup input {
+    background-color: #ae76fd;
+    font-size: 24px;
+    text-align: center;
+
+    border: none;
+    outline: none
+}
+
 
 /*Buttons:*/
 #cardButtonGroup {
@@ -144,85 +161,73 @@
 }
 
 /*------------------------------------------------*/
-/*----------------------Sets----------------------*/
+/*-------------------Title Card-------------------*/
 /*------------------------------------------------*/
 
-#setContainer {
-	margin-top: 75px;
-	width: 1040px;
+
+#titleCard {
+    background-color: #AE76FD; /*#7f39fb*/
+    color: black;
+    border-radius: 20px;
+
+    box-shadow: 15px 20px 20px 0px #00000050;
+    
+    aspect-ratio: 3/4.5;
+    width: 450px;
 
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-    align-items: flex-start;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+    position: relative;
+    z-index: 2;
 }
 
-#setContainer > button {
-	height: 200px;
-    aspect-ratio: 3/4.5;
-    cursor: pointer;
+#setTitle {
+    background-color: #ae76fd;
+    font-size: 70px;
+    font-family: "Harlow Solid";
+    text-decoration: underline;
 
     border: none;
-    border-radius: 12px;
-    background-color: #ae76fd; /*Default/fallback background; should be unique per set*/
+    outline: none;
 
-    margin: 0 20px 25px 20px;
-    box-shadow: #00000050 10px 8px 15px;
-
-    transition: transform 200ms ease;
-}
-
-#setContainer > button[data-current_set="true"] {
-    border: 8px solid white;
-    transform: scale(1.15);
-}
-
-.setInfo {
-    width: 100%;
-    height: 100%;
-    position: relative;
-}
-
-.setInfo > p {
+    text-align: center;
     position: absolute;
     width: 100%;
-    top: 20%;
-
-    font-family: "Harlow Solid"; /* "Brush Script MT" */
-    font-size: 23px;
-    white-space: break-spaces;
-    text-decoration: underline;
+    top: 25%;
 }
 
-.setInfo > i {
+#iconWrapper {
     position: absolute;
-    left: 0;
+    bottom: 35%;
     width: 100%;
-    font-size: 30px;
-    bottom: 25%;
+
+    display: flex;
+    justify-content: center;
 }
 
-#setContainer > button:nth-child(1n) {background-color: #44AF69}
-#setContainer > button:nth-child(2n) {background-color: #E8C547}
-#setContainer > button:nth-child(3n) {background-color: #DCEDB9}
-#setContainer > button:nth-child(4n) {background-color: #DEFFF2}
-#setContainer > button:nth-child(5n) {background-color: #ff4abc}
-#setContainer > button:nth-child(6n) {background-color: #8CDFD6}
+#iconWrapper > button {
+    position: absolute;
+    right: 15%;
+    top: 30%;
+    background-color: #ae76fd;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    font-size: 35px;
+}
+
+#setIcon {font-size: 80px}
+
 
 /*------------------------------------------------*/
 /*---------------------Mobile---------------------*/
 /*------------------------------------------------*/
 
-@media (max-width: 1040px) {
-    #setContainer {width: 90%}
-}
-
 @media (max-width: 750px) {
 	.mainBody {height: 1800px}
-
-	#setContainer {width: 100%}
-	#setContainer > button {margin-bottom: 15px}
 
 	#cardContainer {width: 85%}
 	#mainCard {width: 100%}

@@ -108,32 +108,39 @@ function declareVariables() {
     window.rightCardButton = document.getElementById('rightCard');
 }
 
+setLabels = (label1, label2=undefined) => {
+    document.getElementById('primaryDisplay').setAttribute('data-label', label1)
+    document.getElementById('secondaryDisplay').setAttribute('data-label', label2 ? label2 : label1)
+}
+
+setCardType = (current_type) => {
+    const cardTypes = ['titleCard', 'lastCard', 'customCard'];
+    
+    if (current_type) {
+        mainDisplay.parentElement.classList.add(current_type); // add class (type) to element (unless none)
+        cardTypes.splice(cardTypes.indexOf(current_type), 1); // remove current type from list if it exists 
+    }
+
+    mainDisplay.parentElement.classList.remove(...cardTypes); // remove every class (in list) except current from element
+}
 
 // Functions:
 
 function showTitleCard() {
-    
-    { // Configure Main display
-        mainDisplay.innerHTML = document.querySelector(`#${current_set} > div > p`).innerHTML;
-        mainDisplay.style.fontFamily = 'Harlow Solid';
-        mainDisplay.style.textDecoration = 'underline';
-    }
+    setCardType('titleCard');
+
+    mainDisplay.innerHTML = document.querySelector(`#${current_set} > div > p`).innerHTML; // set title to text from corresponding set
+
+    setLabels(''); // Remove labels from displays
 
     { // Configure Secondary displays
-        primaryDisplay.setAttribute('data-label', '') //set label (::before) to nothing
-        primaryDisplay.innerHTML = document.querySelector(`#${current_set} > div > i`).outerHTML;
-        primaryDisplay.style.fontSize = '80px'
-        
-        secondaryDisplay.setAttribute('data-label', '');
+        primaryDisplay.innerHTML = document.querySelector(`#${current_set} > div > i`).outerHTML; //set primary display to icon from chose set
         secondaryDisplay.innerHTML = '';
     }
 
     { // Configure Buttons
-        verifyButton.style.display = 'none';
-        leftCardButton.style.display = 'none';
-        rightCardButton.style.display = '';
-        document.getElementsByClassName('decoratorCard')[1].style.display = 'none'; //left card on hover
-        document.getElementsByClassName('decoratorCard')[0].style.display = '';
+        verifyButton.innerHTML = 'Vérifier'
+        verifyButton.onclick = () => revealAnswers();
         nextButton.innerHTML = 'Commencer';
         nextButton.onclick = () => next_card();
     }
@@ -142,27 +149,19 @@ function showTitleCard() {
 
 
 function showNormalCard(index) {
-    { // Configure Main display
-        mainDisplay.innerHTML = pinyin_mode ? current_set_list[index].pinyin : current_set_list[index].char;
-        mainDisplay.style.fontFamily = '';
-        mainDisplay.style.textDecoration = '';
-    }
+    setCardType(''); // set card type to default
+
+    mainDisplay.innerHTML = pinyin_mode ? current_set_list[index].pinyin : current_set_list[index].char;
 
     { // Configure Secondary displays
-        pinyin_mode ? primaryDisplay.setAttribute('data-label', 'Caractère: ') : primaryDisplay.setAttribute('data-label', 'Pinyin: ') //set label (::before) to nothing
+        pinyin_mode ? setLabels('Caractère: ', 'Définition: ') : setLabels('Pinyin: ', 'Définition: ') //set label (::before) to nothing
         primaryDisplay.innerHTML = '---';
-        primaryDisplay.style.fontSize = ''
-
-        secondaryDisplay.setAttribute('data-label', 'Définition: ');
         secondaryDisplay.innerHTML = '---';
     }
 
     { // Configure Buttons
-        verifyButton.style.display = '';
-        leftCardButton.style.display = '';
-        rightCardButton.style.display = '';
-        document.getElementsByClassName('decoratorCard')[1].style.display = ''; //left card on hover
-        document.getElementsByClassName('decoratorCard')[0].style.display = ''; //right card on hover
+        verifyButton.innerHTML = 'Vérifier'
+        verifyButton.onclick = () => revealAnswers();
         nextButton.innerHTML = 'Prochaine Carte';
         nextButton.onclick = () => next_card();
     }
@@ -170,29 +169,21 @@ function showNormalCard(index) {
 
 
 function showLastCard() {
+    setCardType('lastCard');
     index = current_set_list.length - 1
 
-    { // Configure Main display
-        mainDisplay.innerHTML = pinyin_mode ? current_set_list[index].pinyin : current_set_list[index].char;
-        mainDisplay.style.fontFamily = '';
-        mainDisplay.style.textDecoration = '';
-    }
+    mainDisplay.innerHTML = pinyin_mode ? current_set_list[index].pinyin : current_set_list[index].char;
 
     { // Configure Secondary displays
-        pinyin_mode ? primaryDisplay.setAttribute('data-label', 'Caractère: ') : primaryDisplay.setAttribute('data-label', 'Pinyin: ') //set label (::before) to nothing
-        primaryDisplay.innerHTML = '---';
-        primaryDisplay.style.fontSize = ''
+        pinyin_mode ? setLabels('Caractère: ', 'Définition: ') : setLabels('Pinyin: ', 'Définition: ') //set label (::before) to nothing
 
-        secondaryDisplay.setAttribute('data-label', 'Définition: ');
+        primaryDisplay.innerHTML = '---';
         secondaryDisplay.innerHTML = '---';
     }
 
     { // Configure Buttons
-        verifyButton.style.display = '';
-        leftCardButton.style.display = '';
-        rightCardButton.style.display = 'none'; //hide right (nothing left)
-        document.getElementsByClassName('decoratorCard')[1].style.display = ''; //left card on hover
-        document.getElementsByClassName('decoratorCard')[0].style.display = 'none'; //right card on hover
+        verifyButton.innerHTML = 'Vérifier'
+        verifyButton.onclick = () => revealAnswers();
         nextButton.innerHTML = 'Recommencer';
         nextButton.onclick = () => goToIndex(0);
     }
@@ -200,28 +191,18 @@ function showLastCard() {
 
 // Only for custom sets:
 function showCustomizeCard() {
-    { // Configure Main display
-        mainDisplay.innerHTML = document.querySelector(`#${current_set} > div > p`).innerHTML;
-        mainDisplay.style.fontFamily = 'Harlow Solid';
-        mainDisplay.style.textDecoration = 'underline';
-    }
+    setCardType('customCard');
+
+    mainDisplay.innerHTML = document.querySelector(`#${current_set} > div > p`).innerHTML; // set title to text from corresponding set
+
+    setLabels(''); // Remove labels from displays
 
     { // Configure Secondary displays
-        primaryDisplay.setAttribute('data-label', '') //set label (::before) to nothing
-        primaryDisplay.innerHTML = document.querySelector(`#${current_set} > div > i`).outerHTML;
-        primaryDisplay.style.fontSize = '80px'
-
-        secondaryDisplay.setAttribute('data-label', '');
+        primaryDisplay.innerHTML = document.querySelector(`#${current_set} > div > i`).outerHTML; //set primary display to icon from chose set
         secondaryDisplay.innerHTML = '';
     }
 
     { // Configure Buttons
-        verifyButton.style.display = '';
-        leftCardButton.style.display = 'none';
-        rightCardButton.style.display = '';
-        document.getElementsByClassName('decoratorCard')[1].style.display = 'none'; //left card on hover
-        document.getElementsByClassName('decoratorCard')[0].style.display = ''; //right card on hover
-        
         verifyButton.innerHTML = 'Créer'
         verifyButton.onclick = () => window.open('flashcards/create/');
         nextButton.innerHTML = 'Commencer';
