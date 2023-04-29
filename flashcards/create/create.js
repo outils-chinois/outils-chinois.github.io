@@ -23,7 +23,7 @@ const icon_list = [
     'fa-solid fa-plane'
 ];
 
-const current_char_list = [];
+const current_char_list = [showTitleCard];
 
 
 //-------------------------------Functions-------------------------------:
@@ -31,3 +31,29 @@ const current_char_list = [];
 titleCardData = () => `${getCodeFromString(document.getElementById('setTitle').value)}|${getCodeFromString(icon_list.indexOf(document.getElementById('setIcon').className).toString())}`;
 
 randomizeIcon = () => document.getElementById('setIcon').className = icon_list[Math.round(Math.random() * (icon_list.length - 1) )];
+
+enableCards = (...args) => {
+    for (let attributeName of args) {
+        document.getElementById('cardContainer').setAttribute(`data-${attributeName}`, true);
+    }
+}
+
+disableCards = (...args) => {
+    for (let attributeName of args) {
+        document.getElementById('cardContainer').setAttribute(`data-${attributeName}`, false);
+    }
+}
+
+
+function showCustomCard() {
+    document.getElementById('mainCard').style.display = '';
+    document.getElementById('titleCard').style.display = 'none';
+    enableCards('left_card');
+    
+}
+
+function showTitleCard() {
+    document.getElementById('mainCard').style.display = 'none';
+    document.getElementById('titleCard').style.display = '';
+    disableCards('left_card');
+}

@@ -34,7 +34,7 @@
     aspect-ratio: 3/4.5;
     width: 450px;
 
-    /*display: flex;*/ /*none by default*/
+    display: flex; /*none by default*/
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -49,8 +49,15 @@
     top: 25%;
     background-color: #ae76fd;
     border: none;
+    outline: none;
     width: 80%;
     text-align: center;
+}
+
+
+#mainCard input:focus {
+    background-color: white;
+    border: inset 3px #d2d2d2;
 }
 
 /*-----------Pinyin & Definition displays-----------*/
@@ -124,8 +131,15 @@
     z-index: 1;
 }
 
-#cardContainer:hover > .decoratorCard:nth-child(1) {transform: rotate(22deg) translate(180px, -150px)}
-#cardContainer:hover > .decoratorCard:nth-child(2) {transform: rotate(-12deg) translate(-110px, -90px)}
+#cardContainer:hover > #rightCard {transform: rotate(22deg) translate(180px, -150px)}
+#cardContainer:hover > #leftCard {transform: rotate(-12deg) translate(-110px, -90px)}
+
+
+#cardContainer[data-right_card="false"] > #rightCard {display: none}
+#cardContainer[data-right_card="false"] > #rightCardButton {display: none}
+
+#cardContainer[data-left_card="false"] > #leftCard {display: none}
+#cardContainer[data-left_card="false"] > #leftCardButton {display: none}
 
 /*---------------Card Navigator Buttons---------------*/
 .cardNavigButton {
@@ -149,8 +163,8 @@
     			background-color 200ms ease;
 }
 
-#cardContainer:hover > #rightCard {transform: translate(500%, 0)}
-#cardContainer:hover >#leftCard {transform: translate(-500%, 0)}
+#cardContainer:hover > #rightCardButton {transform: translate(500%, 0)}
+#cardContainer:hover >#leftCardButton {transform: translate(-500%, 0)}
 
 .cardNavigButton:hover {
 	background-color: #282828;
@@ -220,6 +234,25 @@
 }
 
 #setIcon {font-size: 80px}
+
+#titleStartButton {
+    position: absolute;
+    bottom: 15%;
+
+    border: none;
+    border-radius: 15px;
+    padding: 15px;
+
+    background-color: #3c036b;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+
+    transition: background-color 300ms ease;
+}
+
+#titleStartButton:hover {background-color: #5f00ad}
+#titleStartButton:active {background-color: #240042}
 
 
 /*------------------------------------------------*/

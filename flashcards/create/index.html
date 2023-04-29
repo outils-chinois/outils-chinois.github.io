@@ -18,12 +18,12 @@
 	<script>initializeNavbar();</script>
 	
 	<div class="mainBody">
-		<div id="cardContainer">
+		<div data-left_card="false" data-right_card="true" id="cardContainer">
 
-			<div class="decoratorCard"></div>
-			<div class="decoratorCard"></div>
-			<button class="cardNavigButton" id="rightCard"><i class="fa-solid fa-arrow-right"></i></button>
-			<button class="cardNavigButton" id="leftCard"><i class="fa-solid fa-arrow-left"></i></button>
+			<div id="rightCard" class="decoratorCard"></div>
+			<div id="leftCard" class="decoratorCard"></div>
+			<button class="cardNavigButton" id="rightCardButton"><i class="fa-solid fa-arrow-right"></i></button>
+			<button class="cardNavigButton" id="leftCardButton"><i class="fa-solid fa-arrow-left"></i></button>
 
 			<div id="mainCard" style="display: none;">
 				<input type="text" id="mainDisplay" onclick="this.select()" value="你好">
@@ -51,6 +51,7 @@
 					<i id="setIcon" class="fa-solid fa-plane"></i>
 					<button onclick='randomizeIcon();'><i class="fa-solid fa-rotate-right"></i></button>
 				</div>
+				<button id="titleStartButton" onclick='console.log("start");'>Commencer</button>
 			</div>
 
 		</div>
