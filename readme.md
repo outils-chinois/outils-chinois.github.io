@@ -15,19 +15,19 @@ Checklist:
 	- [ ] Add more vocab sets
 	- [ ] Finish adding the LVB vocab (currently only up to C (exclusive))
 	- [x] Renew the design (looks old/boring compared to rest)
-	- [ ] import CJST using npm (is equivalent to pinyin library python)
 	- [ ] Finish the mobile version
 	- [x] Add index pages (and goTo() for ease of access)
-	- [ ] Optimize code (showLastCard(); showNormalCard(); showTitleCard();)
+	- [x] Optimize code (showLastCard(); showNormalCard(); showTitleCard();)
 	- [ ] Finish adding custom set page
 		- [x] add an intuitive way to access the page
 		- [x] find a good way to save the sets (somehow condense the data into a small code if possible)
 		- [x] implement the data condenser (char -> decimal unicode -> base 36 (and subtracting 2000))
-		- [ ] actually implement the saving of sets
+		- [x] actually implement the saving of sets
 		- [x] add a way to modify current words
-		- [ ] add cancel button for modifying
-		- [ ] make the page prettier
-		- [ ] add decoder to /flashcards/ to actually use the sets (requires CJST for pinyin)
+		- [ ] add automatic pinyin option (requires CJST for pinyin)
+		- [x] ~~add cancel button for modifying~~ make the cards modifiable
+		- [x] make the page prettier
+		- [ ] add decoder to /flashcards/ to actually use the sets 
 		- [ ] mobile version
 
 - [ ] Finish text editor page (6)
@@ -50,9 +50,10 @@ Checklist:
 		- [ ] chapter pages
 
 --
-Completed: (12/37) \* 100 ~= 32.432%
+Completed: (16/37) \* 100 ~= 43.243%
 
 Bugs:
 - [x] Flashcard set inconsistencies
+	- [x] Custom set "Create" button present even when not on custom set
 - [x] Frontpage weird background on elements after window resize
 - [x] Cookies not working at all (oopsie)
