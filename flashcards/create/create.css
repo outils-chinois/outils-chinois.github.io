@@ -55,7 +55,7 @@
 }
 
 
-#mainCard input:focus {
+#mainCard input:focus, #titleCard input:focus {
     background-color: white;
     border: inset 3px #d2d2d2;
 }
@@ -84,6 +84,14 @@
     outline: none
 }
 
+#indexLabel {
+    text-align: center;
+    position: absolute;
+    bottom: 5%;
+}
+
+#indexLabel:before {content: attr(data-current_index)}
+#indexLabel:after {content: attr(data-set_length)}
 
 /*Buttons:*/
 #cardButtonGroup {
@@ -112,6 +120,52 @@
 
 #cardButtonGroup > button:active {
 	background-color: #240042;
+}
+
+#codeOutput {
+    width: 80%;
+    height: 1em;
+
+    background-color: white;
+    border: inset 3px #d2d2d2;
+    font-size: 26px;
+
+    position: absolute;
+    bottom: 9%;
+
+    cursor: pointer;
+    overflow: overlay;
+}
+
+#copyConfirmHint {
+    width: 80px;
+    height: 1em;
+    padding: calc(25px - 0.5em) 0;
+    
+    background-color: black;
+    color: white;
+    text-align: center;
+    border-radius: 15px;
+    
+    position: absolute;
+    bottom: 14.5%;
+    right: 10%;
+
+    opacity: 0;
+}
+
+#copyConfirmHint[data-show="true"] {
+    animation: showCopyHint 3s;
+}
+
+@keyframes showCopyHint {
+    0% {opacity: 0}
+
+    15% {opacity: .85}
+
+    65% {opacity: .85}
+
+    100% {opacity: 0}
 }
 
 /*---------------Decorator cards---------------*/

@@ -18,12 +18,12 @@
 	<script>initializeNavbar();</script>
 	
 	<div class="mainBody">
-		<div data-left_card="false" data-right_card="true" id="cardContainer">
+		<div data-left_card="false" data-right_card="false" id="cardContainer">
 
 			<div id="rightCard" class="decoratorCard"></div>
 			<div id="leftCard" class="decoratorCard"></div>
-			<button class="cardNavigButton" id="rightCardButton"><i class="fa-solid fa-arrow-right"></i></button>
-			<button class="cardNavigButton" id="leftCardButton"><i class="fa-solid fa-arrow-left"></i></button>
+			<button onclick="next_card();" class="cardNavigButton" id="rightCardButton"><i class="fa-solid fa-arrow-right"></i></button>
+			<button onclick="previous_card();" class="cardNavigButton" id="leftCardButton"><i class="fa-solid fa-arrow-left"></i></button>
 
 			<div id="mainCard" style="display: none;">
 				<input type="text" id="mainDisplay" onclick="this.select()" value="你好">
@@ -36,13 +36,17 @@
 						<label for="definitionInput">Définition: </label>
 						<input type="text" id="definitionInput" onclick="this.select()" value="Bonjour">
 					</div>
-					
 				</div>
 
 				<div id="cardButtonGroup">
-					<button>Nouvelle Carte</button>
-					<button>Enregistrer Code</button>
+					<button onclick="makeNewCard();">Nouvelle Carte</button>
+					<button onclick="saveButton();">Enregistrer Code</button>
 				</div>
+
+				<div style="display: none;" onclick='selectTextFromNode(this);' id="codeOutput"></div>
+				<div data-show="false" id="copyConfirmHint">Copié!</div>	
+
+				<p data-current_index="0" data-set_length="0" id="indexLabel">/</p>
 			</div>
 
 			<div id="titleCard">
@@ -51,10 +55,13 @@
 					<i id="setIcon" class="fa-solid fa-plane"></i>
 					<button onclick='randomizeIcon();'><i class="fa-solid fa-rotate-right"></i></button>
 				</div>
-				<button id="titleStartButton" onclick='console.log("start");'>Commencer</button>
+				<button id="titleStartButton" onclick='makeNewCard();'>Nouvelle Carte</button>
 			</div>
 
 		</div>
+	
+		<!-- Add info/documentation here  -->
+
 	</div>
 
 </body>
