@@ -125,6 +125,26 @@ setCardType = (current_type) => {
 }
 
 //-----------------------Code Treatment-----------------------:
+//Decode/Encode
+getCodeFromChar = char => (char.charCodeAt(0) - 20000).toString(36) //char to base 36 string
+getCharFromCode = numberString => String.fromCharCode(parseInt(numberString, 36) + 20000) //base 36 string to char
+
+getCodeFromString = string => {
+    var endString = '';
+    string.split('').forEach(element => endString += `,${getCodeFromChar(element)}`);
+    return endString.substring(1) // endString[1:]
+}
+
+getStringFromCode = (codeString, seperator=',') => {
+    var endString = '';
+    for (let charCode of codeString.split(seperator)) {
+        endString += getCharFromCode(charCode);
+    }
+    return endString
+}
+
+//Get data
+
 delayFunction = (fnc, delay=100) => new Promise(value => setTimeout(() => {value(fnc())}, delay));
 
 async function confirmCodeInput() {
@@ -141,7 +161,27 @@ function loadCodeInput() {
     document.onkeydown = (event) => {(event.ctrlKey && (event.keyCode == 86)) ? confirmCodeInput() : undefined};
 }
 
-//--------------------------Card Layouts--------------------------:
+function decodeData(data) {
+    pseudoBytes = data.split('|');
+    titleName = getStringFromCode(pseudoBytes[0]);
+    titleIconIndex = parseFloat(pseudoBytes[1]);
+
+    const dataList = [[titleName, titleIconIndex]];
+
+    for (let charData of pseudoBytes.toSpliced(0, 2)) {
+        let charDataList = charData.split(';')
+        dataList.push({
+            char: getStringFromCode(charDataList[0]),
+            pinyin: getStringFromCode(charDataList[1]),
+            definition: getStringFromCode(charDataList[2])
+        })
+    }
+
+    return dataList
+
+}
+
+//--------------------------let Card Layouts--------------------------:
 function showTitleCard() {
     setCardType('titleCard');
 

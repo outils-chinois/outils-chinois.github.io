@@ -10,12 +10,13 @@ Checklist:
 	- [ ] Make individual chapters more interactive
 	- [ ] Mobile version
 
-- [ ] Update Flashcards page (18)
+- [ ] Update Flashcards page (19)
 	- [x] Add different modes (pinyin/character hidden, toggleable)
 	- [ ] Add more vocab sets
 	- [ ] Finish adding the LVB vocab (currently only up to C (exclusive))
 	- [x] Renew the design (looks old/boring compared to rest)
 	- [ ] Finish the mobile version
+	- [ ] Create a better (seperate) customSet card in html/css to ease manip.
 	- [x] Add index pages (and goTo() for ease of access)
 	- [x] Optimize code (showLastCard(); showNormalCard(); showTitleCard();)
 	- [ ] Finish adding custom set page
@@ -50,7 +51,7 @@ Checklist:
 		- [ ] chapter pages
 
 --
-Completed: (16/37) \* 100 ~= 43.243%
+Completed: (16/38) \* 100 ~= 43.243%
 
 Bugs:
 - [x] Flashcard set inconsistencies

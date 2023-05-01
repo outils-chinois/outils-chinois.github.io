@@ -36,7 +36,7 @@ var set_length = 0 // 1 less than actual length
 next_card = () => goToIndex(current_index + 1);
 previous_card = () => goToIndex(current_index - 1);
 
-titleCardData = () => `${getCodeFromString(document.getElementById('setTitle').value)}|${getCodeFromString(icon_list.indexOf(document.getElementById('setIcon').className).toString())}`;
+titleCardData = () => `${getCodeFromString(document.getElementById('setTitle').value)}|${icon_list.indexOf(document.getElementById('setIcon').className)}`;
 mainCardRawData = () => ({
     char: document.getElementById('mainDisplay').value,
     pinyin: document.getElementById('pinyinInput').value,
