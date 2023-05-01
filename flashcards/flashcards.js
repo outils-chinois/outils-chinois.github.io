@@ -124,8 +124,24 @@ setCardType = (current_type) => {
     mainDisplay.parentElement.classList.remove(...cardTypes); // remove every class (in list) except current from element
 }
 
-// Functions:
+//-----------------------Code Treatment-----------------------:
+delayFunction = (fnc, delay=100) => new Promise(value => setTimeout(() => {value(fnc())}, delay));
 
+async function confirmCodeInput() {
+    const codeInput = await delayFunction(() => {return document.getElementById('codeInput').value});
+    console.log(`codeInput: ${codeInput}`);
+}
+
+function loadCodeInput() {
+    let codeInput = document.createElement('input');
+    codeInput.id = 'codeInput';
+    document.getElementById('cardButtonGroup').appendChild(codeInput);
+
+    codeInput.focus();
+    document.onkeydown = (event) => {(event.ctrlKey && (event.keyCode == 86)) ? confirmCodeInput() : undefined};
+}
+
+//--------------------------Card Layouts--------------------------:
 function showTitleCard() {
     setCardType('titleCard');
 
@@ -140,9 +156,9 @@ function showTitleCard() {
 
     { // Configure Buttons
         verifyButton.innerHTML = 'Vérifier'
-        verifyButton.onclick = () => revealAnswers();
+        verifyButton.onclick = revealAnswers;
         nextButton.innerHTML = 'Commencer';
-        nextButton.onclick = () => next_card();
+        nextButton.onclick = next_card;
     }
 
 }
@@ -161,9 +177,9 @@ function showNormalCard(index) {
 
     { // Configure Buttons
         verifyButton.innerHTML = 'Vérifier'
-        verifyButton.onclick = () => revealAnswers();
+        verifyButton.onclick = revealAnswers;
         nextButton.innerHTML = 'Prochaine Carte';
-        nextButton.onclick = () => next_card();
+        nextButton.onclick = next_card;
     }
 }
 
@@ -183,13 +199,14 @@ function showLastCard() {
 
     { // Configure Buttons
         verifyButton.innerHTML = 'Vérifier'
-        verifyButton.onclick = () => revealAnswers();
+        verifyButton.onclick = revealAnswers;
         nextButton.innerHTML = 'Recommencer';
         nextButton.onclick = () => goToIndex(0);
     }
 }
 
-// Only for custom sets:
+
+//----------------------------------Custom set----------------------------------:
 function showCustomizeCard() {
     setCardType('customCard');
 
@@ -205,7 +222,7 @@ function showCustomizeCard() {
     { // Configure Buttons
         verifyButton.innerHTML = 'Créer'
         verifyButton.onclick = () => window.open('flashcards/create/');
-        nextButton.innerHTML = 'Commencer';
-        nextButton.onclick = () => next_card();
+        nextButton.innerHTML = 'Entrer code';
+        nextButton.onclick = loadCodeInput;
     }
 }

@@ -20,7 +20,11 @@ const icon_list = [
     'fa-solid fa-flask',
     'fa-solid fa-earth-americas',
     'fa-solid fa-person',
-    'fa-solid fa-plane'
+    'fa-solid fa-plane',
+    'fa-solid fa-magnifying-glass',
+    'fa-solid fa-wand-magic-sparkles',
+    'fa-solid fa-gift',
+    'fa-solid fa-palette'
 ];
 
 const current_list = ['titleCardElement'];
