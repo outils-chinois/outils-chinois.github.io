@@ -10,7 +10,7 @@ Checklist:
 	- [ ] Make individual chapters more interactive
 	- [ ] Mobile version
 
-- [ ] Update Flashcards page (19)
+- [ ] Update Flashcards page (20)
 	- [x] Add different modes (pinyin/character hidden, toggleable)
 	- [ ] Add more vocab sets
 	- [ ] Finish adding the LVB vocab (currently only up to C (exclusive))
@@ -28,7 +28,8 @@ Checklist:
 		- [ ] add automatic pinyin option (requires CJST for pinyin)
 		- [x] ~~add cancel button for modifying~~ make the cards modifiable
 		- [x] make the page prettier
-		- [ ] add decoder to /flashcards/ to actually use the sets 
+		- [x] add decoder to /flashcards/ to actually use the sets
+		- [ ] Fix the magic pinyin button to display properly when editing the pinyin
 		- [ ] mobile version
 
 - [ ] Finish text editor page (6)
@@ -51,10 +52,12 @@ Checklist:
 		- [ ] chapter pages
 
 --
-Completed: (16/38) \* 100 ~= 43.243%
+Completed: (17/39) \* 100 ~= 43.589%
 
 Bugs:
 - [x] Flashcard set inconsistencies
 	- [x] Custom set "Create" button present even when not on custom set
+	- [ ] When on custom set, clicking on the 'Enter Code' button multiple times creates multiple fields
+	- [ ] Once the custom set code input text field appears, it stays until a code is put in
 - [x] Frontpage weird background on elements after window resize
 - [x] Cookies not working at all (oopsie)

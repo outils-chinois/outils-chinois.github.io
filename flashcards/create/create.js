@@ -150,3 +150,7 @@ function selectTextFromNode(htmlObject) {
 
     document.execCommand('copy'); // Copy to clipboard
 }
+
+function fillPinyin() {
+    console.log('hello');
+}

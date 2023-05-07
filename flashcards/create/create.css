@@ -122,6 +122,21 @@
 	background-color: #240042;
 }
 
+#automaticPinyin {
+    background: none;
+    border: none;
+    font-size: 25px;
+
+    position: absolute;
+    right: 5%;
+
+    cursor: pointer;
+    transition: color 200ms ease;
+}
+
+#automaticPinyin:hover {color: #444444}
+#automaticPinyin:active {color: #262626}
+
 #codeOutput {
     width: 80%;
     height: 1em;
@@ -187,7 +202,6 @@
 
 #cardContainer:hover > #rightCard {transform: rotate(22deg) translate(180px, -150px)}
 #cardContainer:hover > #leftCard {transform: rotate(-12deg) translate(-110px, -90px)}
-
 
 #cardContainer[data-right_card="false"] > #rightCard {display: none}
 #cardContainer[data-right_card="false"] > #rightCardButton {display: none}

@@ -197,8 +197,12 @@
 }
 
 #mainCard.customCard #primaryDisplay {font-size: 80px}
-#cardContainer:has(#mainCard.customCard) > #leftCard {display: none} /*left decorator card button*/
-#cardContainer:has(#mainCard.customCard) > .decoratorCard:nth-child(2) {display: none} /*Left decorator card*/
+#mainCard.customCard #indexIndicator {display: none}
+#mainCard.customCard #modeSelector {display: none}
+
+#cardContainer:has(#mainCard.customCard) > #leftCard {display: none}
+#cardContainer:has(#mainCard.customCard) > #rightCard {display: none}
+#cardContainer:has(#mainCard.customCard) > .decoratorCard {display: none} /*decorator cards*/
 
 /*------------------------------------------------*/
 /*----------------------Sets----------------------*/

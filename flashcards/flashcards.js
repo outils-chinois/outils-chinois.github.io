@@ -82,6 +82,7 @@ previous_card = () => goToIndex(current_index - 1)
 //------------------------------------------------Custom Set---------------------------------------------
 //-------------------------------------------------------------------------------------------------------
 
+//-fdq,-fch,-fcu,-fcu,-fc7,-feo,-fdl,-fcv,-fcj,-fcn,-fci,-fcp|12|8w,28t;-fci,-f2o,-feo,-fco,-f2q,-fch;-fdq,-fch,-fci,-fcm,-fch,-fcb,-fce|-fdr,-fcr,-fcq,-fcv,-fcr,-fcq;-fcf,-fcs,-fcd,-fcq,-fcr,-fc6,-fcf;-fc9,-fc8,-fcq,-fcr,-fcv,-fcq,-fcv|-fd5,-fcr,-fck,-fck,-feo,-fco,-fcp,-fcr,-fck,-fck,-fch;-fcc,-fc7,-fcg,-fch;-fcj,-fcn,-fci,-fch,-fce,-feo,-fcd,-fcg,-fcr,-fck,-fck,-fcn,-fci,-fcp,-feo,-fcj,-fcn,-fcd,-fcc,-fcv,-fcl,-fcr|-fch,-fdj,-fdn,-fdk,-feo,-fdj,-fdd,-fdl,-fco,-fcr;-fdd,-fcb,-fcv,-fco,-feo,-fce,-fcv;-fdm,-fda,-fdo|pc,693,697;-fcn,-fcs,-fce,-fcl,-feo,-fcv,-fci,-fc7,-fcj,-fch,-fce,-fcr;-fdq,-fef|-fcm,-fcb,-fcm,-fcb;-fcm,-fcb,-fcm,-fcb;-fcm,-fcb,-fcm,-fcb
 
 function customSetClick(htmlObject) {
     const currentlyActive = eval(htmlObject.getAttribute('data-active'));
@@ -90,6 +91,93 @@ function customSetClick(htmlObject) {
     selectSet(htmlObject, false);
     showCustomizeCard()
 }
+
+//-----------------------Code Treatment-----------------------:
+// Decode/Encode
+getCodeFromChar = char => (char.charCodeAt(0) - 20000).toString(36) //char to base 36 string
+getCharFromCode = numberString => String.fromCharCode(parseInt(numberString, 36) + 20000) //base 36 string to char
+
+getCodeFromString = string => {
+    var endString = '';
+    string.split('').forEach(element => endString += `,${getCodeFromChar(element)}`);
+    return endString.substring(1) // endString[1:]
+}
+
+getStringFromCode = (codeString, seperator=',') => {
+    var endString = '';
+    for (let charCode of codeString.split(seperator)) {
+        endString += getCharFromCode(charCode);
+    }
+    return endString
+}
+
+// Get data
+
+delayFunction = (fnc, delay=100) => new Promise(value => setTimeout(() => {value(fnc())}, delay));
+
+function loadCodeInput() {
+    let codeInput = document.createElement('input');
+    codeInput.id = 'codeInput';
+    document.getElementById('cardButtonGroup').appendChild(codeInput);
+
+    codeInput.focus();
+    document.onkeydown = (event) => {(event.ctrlKey && (event.keyCode == 86)) ? confirmCodeInput() : undefined};
+}
+
+const icon_list = [
+    'fa-solid fa-star',
+    'fa-solid fa-music',
+    'fa-solid fa-heart',
+    'fa-solid fa-face-smile',
+    'fa-solid fa-car',
+    'fa-solid fa-droplet',
+    'fa-solid fa-flask',
+    'fa-solid fa-earth-americas',
+    'fa-solid fa-person',
+    'fa-solid fa-plane',
+    'fa-solid fa-magnifying-glass',
+    'fa-solid fa-wand-magic-sparkles',
+    'fa-solid fa-gift',
+    'fa-solid fa-palette'
+];
+
+async function confirmCodeInput() {
+    const codeInput = await delayFunction(() => {return document.getElementById('codeInput').value});
+    
+    let data = decodeData(codeInput);
+    let titleData = data.splice(0, 1)[0];
+    let element_id = titleData[0].replace(' ', '').toLowerCase()
+
+    window[element_id] = data; // setTitle = [{...}, {...}, {...}] (global var)
+    
+    let setButton = document.createElement('button');
+    document.getElementById('setContainer').appendChild(setButton);
+    setButton.outerHTML = `<button id="${element_id}" onclick="selectSet(this);"><div class="setInfo"><p>${titleData[0]}</p><i class="${icon_list[titleData[1]]}"></i></div></button>`
+
+    document.getElementById('codeInput').remove() // remove codeInput
+}
+
+
+function decodeData(data) {
+    pseudoBytes = data.split('|');
+    titleName = getStringFromCode(pseudoBytes[0]);
+    titleIconIndex = parseFloat(pseudoBytes[1]);
+
+    const dataList = [[titleName, titleIconIndex]];
+
+    for (let charData of pseudoBytes.toSpliced(0, 2)) {
+        let charDataList = charData.split(';')
+        dataList.push({
+            char: getStringFromCode(charDataList[0]),
+            pinyin: getStringFromCode(charDataList[1]),
+            definition: getStringFromCode(charDataList[2])
+        })
+    }
+
+    return dataList
+
+}
+
 
 //-------------------------------------------------------------------------------------------------------
 //--------------------------------------------Display Configs--------------------------------------------
@@ -122,63 +210,6 @@ setCardType = (current_type) => {
     }
 
     mainDisplay.parentElement.classList.remove(...cardTypes); // remove every class (in list) except current from element
-}
-
-//-----------------------Code Treatment-----------------------:
-//Decode/Encode
-getCodeFromChar = char => (char.charCodeAt(0) - 20000).toString(36) //char to base 36 string
-getCharFromCode = numberString => String.fromCharCode(parseInt(numberString, 36) + 20000) //base 36 string to char
-
-getCodeFromString = string => {
-    var endString = '';
-    string.split('').forEach(element => endString += `,${getCodeFromChar(element)}`);
-    return endString.substring(1) // endString[1:]
-}
-
-getStringFromCode = (codeString, seperator=',') => {
-    var endString = '';
-    for (let charCode of codeString.split(seperator)) {
-        endString += getCharFromCode(charCode);
-    }
-    return endString
-}
-
-//Get data
-
-delayFunction = (fnc, delay=100) => new Promise(value => setTimeout(() => {value(fnc())}, delay));
-
-async function confirmCodeInput() {
-    const codeInput = await delayFunction(() => {return document.getElementById('codeInput').value});
-    console.log(`codeInput: ${codeInput}`);
-}
-
-function loadCodeInput() {
-    let codeInput = document.createElement('input');
-    codeInput.id = 'codeInput';
-    document.getElementById('cardButtonGroup').appendChild(codeInput);
-
-    codeInput.focus();
-    document.onkeydown = (event) => {(event.ctrlKey && (event.keyCode == 86)) ? confirmCodeInput() : undefined};
-}
-
-function decodeData(data) {
-    pseudoBytes = data.split('|');
-    titleName = getStringFromCode(pseudoBytes[0]);
-    titleIconIndex = parseFloat(pseudoBytes[1]);
-
-    const dataList = [[titleName, titleIconIndex]];
-
-    for (let charData of pseudoBytes.toSpliced(0, 2)) {
-        let charDataList = charData.split(';')
-        dataList.push({
-            char: getStringFromCode(charDataList[0]),
-            pinyin: getStringFromCode(charDataList[1]),
-            definition: getStringFromCode(charDataList[2])
-        })
-    }
-
-    return dataList
-
 }
 
 //--------------------------let Card Layouts--------------------------:
