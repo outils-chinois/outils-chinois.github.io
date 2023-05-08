@@ -1,3 +1,5 @@
+import('../../javascript/pinyinDict.js');
+
 getCodeFromChar = char => (char.charCodeAt(0) - 20000).toString(36) //char to base 36 string
 getCharFromCode = numberString => String.fromCharCode(parseInt(numberString, 36) + 20000) //base 36 string to char
 
@@ -152,5 +154,9 @@ function selectTextFromNode(htmlObject) {
 }
 
 function fillPinyin() {
-    console.log('hello');
+    let endString = '';
+    for (let char of document.getElementById('mainDisplay').value) {
+        endString += `${getPinyinForChar(char)} `;
+    }
+    document.getElementById('pinyinInput').value = endString;
 }
