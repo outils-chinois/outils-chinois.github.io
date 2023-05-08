@@ -59,5 +59,6 @@ Bugs:
 	- [x] Custom set "Create" button present even when not on custom set
 	- [ ] When on custom set, clicking on the 'Enter Code' button multiple times creates multiple fields
 	- [ ] Once the custom set code input text field appears, it stays until a code is put in
+	- [ ] left/right decorator cards showing up when they shouldn't (next//previous)
 - [x] Frontpage weird background on elements after window resize
 - [x] Cookies not working at all (oopsie)

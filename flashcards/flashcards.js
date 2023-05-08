@@ -82,7 +82,7 @@ previous_card = () => goToIndex(current_index - 1)
 //------------------------------------------------Custom Set---------------------------------------------
 //-------------------------------------------------------------------------------------------------------
 
-//-fdq,-fch,-fcu,-fcu,-fc7,-feo,-fdl,-fcv,-fcj,-fcn,-fci,-fcp|12|8w,28t;-fci,-f2o,-feo,-fco,-f2q,-fch;-fdq,-fch,-fci,-fcm,-fch,-fcb,-fce|-fdr,-fcr,-fcq,-fcv,-fcr,-fcq;-fcf,-fcs,-fcd,-fcq,-fcr,-fc6,-fcf;-fc9,-fc8,-fcq,-fcr,-fcv,-fcq,-fcv|-fd5,-fcr,-fck,-fck,-feo,-fco,-fcp,-fcr,-fck,-fck,-fch;-fcc,-fc7,-fcg,-fch;-fcj,-fcn,-fci,-fch,-fce,-feo,-fcd,-fcg,-fcr,-fck,-fck,-fcn,-fci,-fcp,-feo,-fcj,-fcn,-fcd,-fcc,-fcv,-fcl,-fcr|-fch,-fdj,-fdn,-fdk,-feo,-fdj,-fdd,-fdl,-fco,-fcr;-fdd,-fcb,-fcv,-fco,-feo,-fce,-fcv;-fdm,-fda,-fdo|pc,693,697;-fcn,-fcs,-fce,-fcl,-feo,-fcv,-fci,-fc7,-fcj,-fch,-fce,-fcr;-fdq,-fef|-fcm,-fcb,-fcm,-fcb;-fcm,-fcb,-fcm,-fcb;-fcm,-fcb,-fcm,-fcb
+//-fd8,-fcr,-fcd,-fcc,-feo,-fcd,-fcr,-fcc|5|8w,28t;-fci,-f2o,-feo,-fco,-f2q,-fch;-fdq,-fch,-fci,-fcm,-fch,-fcb,-fce|pc,693,697;-fcu,-f79,-fci,-fcp,-feo,-fcf,-f8z,-feo,-fck,-f8z,-fci,-feo;-fdj,-fct,-fcr,-feo,-fct,-fce,-fcr,-fcv,-fcj,-feo,-fdq,-fef|e3j,1wu;-fct,-fco,-f9b,-fci,-fcp,-feo,-fct,-fco,-f93,-fci,-fcp,-feo;-fdg,-fcv,-feo,-fcp,-fce,-fcv,-fci,-fcs,-fcr,-feo,-fcj,-fcb,-fce,-fcv,-fcn,-fck,-fck,-fcr|2s4,2rw;-fcp,-f8f,-fci,-feo,-fcp,-f9c,-feo;-fdl,-f92,-fci,-fcv,-fci,-fcc
 
 function customSetClick(htmlObject) {
     const currentlyActive = eval(htmlObject.getAttribute('data-active'));
