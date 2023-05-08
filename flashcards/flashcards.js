@@ -160,12 +160,15 @@ async function confirmCodeInput() {
 
 function decodeData(data) {
     pseudoBytes = data.split('|');
-    titleName = getStringFromCode(pseudoBytes[0]);
-    titleIconIndex = parseFloat(pseudoBytes[1]);
+    let titlesBytes = pseudoBytes.splice(0, 2);
+    titleName = getStringFromCode(titlesBytes[0]);
+    titleIconIndex = parseFloat(titlesBytes[1]);
 
     const dataList = [[titleName, titleIconIndex]];
 
-    for (let charData of pseudoBytes.toSpliced(0, 2)) {
+    
+
+    for (let charData of pseudoBytes) {
         let charDataList = charData.split(';')
         dataList.push({
             char: getStringFromCode(charDataList[0]),
