@@ -113,7 +113,7 @@ previous_card = () => goToIndex(current_index - 1)
 //------------------------------------------------Custom Set---------------------------------------------
 //-------------------------------------------------------------------------------------------------------
 
-//-fdq,-fcn,-fcp,-feo,-fdp,-fco,-fcn,-fcj|5|pc,693,697;-fcu,-f79,-fci,-fcp,-feo,-fcf,-f8z,-feo,-fck,-f8z,-fci;-fdl,-fck,-fcv,-fct,-fcr|3xt,-j,891,d2r;-fc9,-f2m,-feo,-fcu,-f8n,-feo,-fc6,-fco,-f79,-feo,-fcs,-f9c,-fch;-fdi,-fcr,-feo,-fci,-fcr,-feo,-fcd,-fcv,-fcn,-fcd,-feo,-fcg,-fcv,-fcd,-feo,-fdq,-fef|nq,52;-fcf,-f8z,-feo,-fcc,-f8f;-fcv,-fcb,-fcc,-fce,-fcr,-feo,-fe9,-feo,-fck,-fcr,-fcd,-feo,-fcv,-fcb,-fcc,-fce,-fcr,-fcd|at9,ac2;-fck,-f9b,-fci,-feo,-fcd,-f94;-fcu,-fck,-fcr,-fcb|e8k,e8j;-fc7,-f79,-fci,-feo,-fc7,-f9b,-fci,-fcp;-fc7,-fcn,-fci,-fcp,-feo,-fc7,-fcv,-fci,-fcp|133,4zp,4r3,czd,55j;-fc7,-fcb,-f9b,-fci,-feo,-fck,-f9b,-fcn,-feo,-fcd,-fco,-f90,-feo,-fc6,-fco,-f94,-feo,-fc7,-f9c,-fci,-fcp;-fdi,-fcr,-feo,-fca,-fch,-fcn,-fcd,-fea,-fea,-fea|cd,py;-fcu,-f2q,-fch,-feo,-fc6,-fco,-f2k,-fci;-fcp,-fcv,-fce,-fcv,-fci,-fcc,-fcn,-fce
+//-fdq,-fcn,-fcp,-feo,-fdp,-fco,-fcn,-fcj|5|pc,693,697;%;-fdl,-fck,-fcv,-fct,-fcr|3xt,-j,891,d2r;%;-fdi,-fcr,-feo,-fci,-fcr,-feo,-fcd,-fcv,-fcn,-fcd,-feo,-fcg,-fcv,-fcd,-feo,-fdq,-fef|nq,52;%;-fcv,-fcb,-fcc,-fce,-fcr,-feo,-fe9,-feo,-fck,-fcr,-fcd,-feo,-fcv,-fcb,-fcc,-fce,-fcr,-fcd|at9,ac2;%;-fcu,-fck,-fcr,-fcb|e8k,e8j;%;-fc7,-fcn,-fci,-fcp,-feo,-fc7,-fcv,-fci,-fcp|133,4zp,4r3,czd,55j;%;-fdi,-fcr,-feo,-fca,-fch,-fcn,-fcd,-fea,-fea,-fea|cd,py;%;-fcp,-fcv,-fce,-fcv,-fci,-fcc,-fcn,-fce
 
 function customSetClick(htmlObject) {
     const currentlyActive = eval(htmlObject.getAttribute('data-active'));

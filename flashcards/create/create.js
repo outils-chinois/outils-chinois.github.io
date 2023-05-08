@@ -9,6 +9,14 @@ getCodeFromString = string => {
     return endString.substring(1) // endString[1:]
 }
 
+getStringFromCode = (codeString, seperator=',') => {
+    var endString = '';
+    for (let charCode of codeString.split(seperator)) {
+        endString += getCharFromCode(charCode);
+    }
+    return endString
+}
+
 // let copyToClipboard = navigator.clipboard.writeText;
 
 // Constants:
@@ -165,3 +173,40 @@ function selectTextFromNode(htmlObject) {
 }
 
 function fillPinyin() {document.getElementById('pinyinInput').value = pinyinFromChars(document.getElementById('mainDisplay').value);}
+
+function decodeData(data) {
+    pseudoBytes = data.split('|');
+    let titlesBytes = pseudoBytes.splice(0, 2);
+    titleName = getStringFromCode(titlesBytes[0]);
+    titleIconIndex = parseFloat(titlesBytes[1]);
+
+    const dataList = [[titleName, titleIconIndex]];
+
+    
+
+    for (let charData of pseudoBytes) {
+        let charDataList = charData.split(';')
+        dataList.push({
+            char: getStringFromCode(charDataList[0]),
+            pinyin: (charDataList[1] == '%') ? pinyinFromChars(getStringFromCode(charDataList[0])) : getStringFromCode(charDataList[1]),
+            definition: getStringFromCode(charDataList[2])
+        })
+    }
+
+    return dataList
+
+}
+
+
+function importSet() {
+    let setData = decodeData(document.getElementById('importCodeInput').value);
+    current_list.splice(1); //remove everything except first element
+
+    let titleData = setData.splice(0, 1)[0];
+    document.getElementById('setTitle').value = titleData[0];
+    document.getElementById('setIcon').className = icon_list[titleData[1]];
+
+    current_list.push(...setData);
+    set_length = current_list.length - 1;
+    goToIndex(0); // update/go to title card
+}
