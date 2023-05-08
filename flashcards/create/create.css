@@ -1,6 +1,6 @@
 .mainBody {
     background-color: #616161;
-    height: 1200px;
+    height: calc(100vh - 104.8px); /*104.8 = navbar height*/
     width: 100%;
 
     position: relative;
