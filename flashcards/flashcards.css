@@ -1,6 +1,5 @@
 .mainBody {
 	background-color: #616161;
-	height: 1600px;
 	width: 100%;
 
 	position: relative;
@@ -70,8 +69,11 @@
 #cardButtonGroup {
 	position: absolute;
 	bottom: 13%;
+
 	display: flex;
 	flex-direction: column;
+
+	width: 153px;
 }
 
 #cardButtonGroup > button {
@@ -210,7 +212,7 @@
 
 #setContainer {
 	margin-top: 75px;
-	width: 1040px;
+	width: 860px;
 
 	display: flex;
 	flex-direction: row;
@@ -264,24 +266,22 @@
 	bottom: 25%;
 }
 
-#setContainer > button:nth-child(1n) {background-color: #44AF69}
-#setContainer > button:nth-child(2n) {background-color: #E8C547}
-#setContainer > button:nth-child(3n) {background-color: #DCEDB9}
-#setContainer > button:nth-child(4n) {background-color: #DEFFF2}
-#setContainer > button:nth-child(5n) {background-color: #ff4abc}
-#setContainer > button:nth-child(6n) {background-color: #8CDFD6}
+#setContainer > button:nth-child(6n + 0) {background-color: #00f8ff}
+#setContainer > button:nth-child(6n + 1) {background-color: #F2CA19}
+#setContainer > button:nth-child(6n + 2) {background-color: #FF00BD}
+#setContainer > button:nth-child(6n + 3) {background-color: #0057E9}
+#setContainer > button:nth-child(6n + 4) {background-color: #87E911}
+#setContainer > button:nth-child(6n + 5) {background-color: #FF0050}
 
 /*------------------------------------------------*/
 /*---------------------Mobile---------------------*/
 /*------------------------------------------------*/
 
-@media (max-width: 1040px) {
+@media (max-width: 860px) {
 	#setContainer {width: 90%}
 }
 
 @media (max-width: 750px) {
-	.mainBody {height: 1800px}
-
 	#setContainer {width: 100%}
 	#setContainer > button {margin-bottom: 15px}
 

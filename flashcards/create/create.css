@@ -134,6 +134,8 @@
     transition: color 200ms ease;
 }
 
+#inputGroup:has(#pinyinInput:focus) #automaticPinyin {display: none}
+
 #automaticPinyin:hover {color: #444444}
 #automaticPinyin:active {color: #262626}
 

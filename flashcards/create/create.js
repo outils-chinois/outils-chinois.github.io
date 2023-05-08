@@ -26,7 +26,18 @@ const icon_list = [
     'fa-solid fa-magnifying-glass',
     'fa-solid fa-wand-magic-sparkles',
     'fa-solid fa-gift',
-    'fa-solid fa-palette'
+    'fa-solid fa-palette',
+    'fa-solid fa-envelope',
+    'fa-solid fa-bomb',
+    'fa-solid fa-pen-nib',
+    'fa-solid fa-hippo',
+    'fa-solid fa-trash',
+    'fa-solid fa-tag',
+    'fa-solid fa-video',
+    'fa-solid fa-lemon',
+    'fa-solid fa-key',
+    'fa-solid fa-tree',
+
 ];
 
 const current_list = ['titleCardElement'];
@@ -126,7 +137,7 @@ function saveDataToCode() {
     const charData = current_list.splice(1); // get every element from list safe from first
     current_list.push(...charData); // restore splice
 
-    charData.forEach(element => {endCode += `${getCodeFromString(element.char)};${getCodeFromString(element.pinyin)};${getCodeFromString(element.definition)}|`})
+    charData.forEach(element => {endCode += `${getCodeFromString(element.char)};${(element.pinyin == pinyinFromChars(element.char)) ? '%' : getCodeFromString(element.pinyin)};${getCodeFromString(element.definition)}|`})
 
     return endCode.substring(0, endCode.length - 1)
 }
@@ -153,10 +164,4 @@ function selectTextFromNode(htmlObject) {
     document.execCommand('copy'); // Copy to clipboard
 }
 
-function fillPinyin() {
-    let endString = '';
-    for (let char of document.getElementById('mainDisplay').value) {
-        endString += `${getPinyinForChar(char)} `;
-    }
-    document.getElementById('pinyinInput').value = endString;
-}
+function fillPinyin() {document.getElementById('pinyinInput').value = pinyinFromChars(document.getElementById('mainDisplay').value);}

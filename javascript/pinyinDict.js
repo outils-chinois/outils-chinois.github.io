@@ -1,3 +1,22 @@
+window.getPinyinForChar = input => {
+    for (var pinyin in pinyinDict) {
+        if (pinyinDict[pinyin].indexOf(input) > -1) {
+            return pinyin;
+        }
+    }
+
+    return '';
+}
+
+window.pinyinFromChars = char_string => {
+    let endString = '';
+    for (let char of char_string) {
+        endString += `${getPinyinForChar(char)} `;
+    }
+    
+    return endString.substring(0, endString.length-1);
+}
+
 window.pinyinDict = {
 	'':'桛烪',
 	bei:'呗唄',
@@ -1297,14 +1316,4 @@ window.pinyinDict = {
 	ǎn:'俺揞铵埯垵唵罯銨',
 	ǎo:'袄媪媼芺襖镺艹拗抝',
 	ǒu: '偶藕耦吘嘔腢蕅呕'
-}
-
-window.getPinyinForChar = input => {
-    for (var pinyin in pinyinDict) {
-        if (pinyinDict[pinyin].indexOf(input) > -1) {
-            return pinyin;
-        }
-    }
-
-    return '';
 }

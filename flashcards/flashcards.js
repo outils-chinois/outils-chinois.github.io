@@ -1,3 +1,5 @@
+import('../javascript/pinyinDict.js');
+
 // Sets:
 const randomSet = [{char: '无聊', pinyin: 'wú liáo', definition: 'ennuyeux'}, {char: '尴尬', pinyin: 'gān gà', definition: 'génant'}, {char: '告诉', pinyin: 'gào sù', definition: 'avertir/prévenir/informer'}, {char: '打算', pinyin: 'dǎ suàn', definition: 'planifier'}, {char: '参观', pinyin: 'cān guān', definition: 'visiter'}, {char: '胃口好', pinyin: 'wèi kǒu hǎo', definition: 'bon appétit!'}, {char: '感冒', pinyin: 'gǎn mào', definition: 'rhume'}, {char: '反过来说', pinyin: 'fǎn guò lái shuō', definition: "d'autre part (connecteur logique)"}, {char: '春夏秋冬', pinyin: 'chūn xià qīu dōng', definition: 'printemps, été, automne, hiver'}, {char: '虽然', pinyin: 'sūi rán', definition: 'cependant (connecteur logique)'}, {char: '桌子', pinyin: 'zhuō zǐ', definition: 'table'}, {char: '开始', pinyin: 'kāi shǐ', definition: 'Commencer (appuyez sur "Prochaine Carte")'}];
 const activeLVBSet = [{char: "啊", pinyin: "a", definition: "ah! (interjection)"}, {char: "爱", pinyin: "ài", definition: "amour/affection"}, {char: "安", pinyin: "ān", definition: "paix"}, {char: "爸", pinyin: "bà", definition: "père (爸爸)"}, {char: "把", pinyin: "bǎ", definition: "de prendre en main (action avec la poignée)"}, {char: "八", pinyin: "bā", definition: "8"}, {char: "白", pinyin: "bái", definition: "blanc"}, {char: "百", pinyin: "bǎi", definition: "100"}, {char: "半", pinyin: "bàn", definition: "moitié (一半 = un demi)"}, {char: "办", pinyin: "bàn", definition: "faire, manager"}, {char: "班", pinyin: "bān", definition: "travail"}, {char: "帮", pinyin: "bāng", definition: "aider (帮助)"}, {char: "报", pinyin: "bào", definition: "annoncer/une annonce d'informations (=journaux)"}, {char: "包", pinyin: "bāo", definition: "sac"}, {char: "吧", pinyin: "ba", definition: "bar"}, {char: "被", pinyin: "bèi", definition: "voix du passif"}, {char: "备", pinyin: "bèi", definition: "se préparer"}, {char: "北", pinyin: "běi", definition: "nord"}, {char: "杯", pinyin: "bēi", definition: "tasse (一杯)"}, {char: "本", pinyin: "běn", definition: "racine, livre"}, {char: "笔", pinyin: "bǐ", definition: "stylo"}, {char: "比", pinyin: "bǐ", definition: "comparer/comparé à"}, {char: "变", pinyin: "biàn", definition: "se changer (变化 = transformer)"}, {char: "便", pinyin: "biàn", definition: "ordinaire"}, {char: "边", pinyin: "biān", definition: "côté/coins"}, {char: "表", pinyin: "biǎo", definition: "extérieur"}, {char: "别", pinyin: "bié", definition: "spécial"}, {char: "病", pinyin: "bìng", definition: "maladie/être malade"}, {char: "并", pinyin: "bìng", definition: "combiner, mettre ensemble"}, {char: "部", pinyin: "bù", definition: "partie (partie du nord = 北部)"}, {char: "不", pinyin: "bù", definition: "négation"}, {char: "才", pinyin: "cái", definition: "seulement"}, {char: "菜", pinyin: "cài", definition: "légumes, par extension repas"}, {char: "茶", pinyin: "chá", definition: "thé"}];
@@ -11,6 +13,34 @@ var current_set_list = '';
 var current_index = 0;
 var pinyin_mode = false;
 
+const icon_list = [
+    'fa-solid fa-star',
+    'fa-solid fa-music',
+    'fa-solid fa-heart',
+    'fa-solid fa-face-smile',
+    'fa-solid fa-car',
+    'fa-solid fa-droplet',
+    'fa-solid fa-flask',
+    'fa-solid fa-earth-americas',
+    'fa-solid fa-person',
+    'fa-solid fa-plane',
+    'fa-solid fa-magnifying-glass',
+    'fa-solid fa-wand-magic-sparkles',
+    'fa-solid fa-gift',
+    'fa-solid fa-palette',
+    'fa-solid fa-envelope',
+    'fa-solid fa-bomb',
+    'fa-solid fa-pen-nib',
+    'fa-solid fa-hippo',
+    'fa-solid fa-trash',
+    'fa-solid fa-tag',
+    'fa-solid fa-video',
+    'fa-solid fa-lemon',
+    'fa-solid fa-key',
+    'fa-solid fa-tree',
+
+];
+
 //------------------------Functions------------------------:
 
 function updateMode(htmlObject) {
@@ -20,6 +50,7 @@ function updateMode(htmlObject) {
 
 
 function selectSet(htmlObject, generate=true) {
+    eval(document.getElementById('cardButtonGroup').getAttribute('data-code_active')) ? hideCodeInput() : undefined //hide codeInput bar (in case it's present)
     current_set = htmlObject.id
 
     document.querySelector('#setContainer > button[data-current_set="true"]').setAttribute('data-current_set', false)
@@ -82,7 +113,7 @@ previous_card = () => goToIndex(current_index - 1)
 //------------------------------------------------Custom Set---------------------------------------------
 //-------------------------------------------------------------------------------------------------------
 
-//-fd8,-fcr,-fcd,-fcc,-feo,-fcd,-fcr,-fcc|5|8w,28t;-fci,-f2o,-feo,-fco,-f2q,-fch;-fdq,-fch,-fci,-fcm,-fch,-fcb,-fce|pc,693,697;-fcu,-f79,-fci,-fcp,-feo,-fcf,-f8z,-feo,-fck,-f8z,-fci,-feo;-fdj,-fct,-fcr,-feo,-fct,-fce,-fcr,-fcv,-fcj,-feo,-fdq,-fef|e3j,1wu;-fct,-fco,-f9b,-fci,-fcp,-feo,-fct,-fco,-f93,-fci,-fcp,-feo;-fdg,-fcv,-feo,-fcp,-fce,-fcv,-fci,-fcs,-fcr,-feo,-fcj,-fcb,-fce,-fcv,-fcn,-fck,-fck,-fcr|2s4,2rw;-fcp,-f8f,-fci,-feo,-fcp,-f9c,-feo;-fdl,-f92,-fci,-fcv,-fci,-fcc
+//-fdq,-fcn,-fcp,-feo,-fdp,-fco,-fcn,-fcj|5|pc,693,697;-fcu,-f79,-fci,-fcp,-feo,-fcf,-f8z,-feo,-fck,-f8z,-fci;-fdl,-fck,-fcv,-fct,-fcr|3xt,-j,891,d2r;-fc9,-f2m,-feo,-fcu,-f8n,-feo,-fc6,-fco,-f79,-feo,-fcs,-f9c,-fch;-fdi,-fcr,-feo,-fci,-fcr,-feo,-fcd,-fcv,-fcn,-fcd,-feo,-fcg,-fcv,-fcd,-feo,-fdq,-fef|nq,52;-fcf,-f8z,-feo,-fcc,-f8f;-fcv,-fcb,-fcc,-fce,-fcr,-feo,-fe9,-feo,-fck,-fcr,-fcd,-feo,-fcv,-fcb,-fcc,-fce,-fcr,-fcd|at9,ac2;-fck,-f9b,-fci,-feo,-fcd,-f94;-fcu,-fck,-fcr,-fcb|e8k,e8j;-fc7,-f79,-fci,-feo,-fc7,-f9b,-fci,-fcp;-fc7,-fcn,-fci,-fcp,-feo,-fc7,-fcv,-fci,-fcp|133,4zp,4r3,czd,55j;-fc7,-fcb,-f9b,-fci,-feo,-fck,-f9b,-fcn,-feo,-fcd,-fco,-f90,-feo,-fc6,-fco,-f94,-feo,-fc7,-f9c,-fci,-fcp;-fdi,-fcr,-feo,-fca,-fch,-fcn,-fcd,-fea,-fea,-fea|cd,py;-fcu,-f2q,-fch,-feo,-fc6,-fco,-f2k,-fci;-fcp,-fcv,-fce,-fcv,-fci,-fcc,-fcn,-fce
 
 function customSetClick(htmlObject) {
     const currentlyActive = eval(htmlObject.getAttribute('data-active'));
@@ -111,35 +142,36 @@ getStringFromCode = (codeString, seperator=',') => {
     return endString
 }
 
-// Get data
+function hideCodeInput() {
+    let buttonParent = document.getElementById('cardButtonGroup');
+    buttonParent.setAttribute('data-code_active', false);
+    buttonParent.childNodes[3].innerHTML = 'Entrer code';
 
+    let codeInput = document.getElementById('codeInput');
+    buttonParent.removeChild(codeInput);
+}
+
+// Get data
 delayFunction = (fnc, delay=100) => new Promise(value => setTimeout(() => {value(fnc())}, delay));
 
 function loadCodeInput() {
-    let codeInput = document.createElement('input');
-    codeInput.id = 'codeInput';
-    document.getElementById('cardButtonGroup').appendChild(codeInput);
+    let buttonParent = document.getElementById('cardButtonGroup');
 
-    codeInput.focus();
-    document.onkeydown = (event) => {(event.ctrlKey && (event.keyCode == 86)) ? confirmCodeInput() : undefined};
+    if (eval(buttonParent.getAttribute('data-code_active'))) { //data-code_active == true ?
+        hideCodeInput();
+    
+    } else {
+        buttonParent.setAttribute('data-code_active', true)
+        buttonParent.childNodes[3].innerHTML = 'Cacher entrée';
+
+        let codeInput = document.createElement('input');
+        codeInput.id = 'codeInput';
+        buttonParent.appendChild(codeInput);
+        
+        codeInput.focus();
+        document.onkeydown = (event) => {(event.ctrlKey && (event.keyCode == 86)) ? confirmCodeInput() : undefined};
+    }
 }
-
-const icon_list = [
-    'fa-solid fa-star',
-    'fa-solid fa-music',
-    'fa-solid fa-heart',
-    'fa-solid fa-face-smile',
-    'fa-solid fa-car',
-    'fa-solid fa-droplet',
-    'fa-solid fa-flask',
-    'fa-solid fa-earth-americas',
-    'fa-solid fa-person',
-    'fa-solid fa-plane',
-    'fa-solid fa-magnifying-glass',
-    'fa-solid fa-wand-magic-sparkles',
-    'fa-solid fa-gift',
-    'fa-solid fa-palette'
-];
 
 async function confirmCodeInput() {
     const codeInput = await delayFunction(() => {return document.getElementById('codeInput').value});
@@ -154,7 +186,7 @@ async function confirmCodeInput() {
     document.getElementById('setContainer').appendChild(setButton);
     setButton.outerHTML = `<button id="${element_id}" onclick="selectSet(this);"><div class="setInfo"><p>${titleData[0]}</p><i class="${icon_list[titleData[1]]}"></i></div></button>`
 
-    document.getElementById('codeInput').remove() // remove codeInput
+    hideCodeInput()
 }
 
 
@@ -172,7 +204,7 @@ function decodeData(data) {
         let charDataList = charData.split(';')
         dataList.push({
             char: getStringFromCode(charDataList[0]),
-            pinyin: getStringFromCode(charDataList[1]),
+            pinyin: (charDataList[1] == '%') ? pinyinFromChars(getStringFromCode(charDataList[0])) : getStringFromCode(charDataList[1]),
             definition: getStringFromCode(charDataList[2])
         })
     }

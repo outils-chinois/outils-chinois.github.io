@@ -10,7 +10,7 @@ Checklist:
 	- [ ] Make individual chapters more interactive
 	- [ ] Mobile version
 
-- [ ] Update Flashcards page (20)
+- [ ] Update Flashcards page (22)
 	- [x] Add different modes (pinyin/character hidden, toggleable)
 	- [ ] Add more vocab sets
 	- [ ] Finish adding the LVB vocab (currently only up to C (exclusive))
@@ -25,11 +25,13 @@ Checklist:
 		- [x] implement the data condenser (char -> decimal unicode -> base 36 (and subtracting 2000))
 		- [x] actually implement the saving of sets
 		- [x] add a way to modify current words
-		- [ ] add automatic pinyin option (requires CJST for pinyin)
+		- [x] shorten resulting code by reducing default pinyin data to 1 char/none
+		- [x] add automatic pinyin option (requires CJST for pinyin)
 		- [x] ~~add cancel button for modifying~~ make the cards modifiable
 		- [x] make the page prettier
 		- [x] add decoder to /flashcards/ to actually use the sets
-		- [ ] Fix the magic pinyin button to display properly when editing the pinyin
+		- [ ] add code import in create page (to modify already existing custom sets)
+		- [x] Fix the magic pinyin button to display properly when editing the pinyin
 		- [ ] mobile version
 
 - [ ] Finish text editor page (6)
@@ -52,13 +54,13 @@ Checklist:
 		- [ ] chapter pages
 
 --
-Completed: (17/39) \* 100 ~= 43.589%
+Completed: (19/41) \* 100 ~= 46.341%
 
-Bugs:
+Bugs (7 fixed):
 - [x] Flashcard set inconsistencies
 	- [x] Custom set "Create" button present even when not on custom set
-	- [ ] When on custom set, clicking on the 'Enter Code' button multiple times creates multiple fields
-	- [ ] Once the custom set code input text field appears, it stays until a code is put in
-	- [ ] left/right decorator cards showing up when they shouldn't (next//previous)
+	- [x] When on custom set, clicking on the 'Enter Code' button multiple times creates multiple fields
+	- [x] Once the custom set code input text field appears, it stays until a code is put in
+	- [x] left/right decorator cards showing up when they shouldn't (next//previous)
 - [x] Frontpage weird background on elements after window resize
 - [x] Cookies not working at all (oopsie)
