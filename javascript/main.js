@@ -27,6 +27,12 @@ const navbarHTML = `
 </div>
 `;
 
+const domainChangeMessage = `
+<i class="fa-solid fa-triangle-exclamation"></i>
+<p>Le fonctionnement du site va être déplacé vers <b><a style="color: #db8e35" href="https://outils-chinois.net">https://outils-chinois.net</a></b>. Le site actuel va rester accessible, mais ne sera pas mis à jour.</p>
+<i class="fa-solid fa-triangle-exclamation"></i>
+`;
+
 //------------------------------------Cookies------------------------------------:
 const singleYear = 1000*60*60*24*(365+1/4); //1 year in milliseconds
 
@@ -86,14 +92,24 @@ function importSettings() {
 
 }
 
-//-----------------------------------------------------------------------------
+//-----------------------------------------------------------------------------:
 
 function initializeNavbar() {
-	let navbarElement = document.createElement("nav");
+	let navbarElement = document.createElement('nav');
+
 	navbarElement.innerHTML = navbarHTML;
 	document.body.appendChild(navbarElement);
 
 	importSettings();
+	// setTimeout(() => initializeDomainMessage(), 3000)
+}
+
+function initializeDomainMessage() {
+	let messageElement = document.createElement('div');
+	messageElement.id = 'domainChangeInfo';
+
+	messageElement.innerHTML = domainChangeMessage;
+	document.querySelector('.mainBody').prepend(messageElement);
 }
 
 //-----------------------------------Settings------------------------------------:
