@@ -101,7 +101,7 @@ function initializeNavbar() {
 	document.body.appendChild(navbarElement);
 
 	importSettings();
-	// setTimeout(() => initializeDomainMessage(), 3000)
+	setTimeout(() => initializeDomainMessage(), 3000)
 }
 
 function initializeDomainMessage() {
