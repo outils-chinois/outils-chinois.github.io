@@ -29,7 +29,7 @@ const navbarHTML = `
 
 const domainChangeMessage = `
 <i class="fa-solid fa-triangle-exclamation"></i>
-<p>Le fonctionnement du site va être déplacé vers <b><a style="color: #db8e35" href="http://outils-chinois.net">http://outils-chinois.net</a></b>. Le site actuel va rester accessible, mais ne sera pas mis à jour.</p>
+<p>Le fonctionnement du site va être déplacé vers <b><a style="color: #db8e35" href="https://outils-chinois.net">https://outils-chinois.net</a></b>. Le site actuel va rester accessible, mais ne sera pas mis à jour.</p>
 <i class="fa-solid fa-triangle-exclamation"></i>
 `;
 
